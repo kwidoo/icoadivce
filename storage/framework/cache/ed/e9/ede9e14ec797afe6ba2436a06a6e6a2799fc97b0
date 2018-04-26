@@ -1,0 +1,92 @@
+1523516213a:1:{s:16:"login_layout.htm";a:6:{s:8:"fileName";s:16:"login_layout.htm";s:7:"content";s:2148:"==
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <meta name="title" content="{{ this.page.meta_title }}">
+    <meta name="author" content="www.smart2be.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="../assets/img/kit/pro/apple-icon.png">
+    <link rel="icon" href="../assets/img/kit/pro/favicon.png">
+ 
+   <link href="{{ 'assets/css/material-dashboard.min.css'|theme }}" rel="stylesheet" />
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+
+    <title>ICO Advice Guru - {{ this.page.title }}</title>
+    
+</head>
+<body class="off-canvas-sidebar login-page">
+
+    <div class="page-header header-filter" style="background-image: url('../assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+
+            {% page %}
+            
+    </div>
+            <script src="{{ 'assets/vendor/jquery.js'| theme }}"></script>
+            <script src="{{'assets/js/core/popper.min.js' |theme}}"></script>
+            <script src="{{'assets/js/bootstrap-material-design.min.js'| theme}}"></script>
+            <script src="{{ '/assets/js/plugins/moment.min.js'| theme}}"></script>
+ 
+            {% framework extras %}
+            {% scripts %}
+        </div>
+</body>
+</html>";s:5:"mtime";i:1523367965;s:6:"markup";s:2145:"<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta name="description" content="{{ this.page.meta_description }}">
+    <meta name="title" content="{{ this.page.meta_title }}">
+    <meta name="author" content="www.smart2be.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" href="../assets/img/kit/pro/apple-icon.png">
+    <link rel="icon" href="../assets/img/kit/pro/favicon.png">
+ 
+   <link href="{{ 'assets/css/material-dashboard.min.css'|theme }}" rel="stylesheet" />
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+
+
+    <title>ICO Advice Guru - {{ this.page.title }}</title>
+    
+</head>
+<body class="off-canvas-sidebar login-page">
+
+    <div class="page-header header-filter" style="background-image: url('../assets/img/bg7.jpg'); background-size: cover; background-position: top center;">
+
+            {% page %}
+            
+    </div>
+            <script src="{{ 'assets/vendor/jquery.js'| theme }}"></script>
+            <script src="{{'assets/js/core/popper.min.js' |theme}}"></script>
+            <script src="{{'assets/js/bootstrap-material-design.min.js'| theme}}"></script>
+            <script src="{{ '/assets/js/plugins/moment.min.js'| theme}}"></script>
+ 
+            {% framework extras %}
+            {% scripts %}
+        </div>
+</body>
+</html>";s:4:"code";N;s:17:"_PARSER_ERROR_INI";s:0:"";}}

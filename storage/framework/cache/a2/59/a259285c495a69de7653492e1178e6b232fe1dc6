@@ -1,0 +1,25 @@
+1523516213a:1:{s:12:"register.htm";a:11:{s:8:"fileName";s:12:"register.htm";s:7:"content";s:469:"title = "Register New Membership"
+url = "/register"
+layout = "login_layout"
+is_hidden = 0
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "guest"
+==
+<div class="page-header header-filter" style="background-image: url( {{'assets/img/kit/pro/bg7.jpg'| theme}}); background-size: cover; background-position: top center;">
+    <div class="container">
+        <div class="row">
+{% component 'account' %}
+        </div>
+    </div>
+</div>";s:5:"mtime";i:1523369877;s:6:"markup";s:288:"<div class="page-header header-filter" style="background-image: url( {{'assets/img/kit/pro/bg7.jpg'| theme}}); background-size: cover; background-position: top center;">
+    <div class="container">
+        <div class="row">
+{% component 'account' %}
+        </div>
+    </div>
+</div>";s:4:"code";N;s:5:"title";s:23:"Register New Membership";s:3:"url";s:9:"/register";s:6:"layout";s:12:"login_layout";s:9:"is_hidden";s:1:"0";s:7:"account";a:2:{s:9:"paramCode";s:4:"code";s:11:"forceSecure";s:1:"0";}s:7:"session";a:1:{s:8:"security";s:5:"guest";}}}

@@ -1,0 +1,20 @@
+title = "Login"
+url = "/login"
+layout = "login_layout"
+is_hidden = 0
+
+[account]
+redirect = "dashboard"
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "guest"
+==
+{% component 'session' %}
+
+<div class="container">
+    <div class="row">
+	{% component 'account' %}
+	</div>
+</div>

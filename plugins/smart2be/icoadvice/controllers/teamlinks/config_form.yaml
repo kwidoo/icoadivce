@@ -1,0 +1,10 @@
+name: TeamLinks
+form: $/smart2be/icoadvice/models/teamlinks/fields.yaml
+modelClass: Smart2be\IcoAdvice\Models\TeamLinks
+defaultRedirect: smart2be/icoadvice/teamlinks
+create:
+    redirect: 'smart2be/icoadvice/teamlinks/update/:id'
+    redirectClose: smart2be/icoadvice/teamlinks
+update:
+    redirect: smart2be/icoadvice/teamlinks
+    redirectClose: smart2be/icoadvice/teamlinks

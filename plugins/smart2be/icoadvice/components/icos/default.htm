@@ -1,0 +1,53 @@
+{{ error }}
+<div class="card">
+    <div class="card-header card-header-rose card-header-icon">
+    	<div class="card-icon">
+            <i class="material-icons">list</i>
+        </div>
+        <h4 class="card-title">Create New ICO</h4>
+    </div>
+    <div id="result"></div>
+    <form class="form-horizontal" role="form" data-request="{{ __SELF__ }}::onSave" data-request-success="$('.confirm-container').removeClass('hide');">
+	    <div class="card-body ">
+				{{ form_token() }} 
+				{{ form_sessionKey() }}
+				{{ form.formRender()|raw }}
+			<div class="form-group bmd-form-group">
+                <label for="name" class="bmd-label-floating"> ICO Name *</label>
+                <input type="text" class="form-control" id="name" required="required" name="Ico[name]" aria-required="true" autocomplete="off" style="cursor: auto;">
+            </div>
+            <div class="form-group bmd-form-group">
+                <label for="tiker" class="bmd-label-floating"> ICO Tiker *</label>
+                <input type="text" class="form-control" id="tiker" required="required" name="Ico[tiker]" aria-required="true" autocomplete="off" style="cursor: auto;">
+             </div>
+
+	    </div>
+	    <div class="card-footer ">
+	        <div class="row">
+	            <div class="col-md-9">
+	                <button type="submit" value="create" class="btn btn-fill btn-rose">Create</button>
+	            </div>
+	        </div>
+	    </div>
+	</form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>

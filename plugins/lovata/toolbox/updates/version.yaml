@@ -1,0 +1,26 @@
+1.0.0:
+    - 'Initialize plugin.'
+1.1.0:
+    - 'Add diff, unshift, push, getNearestNext, getNearestPrev methods to ElementCollection class, add ComponentSubmitForm class'
+1.2.0:
+    - 'Add integration with Translate plugin'
+1.3.0:
+    - 'Adding afterCreate model event handling for additional cache cleaning'
+1.3.1:
+    - 'Restore getOldFormData() method in ComponentSubmitForm class'
+1.3.2:
+    - 'Fix lang path for the default properties tab in CommonProperty class'
+1.3.3:
+    - 'Fix path to field name with error in getErrorMessage() method'
+1.4.0:
+    - 'Add PageHelper class'
+1.4.1:
+    - 'Fix processing of positive results in ComponentSubmitForm::getResponseModeAjax() method, if flash_on enabled'
+1.5.0:
+    - 'Add TraitInitActiveLang trait'
+1.6.0:
+    - 'Add SendMailHelper class, Add CommonSettings model'
+1.7.0:
+    - 'Add UserStorage classes. Add classes for integration with Lovata.Buddies and RainLab.User plugins'
+1.8.0:
+    - 'Added translation into French. Thanks for contribution philmarc.'

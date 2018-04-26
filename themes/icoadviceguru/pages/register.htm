@@ -1,0 +1,19 @@
+title = "Register New Membership"
+url = "/register"
+layout = "login_layout"
+is_hidden = 0
+
+[account]
+paramCode = "code"
+forceSecure = 0
+
+[session]
+security = "guest"
+==
+<div class="page-header header-filter" style="background-image: url( {{'assets/img/kit/pro/bg7.jpg'| theme}}); background-size: cover; background-position: top center;">
+    <div class="container">
+        <div class="row">
+{% component 'account' %}
+        </div>
+    </div>
+</div>

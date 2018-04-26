@@ -1,0 +1,9 @@
+touch icocategory/fields.yaml
+touch icogoals/fields.yaml
+touch icolocation/fields.yaml
+touch icolocationdocuments/fields.yaml
+touch icopartners/fields.yaml
+touch icopublications/fields.yaml
+touch icotimeline/fields.yaml
+touch icotoken/fields.yaml
+touch icotokenprice/fields.yaml

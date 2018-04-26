@@ -1,0 +1,62 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header card-header-rose card-header-icon">
+            <div class="card-icon">
+                <i class="material-icons">assignment</i>
+            </div>
+            <h4 class="card-title">My ICO List
+            </h4>
+        </div>
+        <div class="card-body">
+            <button class="btn btn-rose btn-round" data-request="onIcoCreate">Create<div class="ripple-container"></div></button>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ICO Name</th>
+                            <th>Tiker</th>
+                            <th>Status</th>
+                            <th>Approved</th>
+                            <th class="text-right">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for i in ico  %}
+                        <tr>
+                            <td>{{i.name}}</td>
+                            <td>{{i.tiker}}</td>
+                            <td>
+                                {% if i.status == 0 %}
+                                <span class="badge badge-info">Private</span>
+                                {% endif %}
+                                 {% if i.status == 1 %}
+                                <span class="badge badge-success">Published</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if i.approved == 0 %}
+                                <span class="badge badge-danger">pending</span>
+                                {% endif %}
+                                 {% if i.approved == 1 %}
+                                <span class="badge badge-success">approved</span>
+                                {% endif %}
+                            </td>
+                            <td class="td-actions text-right">
+                                  <button type="button" rel="tooltip" class="btn btn-info btn-link">
+                                      <i class="material-icons">person</i>
+                                  </button>
+                                  <button type="button" rel="tooltip" class="btn btn-success btn-link">
+                                      <i class="material-icons">edit</i>
+                                  </button>
+                                  <button type="button" rel="tooltip" class="btn btn-danger btn-link">
+                                      <i class="material-icons">close</i>
+                                  </button>
+                              </td>
+                        </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

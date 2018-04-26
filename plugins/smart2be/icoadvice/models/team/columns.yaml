@@ -1,0 +1,7 @@
+columns:
+    first_name:
+        label: 'smart2be.icoadvice::lang.team.firstName'
+        type: text
+    last_name:
+        label: 'smart2be.icoadvice::lang.team.lastName'
+        type: text

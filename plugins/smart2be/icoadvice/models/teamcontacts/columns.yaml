@@ -1,0 +1,10 @@
+columns:
+    type:
+        label: 'smart2be.icoadvice::lang.team.contact.type'
+        type: text
+    other:
+        label: 'smart2be.icoadvice::lang.team.contact.other'
+        type: text
+    url:
+        label: 'smart2be.icoadvice::lang.team.contact.url'
+        type: text

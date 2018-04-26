@@ -1,0 +1,10 @@
+name: Ico
+form: $/smart2be/icoadvice/models/ico/fields.yaml
+modelClass: Smart2be\IcoAdvice\Models\Ico
+defaultRedirect: smart2be/icoadvice/ico
+create:
+    redirect: 'smart2be/icoadvice/ico/update/:id'
+    redirectClose: smart2be/icoadvice/ico
+update:
+    redirect: smart2be/icoadvice/ico
+    redirectClose: smart2be/icoadvice/ico

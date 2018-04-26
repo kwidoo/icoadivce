@@ -1,0 +1,9 @@
+fields:
+    type:
+        label: 'smart2be.icoadvice::lang.team.documents.type'
+        span: auto
+        type: dropdown
+    other:
+        label: 'smart2be.icoadvice::lang.team.documents.other'
+        span: auto
+        type: text

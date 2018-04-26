@@ -1,0 +1,11 @@
+title = "Activate Account"
+url = "/activate-account"
+layout = "login_layout"
+is_hidden = 0
+
+[account]
+redirect = "login"
+paramCode = "code"
+forceSecure = 0
+==
+{% component 'account' %}

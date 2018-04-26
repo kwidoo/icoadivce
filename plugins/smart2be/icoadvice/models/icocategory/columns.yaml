@@ -1,0 +1,8 @@
+columns:
+    name:
+        label: 'smart2be.icoadvice::lang.category.name'
+        type: text
+        
+    published:
+        label: 'smart2be.icoadvice::lang.category.published'
+        type: switch

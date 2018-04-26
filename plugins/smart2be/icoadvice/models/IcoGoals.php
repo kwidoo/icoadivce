@@ -1,0 +1,43 @@
+<?php namespace Smart2be\IcoAdvice\Models;
+
+use Model;
+
+/**
+ * Model
+ */
+class IcoGoals extends Model
+{
+    use \October\Rain\Database\Traits\Validation;
+
+    public $implement = [        
+        'Backend\Behaviors\ListController',        
+        'Backend\Behaviors\FormController'    
+        'Backend.Behaviors.RelationController'
+    ];
+    
+    public $listConfig = 'config_list.yaml';
+    public $formConfig = 'config_form.yaml';
+    public $relationConfig = 'config_relation.yaml';
+
+    /*
+     * Disable timestamps by default.
+     * Remove this line if timestamps are defined in the database table.
+     */
+    public $timestamps = false;
+
+    /**
+     * @var array Validation rules
+     */
+    public $rules = [
+    ];
+
+    /**
+     * @var string The database table used by the model.
+     */
+    public $table = 'smart2be_icoadvice_ico_goals';
+
+
+    public $attachOne = [
+        'image' => ['System\Models\File'],
+    ];
+}

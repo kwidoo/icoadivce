@@ -1,0 +1,53 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table smart2be_icoadvice_ico'
+    - builder_table_create_smart2be_icoadvice_ico.php
+1.0.3:
+    - 'Created table smart2be_icoadvice_ico_user'
+    - builder_table_create_smart2be_icoadvice_ico_user.php
+1.0.4:
+    - 'Created table smart2be_icoadvice_team'
+    - builder_table_create_smart2be_icoadvice_team.php
+1.0.5:
+    - 'Created table smart2be_icoadvice_team_links'
+    - builder_table_create_smart2be_icoadvice_team_links.php
+1.0.6:
+    - 'Created table smart2be_icoadvice_team_contacts'
+    - builder_table_create_smart2be_icoadvice_team_contacts.php
+1.0.7:
+    - 'Created table smart2be_icoadvice_team_documents'
+    - builder_table_create_smart2be_icoadvice_team_documents.php
+1.0.8:
+    - 'Created table smart2be_icoadvice_ico_dates'
+    - builder_table_create_smart2be_icoadvice_ico_dates.php
+1.0.9:
+    - 'Updated table smart2be_icoadvice_ico_dates'
+    - builder_table_update_smart2be_icoadvice_ico_dates.php
+1.0.10:
+    - 'Created table smart2be_icoadvice_ico_category'
+    - builder_table_create_smart2be_icoadvice_ico_category.php
+1.0.11:
+    - 'Created table smart2be_icoadvice_ico_token'
+    - builder_table_create_smart2be_icoadvice_ico_token.php
+1.0.12:
+    - 'Created table smart2be_icoadvice_ico_token_price'
+    - builder_table_create_smart2be_icoadvice_ico_token_price.php
+1.0.13:
+    - 'Created table smart2be_icoadvice_ico_location'
+    - builder_table_create_smart2be_icoadvice_ico_location.php
+1.0.14:
+    - 'Created table smart2be_icoadvice_ico_location_documents'
+    - builder_table_create_smart2be_icoadvice_ico_location_documents.php
+1.0.15:
+    - 'Created table smart2be_icoadvice_ico_timeline'
+    - builder_table_create_smart2be_icoadvice_ico_timeline.php
+1.0.16:
+    - 'Created table smart2be_icoadvice_ico_goals'
+    - builder_table_create_smart2be_icoadvice_ico_goals.php
+1.0.17:
+    - 'Created table smart2be_icoadvice_ico_publications'
+    - builder_table_create_smart2be_icoadvice_ico_publications.php
+1.0.18:
+    - 'Created table smart2be_icoadvice_ico_partners'
+    - builder_table_create_smart2be_icoadvice_ico_partners.php

@@ -1,0 +1,9 @@
+fields:
+    first_name:
+        label: 'smart2be.icoadvice::lang.team.firstName'
+        span: auto
+        type: text
+    last_name:
+        label: 'smart2be.icoadvice::lang.team.lastName'
+        span: auto
+        type: text

@@ -1,0 +1,10 @@
+fields:
+    name:
+        label: 'smart2be.icoadvice::lang.category.name'
+        span: auto
+        type: text
+        
+    published:
+        label: 'smart2be.icoadvice::lang.category.published'
+        span: auto
+        type: switch

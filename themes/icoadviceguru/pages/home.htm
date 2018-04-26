@@ -1,0 +1,128 @@
+title = "home"
+url = "/"
+layout = "default"
+is_hidden = 0
+
+[icoForm]
+==
+<div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url({{'assets/img/kit/pro/bg3.jpg'| theme }});">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto">
+                <div class="brand">
+                    <h1>ICO Advice
+                        <span class="pro-badge">
+                            Guru
+                        </span>
+                    </h1>
+                    {% component 'icoForm' %}
+                    <h3 class="title">Your Number One ICO List</h3>
+                    <h4>a <a href="https://smart2be.com" style="color:white; text-decoration: underline;">smart2be.com</a> company</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main main-raised">
+    <div class="profile-content">
+        <div class="container">
+			<div class="row">
+                <div class="col-md-8 ml-auto mr-auto text-center">
+                
+                    <h2 class="title">PROMO</h2>
+                    <h5 class="description">This is the paragraph where you can write more details about your projects. Keep you user engaged by providing meaningful information.</h5>
+                </div>
+            </div>           
+            {% partial 'promo/promo'%}
+            <div class="row">
+            	<div class="col-md-8 ml-auto mr-auto text-center">
+                    <h2 class="title">Trending</h2>
+                    <h5 class="description">See most popular tokens sale and ICO carefully picked by our staff.</h5>
+                </div>
+	 			{% for i in 0..2 %}
+		            {% partial 'promo/featured' %}
+				{% endfor %}
+			    <div class="section-space"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% partial 'site/social' %}
+<div class="team-5 section-image" style="background-image: url({{ 'assets/img/kit/pro/examples/city.jpg'| theme }})">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 ml-auto mr-auto text-center">
+                <h2 class="title">ICO List</h2>
+                <h5 class="description">The most comprehensive list of live, upcoming and ended cryptocurrency tokens sales and ICO.</h5>
+            </div>
+        </div>
+		<div class="row" >
+			<div class="col-md-6 ml-auto mr-auto">
+                <div class="profile-tabs">
+                    <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#ongoing" role="tab" data-toggle="tab" style="color:white"	>
+                                <i class="material-icons">list</i> Live Tokens Sale
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#upcoming" role="tab" data-toggle="tab" style="color:white">
+                                <i class="material-icons">schedule</i> Upcoming Tokens Sale
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-brand" href="#ended" role="tab" data-toggle="tab" style="color:white">
+                                <i class="material-icons">done</i> Ended Tokens Sale
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+		<div class="tab-content tab-space">
+            <div class="tab-pane active work" id="ongoing">
+	 			<div class="row" >
+	 			{% for i in 0..8 %}
+					{% partial 'ico-item' %}        
+				{% endfor %}  
+				</div>    
+				<div class="row">
+					<ul class="pagination pagination-primary text-center" style="color:white">
+                        <li class="page-item">
+                            <a href="" class="page-link">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="" class="page-link">5<div class="ripple-container"></div></a>
+                        </li>
+                        <li class="page-item">
+                            <a href="" class="page-link">6</a>
+                        </li>
+                        <li class="active page-item">
+                            <a href="" class="page-link">7</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="" class="page-link">8</a>
+                        </li>
+                        <li class="page-item">
+                            <a href="" class="page-link">9</a>
+                        </li>
+                        
+                        <li class="page-item">
+                            <a href="" class="page-link">12</a>
+                        </li>
+                    </ul>  
+                </div>
+            </div>
+            <div class="tab-pane connections" id="upcoming">
+                <div class="row">
+                    2
+                </div>
+            </div>
+            <div class="tab-pane text-center gallery" id="ended">
+                <div class="row">
+                    3
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

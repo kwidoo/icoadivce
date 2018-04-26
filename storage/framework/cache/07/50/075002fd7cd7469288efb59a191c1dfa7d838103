@@ -1,0 +1,20 @@
+1523516213a:1:{s:20:"dashboard_create.htm";a:10:{s:8:"fileName";s:20:"dashboard_create.htm";s:7:"content";s:234:"title = "Create New ICO"
+url = "/dashboard/create"
+layout = "dashboard"
+is_hidden = 0
+
+[icoForm]
+==
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+			{% component 'icoForm' %}
+		</div>
+	</div>
+</div>";s:5:"mtime";i:1523351447;s:6:"markup";s:134:"<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+			{% component 'icoForm' %}
+		</div>
+	</div>
+</div>";s:4:"code";N;s:5:"title";s:14:"Create New ICO";s:3:"url";s:17:"/dashboard/create";s:6:"layout";s:9:"dashboard";s:9:"is_hidden";s:1:"0";s:7:"icoForm";a:0:{}}}

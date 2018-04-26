@@ -1,0 +1,12 @@
+title: Ico
+modelClass: Smart2be\IcoAdvice\Models\Ico
+list: $/smart2be/icoadvice/models/ico/columns.yaml
+recordUrl: 'smart2be/icoadvice/ico/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+recordsPerPage: 20
+showCheckboxes: 1
+showSorting: 0
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

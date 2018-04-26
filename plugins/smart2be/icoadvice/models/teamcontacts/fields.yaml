@@ -1,0 +1,23 @@
+fields:
+    type:
+        label: 'smart2be.icoadvice::lang.team.contact.type'
+        options:
+            - Email
+            - Phone
+            - Skype
+            - Telegram
+            - Other
+        span: auto
+        type: dropdown
+    url:
+        label: 'smart2be.icoadvice::lang.team.contact.url'
+        span: auto
+        dependsOn:
+            - type
+        type: text
+    other:
+        label: 'smart2be.icoadvice::lang.team.contact.other'
+        span: auto
+        dependsOn:
+            - type
+        type: text

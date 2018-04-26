@@ -1,0 +1,24 @@
+.featured {
+	padding:10px;
+	padding-right:20px;
+	margin-bottom:10px;
+	margin-top:0;
+}
+.featured:hover{
+
+	background-color: #F0F0F0;
+	border-radius: 10px 10px;
+}
+
+.normal:hover{
+	background-color: #F0F0F0;
+	border-radius: 10px 10px;
+}
+.my-stars {
+	/*margin:0;
+	padding:0;*/
+	list-style: none;
+}
+.my-stars li {
+	display: inline-block;
+}

@@ -1,0 +1,54 @@
+ICO Model
+
+Name 
+Tiker
+Logo
+Slogan
+
+Category
+Token/Coin -> Type (Platform -> ETH, NEO, Waves, PoW, PoS), Name, Decimal, Tracker
+Token/Coin Prices -> Type (fixed to crypto, fixed to fiat), Price, Reference Currency (BTC, LTC, ETH, NEO, USD, EUR)
+
+Dates -> Type (Ico Start, Ico End, Project intermidiate date), Date, Description
+
+Soft Cap -> Present, Currency (Own Coin, BTC, LTC, ETH, NEO USD, EUR), Value
+Hard Cap -> Present, Currency (Own Coin, BTC, LTC, ETH, NEO USD, EUR), Value
+
+Location
+	Legal Name -> Name, Verified
+	Legal Address -> Address, Country, Public, Verified
+	Documents -> Type (Certificate of Good Standing, Proof of Address), Scan, Accepted, Public
+
+Short Description
+Long Description
+
+Timeline
+Short Description
+Pictures
+Key Points	-> Date, Picture, Description
+
+Goals 
+Short Description
+Pictures
+	Goal
+		-> Number, Amount, Goal Description. 
+
+Pictures 
+Video		
+
+Token Distribution: Number, Description.
+
+Bonuses: Type (Percent, Fixed Value), Number, Date Start, Date End 
+
+Links -> Type (Website, Whitepaper, Bounty, Blog, Facebook, Twitter, Bitcointalk ANN, Bitcointalk Bounty, Linkedin, Telegram, Github, Slack Link, Reddit, Token Tracker, SmartContract), Link
+
+Team
+	First Name, Last Name
+	Title
+	Email -> Email, Confirmation code, Confirmed, Public
+	Phone -> Phone, Confirmation code, Confirmed, Public
+	Description
+	Links -> Type (Facebook, Twitter, LinkedIn), Link
+	Documents -> Type (ID, Passport, Proof of Address), Scan 
+
+

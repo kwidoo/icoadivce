@@ -1,0 +1,102 @@
+
+
+<div class="col-md-12">
+ {{ form_ajax('onUpdate', { model: user }) }}
+       <div class="card">
+        <div class="card-header card-header-icon card-header-rose">
+          <div class="card-icon">
+            <i class="material-icons">perm_identity</i>
+          </div>
+          <h4 class="card-title">Profile</small></h4>
+
+        </div>
+        <div class="card-body">
+                <span id="accountDeactivateFooter">
+
+                <div class="row">
+                    <div class="col-md-10 ml-auto mr-auto">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Email address</label>
+                            <input name="email" type="email" class="form-control" id="accountEmail" value="{{ form_value('email') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 ml-auto mr-auto">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Full Name</label>
+                             <input name="name" type="text" class="form-control" id="accountName" value="{{ form_value('name') }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10 ml-auto mr-auto">
+                        <div class="form-group">
+                            <label class="bmd-label-floating">Adress</label>
+                            <input type="text" class="form-control" >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-md-4 ml-auto">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">City</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Country</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="col-md-3 mr-auto">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Postal Code</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                        </div>
+                </div>
+
+                <button type="submit" class="btn btn-default">Save</button>
+                    <a
+                        href="javascript:;"
+                        onclick="$('#accountDeactivateForm').toggle();$('#accountDeactivateFooter').toggle();">
+                        Deactivate account
+                    </a>
+                </span>
+
+                <div id="accountDeactivateForm" style="display: none">
+                    {{ form_ajax('onDeactivate') }}
+                        <hr />
+                        <h3>Deactivate your account?</h3>
+                        <p>
+                            Your account will be disabled and your details removed from the site.
+                            You can reactivate your account any time by signing back in.
+                        </p>
+                        <div class="form-group">
+                            <label for="accountDeletePassword">To continue, please enter your password:</label>
+                            <input name="password" type="password" class="form-control" id="accountDeletePassword" />
+                        </div>
+                        <button type="submit" class="btn btn-danger">
+                            Confirm Deactivate Account
+                        </button>&nbsp;
+                        <a
+                            href="javascript:;"
+                            onclick="$('#accountDeactivateForm').toggle();$('#accountDeactivateFooter').toggle();">
+                            I changed my mind
+                        </a>
+                    {{ form_close() }}
+                </div>
+                <div class="clearfix"></div>
+        </div>
+    </div>
+{{ form_close() }}
+
+</div>
+
+
+

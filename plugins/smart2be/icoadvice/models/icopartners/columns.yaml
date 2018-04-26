@@ -1,0 +1,40 @@
+columns:
+    id:
+        label: id
+        type: number
+    ico_id:
+        label: ico_id
+        type: number
+    start_date:
+        label: start_date
+        type: text
+    end_date:
+        label: end_date
+        type: text
+    type:
+        label: type
+        type: number
+    other:
+        label: other
+        type: text
+    description:
+        label: description
+        type: text
+    status:
+        label: status
+        type: number
+    approved:
+        label: approved
+        type: text
+    admin_id:
+        label: admin_id
+        type: number
+    approved_at:
+        label: approved_at
+        type: text
+    created_at:
+        label: created_at
+        type: datetime
+    updated_at:
+        label: updated_at
+        type: datetime

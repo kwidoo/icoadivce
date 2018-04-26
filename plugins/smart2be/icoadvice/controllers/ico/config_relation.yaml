@@ -1,0 +1,8 @@
+members:
+    label: Team Members
+    manage:
+        form: $/smart2be/icoadvice/models/team/fields.yaml
+        list: $/smart2be/icoadvice/models/team/columns.yaml
+    view:
+        list: $/smart2be/icoadvice/models/team/columns.yaml
+        toolbarButtons: create|delete

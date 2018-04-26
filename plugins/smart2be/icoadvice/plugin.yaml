@@ -1,0 +1,6 @@
+plugin:
+    name: 'smart2be.icoadvice::lang.plugin.name'
+    description: 'smart2be.icoadvice::lang.plugin.description'
+    author: smart2be
+    icon: oc-icon-asterisk
+    homepage: ''

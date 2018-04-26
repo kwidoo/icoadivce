@@ -1,0 +1,15 @@
+<div id="itemList">
+    <?=  $model->members ?>
+    <?=  $model->members[0]->links ?>
+</div>
+
+<p>
+    <a
+        href="javascript:;"
+        class="btn btn-secondary oc-icon-plus"
+        data-control="popup"
+        data-handler="onLoadCreateItemForm"
+        data-size="large">
+        Add item
+    </a>
+</p>

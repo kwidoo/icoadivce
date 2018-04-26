@@ -1,0 +1,12 @@
+list: $/smart2be/icoadvice/models/teamdocuments/columns.yaml
+modelClass: Smart2be\IcoAdvice\Models\TeamDocuments
+title: TeamDocuments
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'smart2be/icoadvice/teamdocuments/update/:id'

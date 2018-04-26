@@ -1,0 +1,10 @@
+name: Team
+form: $/smart2be/icoadvice/models/team/fields.yaml
+modelClass: Smart2be\IcoAdvice\Models\Team
+defaultRedirect: smart2be/icoadvice/team
+create:
+    redirect: 'smart2be/icoadvice/team/update/:id'
+    redirectClose: smart2be/icoadvice/team
+update:
+    redirect: smart2be/icoadvice/team
+    redirectClose: smart2be/icoadvice/team

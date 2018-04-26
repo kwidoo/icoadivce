@@ -1,0 +1,7 @@
+columns:
+    type:
+        label: 'smart2be.icoadvice::lang.plugin.link.type'
+        type: select
+    url:
+        label: 'smart2be.icoadvice::lang.plugin.link.url'
+        type: text
