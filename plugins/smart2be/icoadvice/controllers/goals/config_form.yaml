@@ -1,0 +1,10 @@
+name: TeamDocuments
+form: $/smart2be/icoadvice/models/icogoals/fields.yaml
+modelClass: Smart2be\IcoAdvice\Models\icogoals
+defaultRedirect: smart2be/icoadvice/icogoals
+create:
+    redirect: 'smart2be/icoadvice/icogoals/update/:id'
+    redirectClose: smart2be/icoadvice/icogoals
+update:
+    redirect: smart2be/icoadvice/icogoals
+    redirectClose: smart2be/icoadvice/icogoals

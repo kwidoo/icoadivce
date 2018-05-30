@@ -29,23 +29,21 @@ class Ico extends Model
     public $belongsToMany = [
         'users' => ['RainLab\User\Models\User', 'table' => 'smart2be_icoadvice_ico_user']
     ];
+    public $belongsToOne = [
+        'category' => 'Smart2be\IcoAdvice\Models\IcoCategory'
+    ];
 
     public $hasMany = [
-        'members' => 'Smart2be\IcoAdvice\Models\Team',
+        'team' => 'Smart2be\IcoAdvice\Models\Team',
         'partners' => 'Smart2be\IcoAdvice\Models\IcoPartners',
         'publications' => 'Smart2be\IcoAdvice\Models\IcoPublications',
         'dates' => 'Smart2be\IcoAdvice\Models\IcoDates',
         'goals' => 'Smart2be\IcoAdvice\Models\IcoGoals',
         'locations' => 'Smart2be\IcoAdvice\Models\IcoLocation',
-        'timelines' => 'Smart2be\IcoAdvice\Models\IcoTimeline'    
-    ];
+        'timeline' => 'Smart2be\IcoAdvice\Models\IcoTimeline',
+        'tokens' => 'Smart2be\IcoAdvice\Models\IcoToken',
 
-    public $hasOne = [
-        'token' => 'Smart2be\IcoAdvice\Models\IcoToken',
     ];
-    public $belongsTo = [
-         'category' => 'Smart2be\IcoAdvice\Models\IcoCategory',
-   ];
 
     public $attachOne = [
         'logo' => ['System\Models\File'],

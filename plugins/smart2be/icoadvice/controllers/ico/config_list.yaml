@@ -8,5 +8,4 @@ showCheckboxes: 1
 showSorting: 0
 toolbar:
     buttons: list_toolbar
-    search:
-        prompt: 'backend::lang.list.search_prompt'
+    

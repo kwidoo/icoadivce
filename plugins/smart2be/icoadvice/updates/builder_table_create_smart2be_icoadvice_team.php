@@ -15,12 +15,12 @@ class BuilderTableCreateSmart2beIcoadviceTeam extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->integer('type')->default(0);
-            $table->string('title');
-            $table->text('description');
-            $table->integer('status');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+            $table->integer('status')->default(0);
             $table->boolean('approved')->default(false);
             $table->integer('admin_id')->nullable();;
-            $table->dateTime('approved_at');
+            $table->dateTime('approved_at')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

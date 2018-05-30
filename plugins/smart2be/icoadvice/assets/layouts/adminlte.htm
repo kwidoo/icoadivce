@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="<?= App::getLocale() ?>">
+<head>
+	<!-- October CMS part -->
+	<meta name="app-timezone" content="<?= e(Config::get('app.timezone')) ?>">
+	<meta name="backend-base-path" content="<?= Backend::baseUrl() ?>">
+	<meta name="backend-timezone" content="<?= e(Backend\Models\Preference::get('timezone')) ?>">
+	<meta name="backend-locale" content="<?= e(Backend\Models\Preference::get('locale')) ?>">
+	<meta name="csrf-token" content="<?= csrf_token() ?>">
+	<link rel="icon" type="image/png" href="<?= Backend::skinAsset('assets/images/favicon.png') ?>">
+	<title data-title-template="<?= empty($this->pageTitleTemplate) ? '%s' : e($this->pageTitleTemplate) ?> | <?= e(Backend\Models\BrandSetting::get('app_name')) ?>">
+		<?= e(trans($this->pageTitle)) ?> | <?= e(Backend\Models\BrandSetting::get('app_name')) ?>
+	</title>
+
+	<?php $coreBuild = System\Models\Parameter::get('system::core.build', 1);?>
+	
+	<!-- AdminLTE part -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="/plugins/smart2be/icoadvice/assets/css/adminlte.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+	<?= $this->makeLayoutPartial('top') ?>
+	<?= $this->makeLayoutPartial('right') ?>
+
+  <!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    	<section class="content-header">
+      		<div class="container-fluid">
+		        <div class="row mb-2">
+		        	<div class="col-sm-6">
+		            	<h1><?= e(trans('smart2be.icoadvice::lang.plugin.name')) ?></h1>
+		          	</div>
+          			<div class="col-sm-6">
+          				<?php if ($breadcrumbContent = Block::placeholder('breadcrumb')): ?>
+	                        <?php $breadcrumbContent = str_replace('ul','ol class="breadcrumb float-sm-right"', $breadcrumbContent);
+	                        	  $breadcrumbContent = str_replace('li','li class="breadcrumb-item text-uppercase"', $breadcrumbContent);
+
+	                         ?>
+	                        <?= $breadcrumbContent ?>
+		                    <!-- Breadcrumb -->	                    
+		                <?php endif ?>
+	          		</div>
+	        	</div>
+      		</div><!-- /.container-fluid -->
+    	</section>
+		<section class="content">
+      		<div class="container-fluid">
+				<div class="row">
+		        	<div class="col-md-12">
+		                 <?= Block::placeholder('body') ?>
+		            </div>
+		        </div>
+		    </div>
+		</section>
+	</div> 
+	<footer class="main-footer" id="layout-footer">
+		<div class="float-right d-none d-sm-block">
+			<b>Version</b> 3.0.0-alpha
+		</div>
+		<strong>Copyright &copy; 2014-2018 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+	reserved.
+		<i class="icon-leaf"></i><?= e(trans('system::lang.app.name')) ?> <?= e(trans('system::lang.app.tagline')) ?>
+	</footer>
+
+	<!-- Control Sidebar -->
+	<aside class="control-sidebar control-sidebar-dark">
+	<!-- Control sidebar content goes here -->
+	</aside>
+	<!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<script src="/plugins/smart2be/icoadvice/assets/plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/smart2be/icoadvice/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/plugins/smart2be/icoadvice/assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="/plugins/smart2be/icoadvice/assets/plugins/fastclick/fastclick.js"></script>
+<script src="/plugins/smart2be/icoadvice/assets/js/adminlte.min.js"></script>
+
+<script src="<?= Url::to('modules/system/assets/js/framework.js') ?>"></script>
+<script src="<?= Url::asset('modules/system/assets/ui/storm-min.js') ?>"></script>
+<script src="<?= Url::to('modules/backend/assets/js/october.js') ?>"></script>
+<script src="<?= Url::to('modules/backend/assets/js/auth/auth.js') ?>"></script>
+<script src="<?= Url::asset('modules/system/assets/js/lang/lang.'.App::getLocale().'.js') ?>?v<?= $coreBuild ?>"></script>
+<script src="<?= Backend::skinAsset('assets/js/october.flyout.js') ?>"></script>
+<script src="<?= Backend::skinAsset('assets/js/october.tabformexpandcontrols.js') ?>"></script>
+<script>
+    jQuery(document).ready(function($) {
+    	$(".clickable-row").click(function() {
+      	  window.location = $(this).data("href");
+	    });
+	    $("input[type=checkbox]").click(function(event){
+    		event.stopPropagation();
+    		jQuery(this).prop("checked", this.checked);
+		});
+	    
+	});
+</script>
+
+        <div id="layout-flash-messages"><?= $this->makeLayoutPartial('flash_messages') ?></div>
+
+</body>
+</html>

@@ -1,8 +1,9 @@
 links:
-    label: Member Links
+    label: Team Links
     manage:
         form: $/smart2be/icoadvice/models/teamlinks/fields.yaml
         list: $/smart2be/icoadvice/models/teamlinks/columns.yaml
     view:
         list: $/smart2be/icoadvice/models/teamlinks/columns.yaml
         toolbarButtons: create|delete
+ 

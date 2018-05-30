@@ -1,11 +1,20 @@
 fields:
+
     name:
         label: 'smart2be.icoadvice::lang.ico.name'
         span: auto
         required: 1
         type: text
+        size: small
+
     tiker:
         label: 'smart2be.icoadvice::lang.ico.tiker'
         span: auto
         type: text
         required: 1
+
+    logo:
+        label: 'smart2be.icoadvice::lang.ico.tiker'
+        span: auto
+        type: fileupload
+        mode: image

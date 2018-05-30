@@ -16,8 +16,7 @@ class Plugin extends PluginBase
             '\Smart2be\IcoAdvice\Components\Icolist' => 'icoList'
         ];
     }
-
-
+    
     public function registerSettings()
     {
     	return [

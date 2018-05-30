@@ -1,4 +1,4 @@
-members:
+team:
     label: Team Members
     manage:
         form: $/smart2be/icoadvice/models/team/fields.yaml
@@ -6,3 +6,66 @@ members:
     view:
         list: $/smart2be/icoadvice/models/team/columns.yaml
         toolbarButtons: create|delete
+
+tokens:
+    label: ICO Tokens
+    manage:
+        form: $/smart2be/icoadvice/models/icotoken/fields.yaml
+        list: $/smart2be/icoadvice/models/icotoken/columns.yaml
+    view:
+        list: $/smart2be/icoadvice/models/icotoken/columns.yaml
+        toolbarButtons: create|delete
+
+dates:
+    label: ICO Dates
+    manage:
+        form: $/smart2be/icoadvice/models/icodates/fields.yaml
+        list: $/smart2be/icoadvice/models/icodates/columns.yaml
+    view:
+        list: $/smart2be/icoadvice/models/icodates/columns.yaml
+        toolbarButtons: create|delete
+
+timeline:
+    label: ICO Timeline
+    manage:
+        form: $/smart2be/icoadvice/models/icotimeline/fields.yaml
+        list: $/smart2be/icoadvice/models/icotimeline/columns.yaml
+    view:
+        list: $/smart2be/icoadvice/models/icotimeline/columns.yaml
+        toolbarButtons: create|delete
+goals:
+    label: ICO Goals
+    manage:
+        form: $/smart2be/icoadvice/models/icogoals/fields.yaml
+        list: $/smart2be/icoadvice/models/icogoals/columns.yaml
+    view:
+        list: $/smart2be/icoadvice/models/icogoals/columns.yaml
+        toolbarButtons: create|delete
+
+publications:
+    label: ICO Publications
+    manage:
+        form: $/smart2be/icoadvice/models/icopublications/fields.yaml
+        list: $/smart2be/icoadvice/models/icopublications/columns.yaml
+    view:
+        list: $/smart2be/icoadvice/models/icopublications/columns.yaml
+        toolbarButtons: create|delete
+
+partners:
+    label: ICO Partners
+    manage:
+        form: $/smart2be/icoadvice/models/icopartners/fields.yaml
+        list: $/smart2be/icoadvice/models/icopartners/columns.yaml
+    view:
+        list: $/smart2be/icoadvice/models/icopartners/columns.yaml
+        toolbarButtons: create|delete
+
+locations:
+    label: ICO Locations
+    manage:
+        form: $/smart2be/icoadvice/models/icolocation/fields.yaml
+        list: $/smart2be/icoadvice/models/icolocation/columns.yaml
+    view:
+        list: $/smart2be/icoadvice/models/icolocation/columns.yaml
+        toolbarButtons: create|delete
+

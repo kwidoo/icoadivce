@@ -9,16 +9,6 @@ class IcoGoals extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
-    public $implement = [        
-        'Backend\Behaviors\ListController',        
-        'Backend\Behaviors\FormController'    
-        'Backend.Behaviors.RelationController'
-    ];
-    
-    public $listConfig = 'config_list.yaml';
-    public $formConfig = 'config_form.yaml';
-    public $relationConfig = 'config_relation.yaml';
-
     /*
      * Disable timestamps by default.
      * Remove this line if timestamps are defined in the database table.

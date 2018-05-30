@@ -1,5 +1,5 @@
-/storage
-/robot
-/vendor
-/bootstrap
-/modules
+storage/*
+robot/*
+vendor/*
+bootstrap/*
+modules/*

@@ -17,6 +17,7 @@ class BuilderTableCreateSmart2beIcoadviceIcoPartners extends Migration
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
+            $table->boolean('status')->integer(0);
             $table->boolean('approved')->default(0);
             $table->integer('admin_id')->nullable();
             $table->dateTime('approved_at')->nullable();
@@ -28,3 +29,4 @@ class BuilderTableCreateSmart2beIcoadviceIcoPartners extends Migration
         Schema::dropIfExists('smart2be_icoadvice_ico_partners');
     }
 }
+ 

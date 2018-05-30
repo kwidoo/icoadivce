@@ -1,7 +1,12 @@
 columns:
     type:
         label: 'smart2be.icoadvice::lang.plugin.link.type'
-        type: select
+        options:
+            1: linkedin
+            2: email
+        span: auto
+        type: dropdown
+        
     url:
         label: 'smart2be.icoadvice::lang.plugin.link.url'
         type: text

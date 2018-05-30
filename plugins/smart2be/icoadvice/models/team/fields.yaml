@@ -1,9 +1,37 @@
 fields:
+
+    status:
+        label: 'smart2be.icoadvice::lang.team.status'
+        span: auto
+        type: dropdown
+        size: tiny
+        options:
+            0: Draft
+            1: Ready
+            2: Published
+
     first_name:
         label: 'smart2be.icoadvice::lang.team.firstName'
         span: auto
         type: text
+
     last_name:
         label: 'smart2be.icoadvice::lang.team.lastName'
         span: auto
         type: text
+
+    title:
+        label: 'smart2be.icoadvice::lang.team.title'
+        span: auto 
+        type: text 
+
+    description:
+        label: 'smart2be.icoadvice::lang.team.description'
+        span: full
+        type: textarea       
+
+    photo:
+        label: 'smart2be.icoadvice::lang.team.photo'
+        span: auto
+        type: fileupload
+        mode: image

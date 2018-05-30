@@ -26,5 +26,5 @@ class IcoLocation extends Model
 
     public $hasMany = [
         'documents' => 'Smart2be\IcoAdvice\Models\IcoLocationDocuments'
-    ]
+    ];
 }

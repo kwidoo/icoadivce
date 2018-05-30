@@ -8,45 +8,73 @@
 <?php if (!$this->fatalError): ?>
 
     <?= Form::open(['class' => 'layout']) ?>
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <a href="<?= Backend::url('smart2be/icoadvice/ico') ?>">
+                    <h3 class="box-title">Update Your ICO</h3>
+                </a>
+            </div>
+            <div class="box-body">
+                <?= $this->formRender() ?>
+            </div>
+            <div class="box-footer">
+                <div class="form-buttons">
+                    <div class="loading-indicator-container">
+                        <button
+                            type="submit"
+                            data-request="onSave"
+                            data-request-data="redirect:0"
+                            data-hotkey="ctrl+s, cmd+s"
+                            data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
+                            class="btn btn-primary">
+                            <?= e(trans('backend::lang.form.save')) ?>
+                        </button>
+                        <button
+                            type="button"
+                            data-request="onSave"
+                            data-request-data="close:1"
+                            data-hotkey="ctrl+enter, cmd+enter"
+                            data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
+                            class="btn btn-default">
+                            <?= e(trans('backend::lang.form.save_and_close')) ?>
+                        </button>
+                        <button
+                            type="button"
+                            class="oc-icon-trash-o btn-icon danger pull-right"
+                            data-request="onDelete"
+                            data-load-indicator="<?= e(trans('backend::lang.form.deleting')) ?>"
+                            data-request-confirm="<?= e(trans('backend::lang.form.confirm_delete')) ?>">
+                        </button>
 
-        <div class="layout-row">
-            <?= $this->formRender() ?>
-        </div>
-            <?= $this->relationRender('members') ?>
-
-        <div class="form-buttons">
-            <div class="loading-indicator-container">
-                <button
-                    type="submit"
-                    data-request="onSave"
-                    data-request-data="redirect:0"
-                    data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
-                    class="btn btn-primary">
-                    <?= e(trans('backend::lang.form.save')) ?>
-                </button>
-                <button
-                    type="button"
-                    data-request="onSave"
-                    data-request-data="close:1"
-                    data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="<?= e(trans('backend::lang.form.saving')) ?>"
-                    class="btn btn-default">
-                    <?= e(trans('backend::lang.form.save_and_close')) ?>
-                </button>
-                <button
-                    type="button"
-                    class="oc-icon-trash-o btn-icon danger pull-right"
-                    data-request="onDelete"
-                    data-load-indicator="<?= e(trans('backend::lang.form.deleting')) ?>"
-                    data-request-confirm="<?= e(trans('backend::lang.form.confirm_delete')) ?>">
-                </button>
-
-                <span class="btn-text">
-                    <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('smart2be/icoadvice/ico') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
-                </span>
+                        <span class="btn-text">
+                            <?= e(trans('backend::lang.form.or')) ?> <a href="<?= Backend::url('smart2be/icoadvice/ico') ?>"><?= e(trans('backend::lang.form.cancel')) ?></a>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
+
+
+            <?= $this->relationRender('tokens') ?>
+            
+            <?= $this->relationRender('dates') ?>
+      
+            <?= $this->relationRender('timeline') ?>
+            
+            <?= $this->relationRender('goals') ?>
+            
+            <?= $this->relationRender('team') ?>
+            
+            <?= $this->relationRender('publications') ?>
+            
+            <?= $this->relationRender('partners') ?>
+            
+            <?= $this->relationRender('locations') ?>
+            
+      
+
     <?= Form::close() ?>
 
 <?php else: ?>

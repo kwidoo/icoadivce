@@ -5,8 +5,7 @@ noRecordsMessage: 'backend::lang.list.no_records'
 showSetup: true
 showCheckboxes: true
 recordsPerPage: 20
+customViewPath: $/smart2be/icoadvice/controllers/team/list/
 toolbar:
     buttons: list_toolbar
-    search:
-        prompt: 'backend::lang.list.search_prompt'
-recordUrl: 'smart2be/icoadvice/team/update/:id'
+    

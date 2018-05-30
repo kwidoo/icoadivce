@@ -19,6 +19,7 @@ class BuilderTableCreateSmart2beIcoadviceIcoGoals extends Migration
             $table->string('other')->nullable();
             $table->integer('status')->default(0);
             $table->boolean('approved')->default(0);
+            $table->boolean('reached')->default(0);
             $table->integer('admin_id')->nullable();
             $table->dateTime('approved_at')->nullable();
             $table->timestamp('created_at')->nullable();

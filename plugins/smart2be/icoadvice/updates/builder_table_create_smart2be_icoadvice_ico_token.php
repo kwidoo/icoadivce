@@ -13,6 +13,8 @@ class BuilderTableCreateSmart2beIcoadviceIcoToken extends Migration
             $table->increments('id');
             $table->integer('ico_id');
             $table->integer('type')->default(0);
+            $table->integer('status')->default(0);
+            $table->boolean('approved')->default(0);
             $table->string('other')->nullable();
             $table->string('name');
             $table->integer('decimal')->nullable();
@@ -28,3 +30,4 @@ class BuilderTableCreateSmart2beIcoadviceIcoToken extends Migration
         Schema::dropIfExists('smart2be_icoadvice_ico_token');
     }
 }
+ 

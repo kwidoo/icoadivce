@@ -14,6 +14,7 @@ class BuilderTableCreateSmart2beIcoadviceIcoPublications extends Migration
             $table->integer('ico_id');
             $table->string('url');
             $table->text('description')->nullable();
+            $table->integer('status')->default(0);
             $table->boolean('approved')->default(0);
             $table->integer('admin_id')->nullable();
             $table->dateTime('approved_at')->nullable();

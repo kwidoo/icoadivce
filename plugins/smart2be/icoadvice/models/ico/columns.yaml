@@ -1,16 +1,15 @@
 columns:
+
     name:
         label: 'smart2be.icoadvice::lang.ico.name'
         type: text
+        span: auto
+
     tiker:
         label: 'smart2be.icoadvice::lang.ico.tiker'
         type: text
+
     logo:
         label: 'smart2be.icoadvice::lang.ico.logo'
         type: partial
         path: logo
-    users:
-        label: name
-        type: text
-        relation: users
-        valueFrom: name

@@ -10,6 +10,8 @@
     <div class="form-preview">
         <?= $this->formRenderPreview() ?>
     </div>
+                2<?= $this->relationRender('links') ?>2
+
 
 <?php else: ?>
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>

@@ -1,4 +1,4 @@
-name: TeamLinks
+name: Team Links
 form: $/smart2be/icoadvice/models/teamlinks/fields.yaml
 modelClass: Smart2be\IcoAdvice\Models\TeamLinks
 defaultRedirect: smart2be/icoadvice/teamlinks

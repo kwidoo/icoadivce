@@ -23,4 +23,8 @@ class IcoToken extends Model
      * @var string The database table used by the model.
      */
     public $table = 'smart2be_icoadvice_ico_token';
+
+    public $hasOne = ['tokenPrice' => 'Smart2be\IcoAdvice\Models\IcoTokenPrice'];
+
+
 }

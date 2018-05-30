@@ -2,6 +2,17 @@ columns:
     first_name:
         label: 'smart2be.icoadvice::lang.team.firstName'
         type: text
+
     last_name:
         label: 'smart2be.icoadvice::lang.team.lastName'
         type: text
+
+    status:
+        label: 'smart2be.icoadvice::lang.team.status'
+        type: partial
+        path: status_column
+
+    approved:
+        label: 'smart2be.icoadvice::lang.team.approved'
+        type: partial
+        path: approval_column

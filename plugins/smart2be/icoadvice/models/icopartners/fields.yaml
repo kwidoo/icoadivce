@@ -1,0 +1,29 @@
+fields:
+
+    status:
+        label: smart2be.icoadvice::lang.team.status
+        span: auto
+        type: dropdown
+        size: tiny
+        options:
+            0: Draft
+            1: Ready
+            2: Published
+
+    name: 
+        label: 'smart2be.icoadvice::lang.partner.name'
+        type: text
+        span: auto
+
+
+    url:
+        label: 'smart2be.icoadvice::lang.partner.url'
+        span: auto
+        type: text
+
+    image:
+        label: 'smart2be.icoadvice::lang.partner.logo'
+        span: full
+        type: fileupload
+        mode: image
+
