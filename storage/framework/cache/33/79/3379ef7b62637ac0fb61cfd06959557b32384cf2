@@ -1,5 +1,5 @@
-1527690042a:1:{s:20:"activate-account.htm";a:10:{s:8:"fileName";s:20:"activate-account.htm";s:7:"content";s:184:"title = "Activate Account"
-url = "/activate-account"
+1527862842a:1:{s:20:"activate-account.htm";a:10:{s:8:"fileName";s:20:"activate-account.htm";s:7:"content";s:189:"title = "Activate Account"
+url = "/auth/activate-account"
 layout = "login_layout"
 is_hidden = 0
 
@@ -8,4 +8,4 @@ redirect = "login"
 paramCode = "code"
 forceSecure = 0
 ==
-{% component 'account' %}";s:5:"mtime";i:1523864880;s:6:"markup";s:25:"{% component 'account' %}";s:4:"code";N;s:5:"title";s:16:"Activate Account";s:3:"url";s:17:"/activate-account";s:6:"layout";s:12:"login_layout";s:9:"is_hidden";s:1:"0";s:7:"account";a:3:{s:8:"redirect";s:5:"login";s:9:"paramCode";s:4:"code";s:11:"forceSecure";s:1:"0";}}}
+{% component 'account' %}";s:5:"mtime";i:1527691303;s:6:"markup";s:25:"{% component 'account' %}";s:4:"code";N;s:5:"title";s:16:"Activate Account";s:3:"url";s:22:"/auth/activate-account";s:6:"layout";s:12:"login_layout";s:9:"is_hidden";s:1:"0";s:7:"account";a:3:{s:8:"redirect";s:5:"login";s:9:"paramCode";s:4:"code";s:11:"forceSecure";s:1:"0";}}}

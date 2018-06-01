@@ -1,0 +1,194 @@
+{% flash %}
+    <div class="col-md-12">
+        <div class="alert alert-{{ type }}">{{ message }}</div>
+    </div>
+{% endflash %}
+<div class="col-md-12">
+    <form class="form-horizontal" role="form" name="icoForm" data-request="{{ __SELF__ }}::onSave" data-request-success="$('.confirm-container').removeClass('hide');">
+        {{ form_token() }} 
+        {{ form_sessionKey() }}
+        <div class="card">
+            <div class="card-header card-header-rose card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">list</i>
+                </div>
+                <h4 class="card-title">{{ ico.name }}&nbsp;-&nbsp;Edit ICO</h4>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="togglebutton">
+                            <label >
+                                <input type="checkbox" id="published"{%if ico.status == 1 %}checked{% endif %} >
+                                <span class="toggle" ></span>
+                                    Published
+                            </label>
+                            <span class="toggle">&nbsp;&nbsp;&nbsp;Verification Status:</span>
+                            {% if ico.status == 1 %}
+                                {% if ico.approved == 0 %}
+                                <span class="badge badge-warning">pending</span>
+                                {% endif %}
+
+                                {% if ico.approved == 1 %}
+                                <span class="badge badge-success">approved</span>
+                                {% endif %}
+
+                                {% if ico.approved == 2 %}
+                                <span class="badge badge-danger">rejected</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="badge badge-default">not submitted</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <h4>&nbsp;</h4>
+
+                        <div class="form-group bmd-form-group " style="padding-top:20px">
+                            <label for="name" class="bmd-label-floating"> ICO Name *</label>
+                            <input type="text" class="form-control" id="name" name="name" required="required"  aria-required="true" autocomplete="off" style="cursor: auto;" value="{{ ico.name }} ">
+                        </div>
+                        <div class="form-group bmd-form-group" style="padding-top:20px">
+                            <label for="tiker" class="bmd-label-floating"> ICO Short Name *</label>
+                            <input type="text" class="form-control" id="tiker" name="tiker" required="required"  aria-required="true" autocomplete="off" style="cursor: auto;" value="{{ ico.tiker }} ">
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <h4 class="title">Project Logo<br>
+                            <small>128px x 128px</small></h4>
+                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail" style="min-width:128px">
+                                <img src="{{ link }}" alt="...">
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                            <div>
+                                <span class="btn btn-rose btn-round btn-file">
+                                    <span class="fileinput-new">Select image</span>
+                                    <span class="fileinput-exists">Change</span>
+                                    <input id="file-upload1" type="file" name="file-upload1" />
+                                    <input id="file-upload" type="hidden" name="file-upload" />
+                                </span>
+                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="card-header card-header-rose card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">attach_money</i>
+                </div>
+                <h4 class="card-title">ICO Capital</h4>
+            </div>
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-md-3">
+                                                <h4>&nbsp;</h4>
+
+                    <div class="col-md-11">
+                        <select name="cap_nomination" class="selectpicker" data-size="7" data-style="btn btn-rose btn-round" title="Nomination">
+                                    <option {% if ico.cap_nomination == 1 %}selected{% endif %} value="1">Bitcoin</option>
+                                    <option {% if ico.cap_nomination == 2 %}selected{% endif %} value="2">Ethereum</option>
+                                    <option {% if ico.cap_nomination == 3 %}selected{% endif %} value="3">Litecoin</option>
+                                    <option {% if ico.cap_nomination == 4 %}selected{% endif %} value="4">Neo</option>
+                                    <option {% if ico.cap_nomination == 5 %}selected{% endif %} value="5">Euro</option>
+                                    <option {% if ico.cap_nomination == 6 %}selected{% endif %} value="6">US Dollar</option>
+                                    <option {% if ico.cap_nomination == 7 %}selected{% endif %} value="7">Other</option>
+                        </select>
+
+                        <h4>&nbsp;</h4>
+                        <div class="form-group bmd-form-group" style="padding-top:20px">
+                            <label for="other" class="bmd-label-floating"> Other (please specify)</label>
+                            <input type="text" class="form-control" id="other" name="other"  autocomplete="off" style="cursor: auto;" value="{{ ico.other }}">
+                        </div>  
+                    </div>
+                    </div>
+                    <div class="col-md-9">
+                        <h4>&nbsp;</h4>
+                        <div class="form-group bmd-form-group" style="padding-top:20px">
+                            <label for="soft_cap" class="bmd-label-floating"> Soft Cap (Leave blank if not available)</label>
+                            <input type="number" class="form-control" id="slogan" name="soft_cap"  autocomplete="off" style="cursor: auto;" value="{{ ico.soft_cap }}">
+                        </div>    
+                        <div class="form-group bmd-form-group" style="padding-top:20px">
+                            <label for="hard_cap" class="bmd-label-floating"> Hard Cap  (Leave blank if not available)</label>
+                            <input type="number" class="form-control" id="slogan" name="hard_cap"  autocomplete="off" style="cursor: auto;" value="{{ ico.hard_cap }}">
+                        </div>    
+                    </div>
+
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="card-header card-header-rose card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">business</i>
+                </div>
+                <h4 class="card-title">ICO Description</h4>
+            </div>
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h4>&nbsp;</h4>
+                        <div class="form-group bmd-form-group" style="padding-top:20px">
+                            <label for="slogan" class="bmd-label-floating"> ICO Slogan (max. 160 symbols)</label>
+                            <input type="text" class="form-control" id="slogan" name="slogan"  autocomplete="off" style="cursor: auto;" value="{{ ico.slogan }}">
+                        </div>  
+                    </div>      
+                </div>       
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>&nbsp;</h4>
+                        <div class="form-group bmd-form-group " style="padding-top:20px">
+                            <label for="short" class="bmd-label-floating"> Short Project Description (max. 160 symbols)</label>
+                            <textarea id="short" name="short" class="form-control" maxlength="160" rows="8">{{ ico.short }} </textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>&nbsp;</h4>
+                        <div class="form-group bmd-form-group " style="padding-top:20px">
+                            <label for="description" class="bmd-label-floating">Full Project Description (max. 1000 symbols)</label>
+                            <textarea id="description" name="description" class="form-control" maxlength="1000" rows="8">{{ ico.description }}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer ">
+                <div class="col-md-9">
+
+                    <input type="submit" class="btn btn-fill btn-rose" name="submit" id="update0" value="Update">
+                    &nbsp;
+                    <input type="submit" class="btn btn-fill btn-rose" name="submit" id="update1" value="Update and Close">
+
+                   
+
+                
+                </div>
+                <div class="col-md-3" >
+                    <a href="{{ '/dashboard' }}"  class="btn btn-fill btn-default" style="float:right">Close</a>
+                </div>
+            </div>
+        </div> 
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

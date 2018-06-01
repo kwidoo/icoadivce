@@ -154,4 +154,12 @@
   'Smart2be\\IcoAdvice\\Classes\\FormController' => 'plugins/smart2be/icoadvice/classes/FormController.php',
   'Smart2be\\Icoadvice\\Classes\\FormController' => 'plugins/smart2be/icoadvice/classes/FormController.php',
   'Smart2be\\Icoadvice\\Classes\\myFormController' => 'plugins/smart2be/icoadvice/classes/myFormController.php',
+  'indikator\\user\\Plugin' => 'plugins/indikator/user/Plugin.php',
+  'RainLab\\User\\Controllers\\Users' => 'plugins/rainlab/user/controllers/Users.php',
+  'smart2be\\uploader\\Plugin' => 'plugins/smart2be/uploader/Plugin.php',
+  'Smart2be\\Uploader\\Traits\\ComponentUtils' => 'plugins/smart2be/uploader/traits/ComponentUtils.php',
+  'Smart2be\\Uploader\\Components\\FileUploader' => 'plugins/smart2be/uploader/components/FileUploader.php',
+  'Smart2be\\Uploader\\Components\\ImageUploader' => 'plugins/smart2be/uploader/components/ImageUploader.php',
+  'Smart2be\\IcoAdvice\\Components\\IcoEdit' => 'plugins/smart2be/icoadvice/components/IcoEdit.php',
+  'Smart2be\\IcoAdvice\\Components\\IcoCard' => 'plugins/smart2be/icoadvice/components/IcoCard.php',
 );

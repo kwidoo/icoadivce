@@ -28,11 +28,14 @@ class User extends UserBase
         'password_confirmation' => 'required_with:password|between:4,255',
     ];
 
+
     /**
      * @var array Relations
      */
     public $belongsToMany = [
-        'groups' => [UserGroup::class, 'table' => 'users_groups']
+        'groups' => [UserGroup::class, 'table' => 'users_groups'],
+        'ico' => ['Smart2be\Icoadvice\Models\Ico',  'foreignkey' => 'id']
+
     ];
 
     public $attachOne = [

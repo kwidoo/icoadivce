@@ -7,26 +7,54 @@
         <h4 class="card-title">Create New ICO</h4>
     </div>
     <div id="result"></div>
-    <form class="form-horizontal" role="form" data-request="{{ __SELF__ }}::onSave" data-request-success="$('.confirm-container').removeClass('hide');">
+    <form class="form-horizontal" role="form" name="icoForm" data-request="{{ __SELF__ }}::onSave" data-request-success="$('.confirm-container').removeClass('hide');">
 	    <div class="card-body ">
 				{{ form_token() }} 
 				{{ form_sessionKey() }}
-				{{ form.formRender()|raw }}
-			<div class="form-group bmd-form-group">
-                <label for="name" class="bmd-label-floating"> ICO Name *</label>
-                <input type="text" class="form-control" id="name" required="required" name="Ico[name]" aria-required="true" autocomplete="off" style="cursor: auto;">
+        <div class="row">
+
+            <div class="col-md-6">
+                <h4>&nbsp;</h4>
+    			<div class="form-group bmd-form-group " style="padding-top:20px">
+                    <label for="name" class="bmd-label-floating"> ICO Name *</label>
+                    <input type="text" class="form-control" id="name" name="name" required="required"  aria-required="true" autocomplete="off" style="cursor: auto;">
+                </div>
+                <div class="form-group bmd-form-group" style="padding-top:20px">
+                    <label for="tiker" class="bmd-label-floating"> ICO Short Name *</label>
+                    <input type="text" class="form-control" id="tiker" name="tiker" required="required"  aria-required="true" autocomplete="off" style="cursor: auto;">
+                </div>
             </div>
-            <div class="form-group bmd-form-group">
-                <label for="tiker" class="bmd-label-floating"> ICO Tiker *</label>
-                <input type="text" class="form-control" id="tiker" required="required" name="Ico[tiker]" aria-required="true" autocomplete="off" style="cursor: auto;">
-             </div>
+            <div class="col-md-6 text-center">
+
+                <h4 class="title">Project Logo<br>
+                    <small>128px x 128px</small></h4>
+                <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail" style="min-width:128px">
+                        <img src="{{'assets/img/kit/dashboard/image-upload.png' |theme}}" alt="...">
+                    </div>
+                    <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                    <div>
+                        <span class="btn btn-rose btn-round btn-file">
+                            <span class="fileinput-new">Select image</span>
+                            <span class="fileinput-exists">Change</span>
+                            <input id="file-upload1" type="file" name="file-upload1" />
+                            <input id="file-upload" type="hidden" name="file-upload" />
+                        </span>
+                        <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 	    </div>
 	    <div class="card-footer ">
 	        <div class="row">
-	            <div class="col-md-9">
+	            <div class="col-md-6">
 	                <button type="submit" value="create" class="btn btn-fill btn-rose">Create</button>
 	            </div>
+                <div class="col-md-6">
+                    <a href="{{ '/dashboard' }}"  class="btn btn-fill btn-default">Cancel</a>
+                </div>
 	        </div>
 	    </div>
 	</form>

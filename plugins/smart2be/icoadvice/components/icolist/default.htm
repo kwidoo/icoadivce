@@ -13,8 +13,9 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th>Logo</th>
                             <th>ICO Name</th>
-                            <th>Tiker</th>
+                            <th>Short Name</th>
                             <th>Status</th>
                             <th>Approved</th>
                             <th class="text-right">Actions</th>
@@ -23,34 +24,39 @@
                     <tbody>
                         {% for i in ico  %}
                         <tr>
+                            <td><img src="{{link[i.id]}}" width="64" alt="Project's Logo"/></td>
                             <td>{{i.name}}</td>
                             <td>{{i.tiker}}</td>
                             <td>
                                 {% if i.status == 0 %}
-                                <span class="badge badge-info">Private</span>
+                                <span class="badge badge-info">Draft</span>
                                 {% endif %}
                                  {% if i.status == 1 %}
                                 <span class="badge badge-success">Published</span>
                                 {% endif %}
                             </td>
                             <td>
+                                {% if i.status == 1 %}
                                 {% if i.approved == 0 %}
-                                <span class="badge badge-danger">pending</span>
+                                <span class="badge badge-warning">pending</span>
                                 {% endif %}
-                                 {% if i.approved == 1 %}
+
+                                {% if i.approved == 1 %}
                                 <span class="badge badge-success">approved</span>
+                                {% endif %}
+
+                                {% if i.approved == 2 %}
+                                <span class="badge badge-danger">rejected</span>
+                                {% endif %}
                                 {% endif %}
                             </td>
                             <td class="td-actions text-right">
-                                  <button type="button" rel="tooltip" class="btn btn-info btn-link">
-                                      <i class="material-icons">person</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" class="btn btn-success btn-link">
-                                      <i class="material-icons">edit</i>
-                                  </button>
-                                  <button type="button" rel="tooltip" class="btn btn-danger btn-link">
-                                      <i class="material-icons">close</i>
-                                  </button>
+                                <a href="{{ 'dashboard/edit/' ~ i.id }} " rel="tooltip" class="btn btn-success btn-link">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                                <button type="button" rel="tooltip" class="btn btn-danger btn-link" data-request="onIcoDelete">
+                                    <i class="material-icons">delete</i>
+                                </button>
                               </td>
                         </tr>
                         {% endfor %} 

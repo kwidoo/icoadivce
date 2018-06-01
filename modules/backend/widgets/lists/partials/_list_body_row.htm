@@ -3,7 +3,7 @@
     $childRecords = $showTree ? $record->getChildren() : null;
     $treeLevelClass = $showTree ? 'list-tree-level-'.$treeLevel : '';
 ?>
-<tr class="clickable-row" data-href="<?= $this->getRecordUrl($record) ?>" style="cursor: pointer">
+<tr class="<?= $treeLevelClass ?> <?= $this->getRowClass($record) ?>">
     <?php if ($showCheckboxes): ?>
         <?= $this->makePartial('list_body_checkbox', ['record' => $record]) ?>
     <?php endif ?>
@@ -15,20 +15,20 @@
             'childCount' => $record->getChildCount()
         ]) ?>
     <?php endif ?>
-                        
 
-    <?php  $index = $url = 0; 
-        foreach ($columns as $key => $column): ?>
-            <?php $index++; ?>
-
-            <td class="list-cell-index-<?= $index ?> 
-                     list-cell-name-<?= $column->getName() ?> 
-                     list-cell-type-<?= $column->type ?> 
-                     <?= $column->clickable ? '' : 'nolink' ?> 
-                     <?= $column->cssClass ?>">               
+    <?php $index = $url = 0; foreach ($columns as $key => $column): ?>
+        <?php $index++; ?>
+        <td class="list-cell-index-<?= $index ?> list-cell-name-<?= $column->getName() ?> list-cell-type-<?= $column->type ?> <?= $column->clickable ? '' : 'nolink' ?> <?= $column->cssClass ?>">
+            <?php if ($column->clickable && !$url && ($url = $this->getRecordUrl($record))): ?>
+                <a <?= $this->getRecordOnClick($record) ?> href="<?= $url ?>">
+                    <?= $this->getColumnValue($record, $column) ?>
+                </a>
+            <?php else: ?>
                 <?= $this->getColumnValue($record, $column) ?>
-            </td>
-        <?php endforeach ?>
+            <?php endif ?>
+        </td>
+    <?php endforeach ?>
+
     <?php if ($showSetup): ?>
         <td class="list-setup">&nbsp;</td>
     <?php endif ?>

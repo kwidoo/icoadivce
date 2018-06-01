@@ -180,6 +180,8 @@ class Account extends ComponentBase
                 $data['login'] = post('username', post('email'));
             }
 
+  
+
             $validation = Validator::make($data, $rules);
             if ($validation->fails()) {
                 throw new ValidationException($validation);

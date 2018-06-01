@@ -23,11 +23,6 @@ class Ico extends Controller
     public $formConfig = 'config_form.yaml';
     public $relationConfig = 'config_relation.yaml';
 
-    public $layout = '$/smart2be/icoadvice/assets/layouts/adminlte';
-    
-    public $bodyClass = 'compact-container';
-
-
     public function __construct()
     {
         parent::__construct();

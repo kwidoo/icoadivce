@@ -4,8 +4,9 @@ layout = "default"
 is_hidden = 0
 
 [icoForm]
+[icoCard]
 ==
-<div class="page-header header-filter clear-filter" data-parallax="true" style="background-image: url({{'assets/img/kit/pro/bg3.jpg'| theme }});">
+<div class="page-header header-filter clear-filter"  data-parallax="true" style="background-image: url({{'assets/img/kit/pro/bg3.jpg'| theme }});">
     <div class="container">
         <div class="row">
             <div class="col-md-8 ml-auto mr-auto">
@@ -15,7 +16,6 @@ is_hidden = 0
                             Guru
                         </span>
                     </h1>
-                    {% component 'icoForm' %}
                     <h3 class="title">Your Number One ICO List</h3>
                     <h4>a <a href="https://smart2be.com" style="color:white; text-decoration: underline;">smart2be.com</a> company</h4>
                 </div>
@@ -82,9 +82,8 @@ is_hidden = 0
 		<div class="tab-content tab-space">
             <div class="tab-pane active work" id="ongoing">
 	 			<div class="row" >
-	 			{% for i in 0..8 %}
-					{% partial 'ico-item' %}        
-				{% endfor %}  
+	 			   {% component 'icocard' %}
+
 				</div>    
 				<div class="row">
 					<ul class="pagination pagination-primary text-center" style="color:white">

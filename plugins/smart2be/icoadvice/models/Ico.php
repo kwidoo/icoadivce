@@ -27,7 +27,7 @@ class Ico extends Model
     public $table = 'smart2be_icoadvice_ico';
 
     public $belongsToMany = [
-        'users' => ['RainLab\User\Models\User', 'table' => 'smart2be_icoadvice_ico_user']
+        'users' => ['RainLab\User\Models\User',  'foreignkey' => 'id']
     ];
     public $belongsToOne = [
         'category' => 'Smart2be\IcoAdvice\Models\IcoCategory'
