@@ -15,7 +15,8 @@ class Plugin extends PluginBase
             '\Smart2be\IcoAdvice\Components\Icos' => 'icoForm',
             '\Smart2be\IcoAdvice\Components\IcoEdit' => 'icoEdit',
             '\Smart2be\IcoAdvice\Components\Icolist' => 'icoList',
-            '\Smart2be\IcoAdvice\Components\IcoCard' => 'icoCard'
+            '\Smart2be\IcoAdvice\Components\IcoCard' => 'icoCard',
+            '\Smart2be\IcoAdvice\Components\TeamEdit' => 'teamEdit'
         ];
     }
     

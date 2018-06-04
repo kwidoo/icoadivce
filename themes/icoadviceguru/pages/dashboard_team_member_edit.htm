@@ -1,9 +1,7 @@
-title = "Edit Your ICO"
-url = "/dashboard/edit/:id"
+title = "Edit Your ICO Team"
+url = "/dashboard/team/member/:id"
 layout = "dashboard"
 is_hidden = 0
-
-[icoEdit]
 
 [session]
 security = "user"
@@ -14,7 +12,8 @@ redirect = "/login"
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-			{% component 'icoEdit' %}
+        		{{ id }}
 		</div>
 	</div>
 </div>
+

@@ -5,8 +5,12 @@ is_hidden = 0
 
 [icoForm]
 
-
+[session]
+security = "user"
+redirect = "/login"
 ==
+{% component 'session' %}
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">

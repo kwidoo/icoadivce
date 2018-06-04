@@ -1,4 +1,4 @@
-1527862842a:1:{s:12:"register.htm";a:11:{s:8:"fileName";s:12:"register.htm";s:7:"content";s:474:"title = "Register New Membership"
+1528112079a:1:{s:12:"register.htm";a:11:{s:8:"fileName";s:12:"register.htm";s:7:"content";s:503:"title = "Register New Membership"
 url = "/auth/register"
 layout = "login_layout"
 is_hidden = 0
@@ -10,13 +10,17 @@ forceSecure = 0
 [session]
 security = "guest"
 ==
+{% component 'session' %}
+
 <div class="page-header header-filter" style="background-image: url( {{'assets/img/kit/pro/bg7.jpg'| theme}}); background-size: cover; background-position: top center;">
     <div class="container">
         <div class="row">
 {% component 'account' %}
         </div>
     </div>
-</div>";s:5:"mtime";i:1527691127;s:6:"markup";s:288:"<div class="page-header header-filter" style="background-image: url( {{'assets/img/kit/pro/bg7.jpg'| theme}}); background-size: cover; background-position: top center;">
+</div>";s:5:"mtime";i:1528109703;s:6:"markup";s:317:"{% component 'session' %}
+
+<div class="page-header header-filter" style="background-image: url( {{'assets/img/kit/pro/bg7.jpg'| theme}}); background-size: cover; background-position: top center;">
     <div class="container">
         <div class="row">
 {% component 'account' %}

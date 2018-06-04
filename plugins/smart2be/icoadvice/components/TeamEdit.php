@@ -11,12 +11,12 @@ use Flash;
 use Log;
 use Input;
 
-class IcoEdit extends ComponentBase
+class TeamEdit extends ComponentBase
 {
 
   	public function componentDetails(){
   	    return [
-  	        'name' => 'Ico List Edit Page',
+  	        'name' => 'Ico Team Edit Page',
   	        'description' => 'Backend form used in the front-end'
   	    ];
   	}
@@ -27,17 +27,10 @@ class IcoEdit extends ComponentBase
         $user = Auth::getUser();
         $ico = $user->ico->where('id','=',$this->param('id'))->first();
         if ($ico) {
-            $this->page['ico'] = $ico;
-                if ($ico->logo)
-                    $this->page['link'] = $ico->logo->getPath();
-                else
-                    $this->page['link'] = '/storage/app/uploads/public/5b0/ecd/0bd/5b0ecd0bd7abe729741586.png';
-            
-           // $this->page['link'] = $ico->logo->getPath();
-
+            $this->page['team'] = $ico->team;
         } else {
           return Redirect::to('dashboard');
-        }
+        } 
     }
 
     public function onSave(){

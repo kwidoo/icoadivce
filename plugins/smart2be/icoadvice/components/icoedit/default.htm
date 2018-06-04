@@ -8,7 +8,7 @@
         {{ form_token() }} 
         {{ form_sessionKey() }}
         <div class="card">
-            <div class="card-header card-header-rose card-header-icon">
+            <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon">
                     <i class="material-icons">list</i>
                 </div>
@@ -65,7 +65,7 @@
                             </div>
                             <div class="fileinput-preview fileinput-exists thumbnail"></div>
                             <div>
-                                <span class="btn btn-rose btn-round btn-file">
+                                <span class="btn btn-success btn-round btn-file">
                                     <span class="fileinput-new">Select image</span>
                                     <span class="fileinput-exists">Change</span>
                                     <input id="file-upload1" type="file" name="file-upload1" />
@@ -79,7 +79,7 @@
             </div>
             <br>
             <br>
-            <div class="card-header card-header-rose card-header-icon">
+            <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon">
                     <i class="material-icons">attach_money</i>
                 </div>
@@ -91,7 +91,7 @@
                                                 <h4>&nbsp;</h4>
 
                     <div class="col-md-11">
-                        <select name="cap_nomination" class="selectpicker" data-size="7" data-style="btn btn-rose btn-round" title="Nomination">
+                        <select name="cap_nomination" class="selectpicker" data-size="7" data-style="btn btn-success btn-round" title="Nomination">
                                     <option {% if ico.cap_nomination == 1 %}selected{% endif %} value="1">Bitcoin</option>
                                     <option {% if ico.cap_nomination == 2 %}selected{% endif %} value="2">Ethereum</option>
                                     <option {% if ico.cap_nomination == 3 %}selected{% endif %} value="3">Litecoin</option>
@@ -124,7 +124,7 @@
             </div>
             <br>
             <br>
-            <div class="card-header card-header-rose card-header-icon">
+            <div class="card-header card-header-success card-header-icon">
                 <div class="card-icon">
                     <i class="material-icons">business</i>
                 </div>
@@ -157,13 +157,78 @@
                     </div>
                 </div>
             </div>
-
+            <br>
+            <br>
+            <div class="card-header card-header-success card-header-icon">
+                <div class="card-icon">
+                    <i class="material-icons">settings</i>
+                </div>
+                <h4 class="card-title">Manage Assets</h4>
+            </div>
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table">
+                            <thead class=" text-success">
+                                <th>Asset Name</th>
+                                <th>Items Available</th>
+                                <th class="text-right">Tools</th>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td>Project Dates</td>
+                                    <td>{{ico.dates | length}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr >
+                                    <td>Project Tokens</td>
+                                    <td>{{ico.tokens | length}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr >
+                                    <td>Project Timelines</td>
+                                    <td>{{ico.timeline | length}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr >
+                                    <td>Project Goals</td>
+                                    <td>{{ico.goals | length}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr >
+                                    <td>Project Team</td>
+                                    <td>{{ico.team | length}}</td>
+                                    <td  class="text-right">
+                                        <a  data-request="{{ __SELF__ }}::onTeamEdit" href="#" rel="tooltip" class="btn btn-success btn-link">
+                                    <i class="material-icons">edit</i>
+                                </a></td>
+                                </tr>
+                                <tr >
+                                    <td>Project Locations</td>
+                                    <td>{{ico.locations | length}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr >
+                                    <td>Partners</td>
+                                    <td>{{ico.partners | length}}</td>
+                                    <td></td>
+                                </tr>
+                                <tr >
+                                    <td>Publications</td>
+                                    <td>{{ico.publications | length}}</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
             <div class="card-footer ">
                 <div class="col-md-9">
 
-                    <input type="submit" class="btn btn-fill btn-rose" name="submit" id="update0" value="Update">
+                    <input type="submit" class="btn btn-fill btn-success" name="submit" id="update0" value="Update">
                     &nbsp;
-                    <input type="submit" class="btn btn-fill btn-rose" name="submit" id="update1" value="Update and Close">
+                    <input type="submit" class="btn btn-fill btn-success" name="submit" id="update1" value="Update and Close">
 
                    
 

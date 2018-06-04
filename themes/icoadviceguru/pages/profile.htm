@@ -9,8 +9,10 @@ forceSecure = 0
 
 [session]
 security = "user"
-redirect = "dashboard"
+redirect = "/login"
 ==
+{% component 'session' %}
+
 <div class="content">
     <div class="container-fluid">
         <div class="row">

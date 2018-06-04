@@ -162,4 +162,5 @@
   'Smart2be\\Uploader\\Components\\ImageUploader' => 'plugins/smart2be/uploader/components/ImageUploader.php',
   'Smart2be\\IcoAdvice\\Components\\IcoEdit' => 'plugins/smart2be/icoadvice/components/IcoEdit.php',
   'Smart2be\\IcoAdvice\\Components\\IcoCard' => 'plugins/smart2be/icoadvice/components/IcoCard.php',
+  'Smart2be\\IcoAdvice\\Components\\TeamEdit' => 'plugins/smart2be/icoadvice/components/TeamEdit.php',
 );

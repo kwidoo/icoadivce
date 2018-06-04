@@ -2,7 +2,6 @@
 
 namespace Smart2be\IcoAdvice\Components;
 use Cms\Classes\ComponentBase;
-//use Smart2be\IcoAdvice\Controllers\Ico as IcoController;
 use \Smart2be\IcoAdvice\Models\Ico;
 use Redirect;
 use Storage;
@@ -14,6 +13,11 @@ use Input;
 
 class IcoCard extends ComponentBase
 {
+  public function defineProperties()
+  {
+      return ['item' => [
+            'title' => 'Item To Print']];
+  }
  
   	public function componentDetails(){
   	    return [
@@ -21,13 +25,8 @@ class IcoCard extends ComponentBase
   	        'description' => 'Frontend'
   	    ];
   	}
-
     public function onRun(){
-        $ico = Ico::where('id','=','38');
-        $this->page['ico'] = $ico;
+        $ico = Ico::where('status','=','1')->where('approved','<>','2')->get();
+        $this->page['i'] = $ico;
     }
-
-  
-
-
 }
