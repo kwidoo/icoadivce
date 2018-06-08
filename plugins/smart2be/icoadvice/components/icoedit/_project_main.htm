@@ -1,0 +1,35 @@
+{% partial '@_card_header' title="list" name=ico.name%}
+<div class="card-body">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>&nbsp;</h4>
+            <div class="form-group bmd-form-group " style="padding-top:20px">
+                <label for="name" class="bmd-label-floating"> ICO Name *</label>
+                <input type="text" class="form-control" id="name" name="name" required="required"  aria-required="true" autocomplete="off" style="cursor: auto;" value="{{ ico.name }} ">
+            </div>
+            <div class="form-group bmd-form-group" style="padding-top:20px">
+                <label for="tiker" class="bmd-label-floating"> ICO Short Name *</label>
+                <input type="text" class="form-control" id="tiker" name="tiker" required="required"  aria-required="true" autocomplete="off" style="cursor: auto;" value="{{ ico.tiker }} ">
+            </div>
+        </div>
+        <div class="col-md-6 text-center">
+            <h4 class="title">Project Logo<br>
+                <small>128px x 128px</small></h4>
+            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" style="min-width:128px;max-width:128px">
+                    <img src="{{ link }}" alt="...">
+                </div>
+                <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                <div>
+                    <span class="btn btn-success btn-round btn-file">
+                        <span class="fileinput-new">Select image</span>
+                        <span class="fileinput-exists">Change</span>
+                        <input id="file-upload1" type="file" name="file-upload1" />
+                        <input id="file-upload" type="hidden" name="file-upload" />
+                    </span>
+                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

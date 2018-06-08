@@ -1,0 +1,56 @@
+{% for tp in tokens_prices %}
+<tr>
+    <td>
+        {% partial '@_hidden' name='price_id'~tp.id value=tp.id%}
+        {% partial 
+            '@_datetime' 
+            name='start_date'~tp.id 
+            value=tp.start_date.getStartDate | date('m/d/Y H:i:s') 
+        %}
+    </td>
+    <td>	
+        {% partial 
+            '@_datetime' 
+            name='end_date'~tp.id 
+            value=tp.end_date.getEndDate | date('m/d/Y H:i:s') 
+        %}
+    </td>
+    <td>
+        {% partial '@_select' 
+            length="12"
+            name=bonus ~ tp.id 
+            size="3" 
+            content = {'0':'Discount',
+                       '1':'Bonus',
+                       '2':'Fixed'}
+            value = tp.bonus 
+            size = 3 
+        %}
+	</td>
+	<td>
+        {% partial '@_field' name='value'~tp.id type="text" value=tp.value %}
+	</td>
+    <td>    
+        {% partial '@_select' 
+                length="12"
+                name=nomination ~ tp.id 
+                size="3" 
+                content = {'0':'BTC',
+                           '1':'Ethereum',
+                           '2':'Litecoin',
+                           '3':'Neo',
+                           '4':'Euro',
+                           '5':'US Dollar',
+                           '6':'%'}
+                value = tp.nomination 
+                size = 3 
+        %}
+    </td>
+    <td class="text-right">
+    	<button type="button" rel="tooltip" class="btn btn-danger btn-link" data-request="onDeleteTokenPrice" data-request-data="delete_id: {{tp.id}}">
+            <i class="material-icons">delete</i>
+        </button>
+    </td>
+</tr>
+{% endfor %}
+        

@@ -163,4 +163,5 @@
   'Smart2be\\IcoAdvice\\Components\\IcoEdit' => 'plugins/smart2be/icoadvice/components/IcoEdit.php',
   'Smart2be\\IcoAdvice\\Components\\IcoCard' => 'plugins/smart2be/icoadvice/components/IcoCard.php',
   'Smart2be\\IcoAdvice\\Components\\TeamEdit' => 'plugins/smart2be/icoadvice/components/TeamEdit.php',
+  'Smart2be\\IcoAdvice\\Models\\IcoTokenPrice' => 'plugins/smart2be/icoadvice/models/IcoTokenPrice.php',
 );

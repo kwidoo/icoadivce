@@ -1,0 +1,116 @@
+<form class="form-horizontal" 
+	  role="form" name="teamForm" 
+	  data-request="{{ __SELF__ }}::onTeamSave" 
+	  data-request-success="$('#modalPopupBody').html('');$('#modalPopup').modal('hide');"
+	  data-request-validate
+	  data-request-flash
+	>  
+
+	{{ form_token() }}     
+    {{ form_sessionKey() }}
+
+    {% partial '@_hidden' name='id' value=team.id %}
+	<div class="card ">
+
+	    {% partial '@_card_header' name=title title='person_add' %}
+
+	    <div class="card-body">
+	    	<div class="alert alert-danger" data-validate-error>
+    			<p data-message></p>
+			</div>
+			{% partial '@_checkbox' label="Publish" name="status" checked=team.status %} 
+			<h4>&nbsp;</h4>
+			{% partial '@_field' label="First Name" name="first_name" value=team.first_name type="text" %}
+			{% partial '@_field' label="Last Name" name="last_name" value=team.last_name type="text" %}
+			{% partial '@_field' label="Title" name="title" value=team.title type="text" %}
+			{% partial '@_select' 
+            		label="Type" 
+            		name="type" 
+            		size="3" 
+            		content = {'0':'Founder',
+            				   '1':'Employee',
+            				   '2':'Advisor'}
+            		value = team.type 
+            		size = 3 
+            %}       
+
+            
+            
+            <div class="row">
+            	<div class="col-md-4"> 
+	        		<button class="btn btn-round btn-info" data-request="onAddTeamLink">
+	        			Add Link
+	        			<div class="ripple-container"></div>
+	        		</button>
+	    		</div>
+            </div>
+            <div class="row">
+            	<div class="col-md-12">
+	            <div class="table-responsive">
+				    <table class="table table-striped">
+				        <thead>
+				            <tr>
+				                <th>Link Name&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></th>
+				                <th>Other&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></th>
+				                <th>Link URL&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></th>
+				                <th class="text-right"></th>
+				            </tr>
+				        </thead>
+				        <tbody id="_teamLink">
+
+				        	{% if team.links %}
+					        	{% for tp in team.links %}
+						        	<tr>
+									    <td>
+											<input type="hidden" name="link_id{{tp.id}}" value="{{tp.id}}">
+									    	<select name="type{{tp.id}}" class="selectpicker" data-size="3" data-style="btn btn-green btn-round" >
+									            <option {% if tp.type == 0 %}selected{%endif%} value="0">LinkedIn</option>
+									            <option {% if tp.type == 1 %}selected{%endif%} value="1">Facebook</option>
+									            <option {% if tp.type == 2 %}selected{%endif%} value="2">Twitter</option>
+										    </select>
+									    </td>
+									    <td>
+									    	<input name="other{{tp.id}}" type="text" class="form-control  value="{{ tp.type }}">
+									    </td>
+									    <td>
+									    	<input name="url{{tp.id}}" type="text" class="form-control  value="{{ tp.url }}">
+									    </td>
+				
+									    <td class="text-right">
+									    	<button 
+									    		type="button" 
+									    		rel="tooltip" 
+									    		class="btn btn-danger btn-link" 
+									    		data-request="onDeleteTeamLink" data-request-data="delete_id: {{tp.id}}">
+									            <i class="material-icons">delete</i>
+									        </button>
+									    </td>
+									</tr>
+					        	{% endfor %}
+				        	{% endif %}
+				        </tbody>
+				    </table>
+	            </div>
+	        	</div>
+	        </div>
+	    </div>
+	    <div class="card-footer ">
+			<div class="col-md-12">
+	            <button 
+	            	data-attach-loading 
+	            	id="submit" 
+	            	type="submit" 
+	            	class="btn btn-fill btn-success">
+	            	Save
+	        	</button>
+	            <button 
+	            	type="button" 
+	            	class="btn btn-green btn-fill" 
+	            	style="float:right" 
+	            	data-dismiss="modal">
+	            	Close
+	            </button>
+	        </div> 
+        </div>
+	</div>
+</form>

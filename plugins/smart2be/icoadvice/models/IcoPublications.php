@@ -17,6 +17,8 @@ class IcoPublications extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'url' => 'required|url',
+        'description' => 'nullable|alpha_dash'
     ];
 
     /**

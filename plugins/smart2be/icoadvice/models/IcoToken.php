@@ -16,7 +16,11 @@ class IcoToken extends Model
     /**
      * @var array Validation rules
      */
-    public $rules = [
+    public $rules = [ 
+        'name' => 'required|alpha_dash',
+        'decimal' => 'required',
+        'tracker' => 'nullable|url',
+        'type' => 'required|digits_between:0,5'       
     ];
 
     /**
@@ -24,7 +28,7 @@ class IcoToken extends Model
      */
     public $table = 'smart2be_icoadvice_ico_token';
 
-    public $hasOne = ['tokenPrice' => 'Smart2be\IcoAdvice\Models\IcoTokenPrice'];
+    public $hasMany = ['tokenPrice' => 'Smart2be\IcoAdvice\Models\IcoTokenPrice'];
 
 
 }

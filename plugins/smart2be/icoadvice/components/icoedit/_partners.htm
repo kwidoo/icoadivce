@@ -1,0 +1,63 @@
+<div class="card-body">
+    {% partial '@_button' label='Add Parnter' action='onAddPartner' target='#modalPopup' toggle='modal' %}
+	<div class="clearfix"></div>
+	<div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>Name</th>
+                    <th>URL</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for partners in ico.partners  %}
+                <tr>
+                    <td>
+                        {% if partners.image %}
+                            <img src="{{partners.image.path}}" height="64px" />
+                        {% else %}
+                            <img src="/plugins/smart2be/icoadvice/assets/images/no-logo-128x64.svg" height="64px" />
+                        {% endif %}
+                    </td>
+                    <td>{{partners.name}}</td>
+                    <td>{{partners.url}}</td>
+                    <td>{{partners.description}} </td>
+                    <td>
+                        {% if partners.status == 0 %}
+                        <span class="badge badge-info">Draft</span>
+                        {% endif %}
+                         {% if partners.status == 1 %}
+                        <span class="badge badge-success">Published</span>
+                        {% endif %}
+                    </td>
+                   
+                    <td class="td-actions text-right">
+                        <button 
+                            type="button"  
+                            rel="tooltip" 
+                            class="btn btn-success btn-link" 
+                            data-request="onAddPartner" 
+                            data-request-data="partners_id: {{ partners.id }}"
+                            data-toggle="modal" 
+                            data-target="#modalPopup">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button 
+                            type="button" 
+                            rel="tooltip" 
+                            class="btn btn-danger btn-link" 
+                            data-request="onPartnerDelete"
+                            data-request-data="delete_id: {{ partners.id }}">
+                            <i class="material-icons">delete</i>
+                        </button>
+                      </td>
+                </tr>
+                {% endfor %} 
+            </tbody>
+        </table>
+    </div>
+</div>

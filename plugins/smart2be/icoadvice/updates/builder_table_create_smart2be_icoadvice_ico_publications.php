@@ -13,6 +13,7 @@ class BuilderTableCreateSmart2beIcoadviceIcoPublications extends Migration
             $table->increments('id');
             $table->integer('ico_id');
             $table->string('url');
+            $table->string('logo')->nullable();
             $table->text('description')->nullable();
             $table->integer('status')->default(0);
             $table->boolean('approved')->default(0);

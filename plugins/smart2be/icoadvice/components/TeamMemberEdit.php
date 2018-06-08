@@ -22,8 +22,6 @@ class TeamEdit extends ComponentBase
   	}
 
     public function onRun(){
-        $this->addJs('assets/js/uploader.js');
-        $this->addJs('assets/js/checker.js');
         $user = Auth::getUser();
         $ico = $user->ico->where('id','=',$this->param('id'))->first();
         if ($ico) {

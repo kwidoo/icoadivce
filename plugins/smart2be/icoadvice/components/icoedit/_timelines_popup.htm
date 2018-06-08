@@ -1,0 +1,49 @@
+
+<form class="form-horizontal" 
+	  role="form" name="tokenForm" 
+	  data-request="{{ __SELF__ }}::onTimelineSave" 
+	  data-request-success="$('#modalPopupBody').html('');$('#modalPopup').modal('hide');"
+	  data-request-validate
+	  data-request-flash
+	>  
+
+	{{ form_token() }}     
+    {{ form_sessionKey() }}
+
+    {% partial '@_hidden' name='id' value=timelines.id %}
+	<div class="card ">
+	    {% partial '@_card_header' name=title title='calendar_today' %}
+	    <div class="card-body">
+	    	<div class="alert alert-danger" data-validate-error>
+    			<p data-message></p>
+			</div>
+			{% partial '@_checkbox' label="Publish" name="status" checked=timelines.status %} 
+
+			<h4>&nbsp;</h4>			
+			{% partial '@_field' label="Points's Name" name="name" value=timelines.name type="text" %}
+			{% partial '@_textarea' label="Description (max. 1000 symbols)" name="description" value=timelines.description size=4 leghtn=1000 %}
+
+            
+        	{% partial '@_datetime' label="Start Date" name='start_date' value=tp.start_date.getStartDate | date('m/d/Y H:i:s') %}
+        	{% partial '@_datetime' label="End Date" name='end_date' value=tp.end_date.getStartDate | date('m/d/Y H:i:s') %}
+        </div>
+        <div class="card-footer ">
+			<div class="col-md-12">
+	            <button 
+	            	data-attach-loading 
+	            	id="submit" 
+	            	type="submit" 
+	            	class="btn btn-fill btn-success">
+	            	Save
+	        	</button>
+	            <button 
+	            	type="button" 
+	            	class="btn btn-green btn-fill" 
+	            	style="float:right" 
+	            	data-dismiss="modal">
+	            	Close
+	            </button>
+	        </div> 
+        </div>
+    </div>
+</form>

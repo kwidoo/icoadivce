@@ -60,7 +60,7 @@ class Icos extends ComponentBase
         Log::info('user: '.$user->name.', id: '.$user->id.', email: '.$user->email);
         Log::info('logo path: '.$ico->logo);
 
-        return Redirect::to('dashboard');
+        return Redirect::to('dashboard/edit/'.$ico->id);
     }
 
 

@@ -11,12 +11,14 @@ class BuilderTableCreateSmart2beIcoadviceIcoTokenPrice extends Migration
         {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->integer('token_id');
-            $table->integer('type')->default(0);
-            $table->string('other_type')->nullable();
-            $table->integer('reference')->default(0);
-            $table->string('other_referenc')->nullable();
-            $table->decimal('price', 10, 0);
+            $table->integer('ico_token_id');
+            $table->timestamp('start_date')->nullable();
+            $table->timestamp('end_date')->nullable();
+            $table->integer('bonus')->default(0);
+            $table->string('value')->default(0);
+            $table->string('nomination')->nullable();
+            $table->integer('status')->default(0);
+            $table->boolean('approved')->default(0);
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

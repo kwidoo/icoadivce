@@ -1,0 +1,17 @@
+<div class="row">
+    {% if label %}
+        <label class="col-md-3 col-form-label">
+            {{ label }}
+          	<span data-validate-for="title" style="color:red">
+        		    &nbsp;<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+    	       </span>
+        </label>
+        <div class="col-md-9">
+    {% else %}
+        <div class="col-md-12">
+    {% endif %}
+        <div class="form-group has-default">
+            <input name="{{ name }}" type="{{ type }}" class="form-control" value="{{ value }}">
+        </div>
+    </div>
+</div>

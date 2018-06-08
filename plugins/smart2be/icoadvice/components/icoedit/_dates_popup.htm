@@ -1,0 +1,99 @@
+
+<form class="form-horizontal" 
+	  role="form" name="tokenForm" 
+	  data-request="{{ __SELF__ }}::onPartnerSave" 
+	  data-request-success="$('#modalPopupBody').html('');$('#modalPopup').modal('hide');"
+	  data-request-validate
+	  data-request-flash
+	>  
+
+	{{ form_token() }}     
+    {{ form_sessionKey() }}
+
+    {% partial '@_hidden' name='id' value=dates.id %}
+	<div class="card ">
+	    <div class="card-header card-header-success card-header-icon">
+	    	<div class="card-icon">
+				<i class="material-icons">calendar_today</i>	        
+			</div>
+	        <h4 class="card-title">{{ title }}</h4>
+	    </div>
+	    <div class="card-body">
+	    	<div class="alert alert-danger" data-validate-error>
+    			<p data-message></p>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-right">
+                      <div class="togglebutton ">
+      	            	<label>
+      	                	<input name="status" type="checkbox" {% if dates.status == 1%}checked=""{% endif %}>
+                            <span class="toggle"></span>
+      						Publish     
+      	            	</label>
+                    </div>
+                </div>
+            </div>
+			<h4>&nbsp;</h4>			
+			<div class="row">
+				<div class="col-md-8">
+					<div class="col-md-12">
+	            		<div class="form-group bmd-form-group " style="padding-top:20px">
+		                	<label for="name" class="bmd-label-floating">Partner's Name</label>
+	                  		<input  name="name" type="text" class="form-control" value="{{ partners.name }}">
+	              		</div>
+	            	</div>
+    				<h4>&nbsp;</h4>
+	            	<div class="col-md-12">
+	            		<div class="form-group bmd-form-group " style="padding-top:20px">
+		                	<label for="url" class="bmd-label-floating">Partner's Webiste</label>
+	                  		<input  name="url" type="text" class="form-control" value="{{ partners.url }}">
+	              		</div>
+	            	</div>
+    				<h4>&nbsp;</h4>
+					<div class="col-md-12">
+			            <div class="form-group bmd-form-group " style="padding-top:20px">
+			                <label for="description" class="bmd-label-floating">Partners's Description (max. 1000 symbols)</label>
+			                <textarea id="description" name="description" class="form-control" maxlength="1000" rows="4">{{ partners.description }}</textarea>
+			            </div>
+		        	</div>
+    			</div>
+    			<div class="col-md-4 text-center">
+		            <h4 class="title">
+		            	Partner's Logo<br>
+	        	        <small>128px x 128px</small>
+	        	    </h4>
+		            <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+		                <div class="fileinput-new thumbnail" style="min-width:128px;max-width:128px">
+		                   {% if publications.image == ''%}
+								<img src ='/storage/app/uploads/public/5b0/ecd/0bd/5b0ecd0bd7abe729741586.png' alt="...">
+							{% else%}
+		                    	<img src="{{ publications.image }}" alt="...">
+							{%endif%}
+		                </div>
+		                <div id="publication-upload" class="fileinput-preview fileinput-exists thumbnail"></div>
+		                <div>
+		                    <span class="btn btn-success btn-round btn-file">
+		                        <span class="fileinput-new">Select image</span>
+		                        <span class="fileinput-exists">Change</span>
+		                        <input id="file-publication-orig" type="file" name="file-publication-orig" />
+		                        <input id="file-publication" type="hidden" name="file-publication" />
+		                    </span>
+		                    <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+		                </div>
+		            </div>
+    		</div>
+        </div>
+        <div class="card-footer ">
+			<div class="col-md-12">
+	            <button 
+	            	data-attach-loading 
+	            	id="submit" 
+	            	type="submit" 
+	            	class="btn btn-fill btn-success">
+	            	Save
+	        	</button>
+	            <button type="button" class="btn btn-green btn-fill" style="float:right" data-dismiss="modal">Close</button>
+	        </div> 
+        </div>
+    </div>
+</form>

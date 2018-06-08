@@ -1,0 +1,46 @@
+
+<form class="form-horizontal" 
+	  role="form" name="tokenForm" 
+	  data-request="{{ __SELF__ }}::onLocationSave" 
+	  data-request-success="$('#modalPopupBody').html('');$('#modalPopup').modal('hide');"
+	  data-request-validate
+	  data-request-flash>  
+
+	{{ form_token() }}     
+    {{ form_sessionKey() }}
+
+    {% partial '@_hidden' name='id' value=locations.id %}
+	<div class="card ">
+		{% partial '@_card_header_f' name=title title='map' %}
+
+	    <div class="card-body">
+	    	<div class="alert alert-danger" data-validate-error>
+    			<p data-message></p>
+			</div>
+			{% partial '@_checkbox' label="Publish" name="status" checked=locations.status %} 
+			<h4>&nbsp;</h4>
+			{% partial '@_field' label="Location's Name" name="name" value=locations.name type="text" %}
+			{% partial '@_field' label="Location's Legal Name" name="legal" value=locations.legal type="text" %}
+			{% partial '@_textarea' label="Location's Address (max. 1000 symbols)" name="address" value=locations.address size=4 leghtn=1000 %}
+				
+        </div>
+        <div class="card-footer ">
+			<div class="col-md-12">
+	            <button 
+	            	data-attach-loading 
+	            	id="submit" 
+	            	type="submit" 
+	            	class="btn btn-fill btn-success">
+	            	Save
+	        	</button>
+	            <button 
+	            	type="button" 
+	            	class="btn btn-green btn-fill" 
+	            	style="float:right" 
+	            	data-dismiss="modal">
+	            	Close
+	            </button>
+	        </div> 
+        </div>
+    </div>
+</form>

@@ -1,0 +1,55 @@
+<div class="card-body">
+    {% partial '@_button' label='Add Location' action='onAddLocation' target='#modalPopup' toggle='modal' %}
+	<div class="clearfix"></div>
+	<div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Legal Name</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for locations in ico.locations  %}
+                <tr>
+                    <td>{{locations.name | length > 50 ? locations.name|slice(0, 50) ~ '...' : locations.name}}</td>
+                    <td>{{locations.legal | length > 50 ? locations.legal|slice(0, 50) ~ '...' : locations.legal}}</td>
+                    <td>{{locations.address| length > 50 ? locations.address|slice(0, 50) ~ '...' : locations.address}}</td>
+                    <td>
+                        {% if locations.status == 0 %}
+                        <span class="badge badge-info">Draft</span>
+                        {% endif %}
+                         {% if locations.status == 1 %}
+                        <span class="badge badge-success">Published</span>
+                        {% endif %}
+                    </td>
+                   
+                    <td class="td-actions text-right">
+                        <button 
+                            type="button"  
+                            rel="tooltip" 
+                            class="btn btn-success btn-link" 
+                            data-request="onAddLocation" 
+                            data-request-data="locations_id: {{ locations.id }}"
+                            data-toggle="modal" 
+                            data-target="#modalPopup">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button 
+                            type="button" 
+                            rel="tooltip" 
+                            class="btn btn-danger btn-link" 
+                            data-request="onLocationDelete"
+                            data-request-data="delete_id: {{ locations.id }}">
+                            <i class="material-icons">delete</i>
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %} 
+            </tbody>
+        </table>
+    </div>
+</div>

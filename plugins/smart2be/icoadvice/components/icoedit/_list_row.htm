@@ -1,0 +1,10 @@
+<tr>
+	{% for i in columns%}
+		<td 
+		    {% if loop.last %}
+		    	class="td-actions text-right"
+		    {% endif %}>
+			{{i |raw }}
+		</td>
+	{% endfor %}
+</tr>

@@ -1,0 +1,146 @@
+<form class="form-horizontal" 
+	  role="form" name="tokenForm" 
+	  data-request="{{ __SELF__ }}::onTokenSave" 
+	  data-request-success="$('#modalPopupBody').html('');$('#modalPopup').modal('hide');"
+	  data-request-validate
+	  data-request-flash
+	>  
+
+	{{ form_token() }}     
+    {{ form_sessionKey() }}
+    
+    {% partial '@_hidden' name='id' value=token.id %}
+
+	<div class="card ">
+		{% partial '@_card_header_f' name=title title='btc' %}
+	    <div class="card-body">
+	    	<div class="alert alert-danger" data-validate-error>
+    			<p data-message></p>
+			</div>
+			{% partial '@_checkbox' label="Publish" name="status" checked=token.status %} 
+			<h4>&nbsp;</h4>
+			{% partial '@_field' label="Token's Name" name="name" value=token.name type="text" %}
+            {% partial '@_select' 
+            		label="Platform" 
+            		name="platform" 
+            		size="3" 
+            		content = {'0':'Ethereum',
+            				   '1':'Neo',
+            				   '2':'Waves',
+            				   '3':'PoW',
+            				   '4':'PoS',
+            				   '5':'Other'}
+            		value = token.type 
+            		size = 3 
+            %}
+ 			{% partial '@_field' label="Other" name="other" value=token.other type="text" %}
+ 			{% partial '@_field' label="Decimal" name="decimal" value=token.decimal type="text" %}
+ 			{% partial '@_field' label="Tracker" name="tracker" value=token.tracker type="text" %}
+
+            <div class="row">
+            	<div class="col-md-4"> 
+	        		<button class="btn btn-round btn-info" data-request="onAddTokenPrice">
+	        			Add Price
+	        			<div class="ripple-container"></div>
+	        		</button>
+	    		</div>
+            </div>
+            <div class="row">
+            	<div class="col-md-12">
+	            <div class="table-responsive">
+				    <table class="table table-striped">
+				        <thead>
+				            <tr>
+				                <th>Start Date&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></th>
+				                <th>End Date&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></th>
+				                <th>Type&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></th>
+				                <th>Value&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></th>
+				                <th>Nomination&nbsp;<i class="fa fa-info-circle" aria-hidden="true"></i></th>
+				                <th class="text-right"></th>
+				            </tr>
+				        </thead>
+				        <tbody id="_tokenPrice">
+
+				        	{% if token.tokenPrice %}
+					        	{% for tp in token.tokenPrice %}
+						        	<tr>
+									    <td>
+											<input type="hidden" name="price_id{{tp.id}}" value="{{tp.id}}">
+									    	        {% partial 
+									            '@_datetime' 
+									            name='start_date'~tp.id 
+									            value=tp.start_date.getStartDate | date('m/d/Y H:i:s') 
+									        %}
+									    </td>
+									    <td>	
+									        {% partial 
+									            '@_datetime' 
+									            name='end_date'~tp.id 
+									            value=tp.end_date.getEndDate | date('m/d/Y H:i:s') 
+									        %}
+									    </td>
+									    <td>
+									        {% partial '@_select' 
+									            length="12"
+									            name=bonus ~ tp.id 
+									            size="3" 
+									            content = {'0':'Discount',
+									                       '1':'Bonus',
+									                       '2':'Fixed'}
+									            value = tp.bonus 
+									            size = 3 
+									        %}
+										</td>
+										<td>
+									        {% partial '@_field' name='value'~tp.id type="text" value=tp.value %}
+										</td>
+									    <td>    
+									        {% partial '@_select' 
+									                length="12"
+									                name=nomination ~ tp.id 
+									                size="3" 
+									                content = {'0':'BTC',
+									                           '1':'Ethereum',
+									                           '2':'Litecoin',
+									                           '3':'Neo',
+									                           '4':'Euro',
+									                           '5':'US Dollar',
+									                           '6':'%'}
+									                value = tp.nomination 
+									                size = 3 
+									        %}
+									    </td>
+									    <td class="text-right">
+									    	<button type="button" rel="tooltip" class="btn btn-danger btn-link" data-request="onDeleteTokenPrice" data-request-data="delete_id: {{tp.id}}">
+									            <i class="material-icons">delete</i>
+									        </button>
+									    </td>
+									</tr>
+					        	{% endfor %}
+				        	{% endif %}
+				        </tbody>
+				    </table>
+	            </div>
+	        	</div>
+	        </div>
+	    </div>
+	    <div class="card-footer ">
+			<div class="col-md-12">
+	            <button 
+	            	data-attach-loading 
+	            	id="submit" 
+	            	type="submit" 
+	            	class="btn btn-fill btn-success">
+	            	Save
+	        	</button>
+	            <button 
+	            	type="button" 
+	            	class="btn btn-green btn-fill" 
+	            	style="float:right" 
+	            	data-dismiss="modal">
+	            	Close
+	            </button>
+	        </div> 
+        </div>
+	</div>
+</form>

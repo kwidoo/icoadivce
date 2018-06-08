@@ -1,0 +1,55 @@
+
+<form class="form-horizontal" 
+	  role="form" name="tokenForm" 
+	  data-request="{{ __SELF__ }}::onPartnerSave" 
+	  data-request-success="$('#modalPopupBody').html('');$('#modalPopup').modal('hide');"
+	  data-request-validate
+	  data-request-flash
+	>  
+
+	{{ form_token() }}     
+    {{ form_sessionKey() }}
+
+    {% partial '@_hidden' name='id' value=partners.id %}
+	<div class="card ">
+		{% partial '@_card_header_f' name=title title='user-circle-o' %}
+
+	    <div class="card-body">
+	    	<div class="alert alert-danger" data-validate-error>
+    			<p data-message></p>
+			</div>
+			{% partial '@_checkbox' label="Publish" name="status" checked=partners.status %} 
+			<h4>&nbsp;</h4>			
+			{% partial '@_field' label="Partner's Name" name="name" value=partners.name type="text" %}
+			{% partial '@_field' label="Partner's Website" name="url" value=partners.url type="text" %}
+			{% partial '@_textarea' label="Partners's Description (max. 1000 symbols)" name="description" value=partners.description size=4 leghtn=1000 %}
+
+			{% partial '@_fileupload' 
+				label='Partners Logo'
+				width='128px'
+				height='128px'
+				value = partners.image 
+				dummy = 'upload-64x64.svg'
+				name = 'partners-upload' 
+			%}
+        </div>
+        <div class="card-footer ">
+			<div class="col-md-12">
+	            <button 
+	            	data-attach-loading 
+	            	id="submit" 
+	            	type="submit" 
+	            	class="btn btn-fill btn-success">
+	            	Save
+	        	</button>
+	            <button 
+	            	type="button" 
+	            	class="btn btn-green btn-fill" 
+	            	style="float:right" 
+	            	data-dismiss="modal">
+	            	Close
+	            </button>
+	        </div> 
+        </div>
+    </div>
+</form>

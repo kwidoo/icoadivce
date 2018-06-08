@@ -1,0 +1,50 @@
+<div class="card-body">
+    {% partial '@_button' label='Add Publication' action='onAddPublication' target='#modalPopup' toggle='modal' %}
+	<div class="clearfix"></div>
+	<div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>URL</th>
+                    <th>Description</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for publications in ico.publications  %}
+                {% partial "@_list_row" 
+                    columns = {
+                        '0': 
+                            (publications.image) ? 
+                                    '<img src="' ~ publications.image.path ~ '" width="128px" />':
+                                    '<img src="/plugins/smart2be/icoadvice/assets/images/no-logo-128x64.svg" width="128px" />',
+                        '1': publications.url,
+                        '2': publications.description,
+                        '3': (publications.status == 0) ? '<span class="badge badge-info">Draft</span>' : '<span class="badge badge-success">Published</span>',
+                        '4': '<button 
+                            type="button"  
+                            rel="tooltip" 
+                            class="btn btn-success btn-link" 
+                            data-request="onAddPublication" 
+                            data-request-data="publications_id: {{ publications.id }}"
+                            data-toggle="modal" 
+                            data-target="#modalPopup">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button 
+                            type="button" 
+                            rel="tooltip" 
+                            class="btn btn-danger btn-link" 
+                            data-request="onPublicationDelete"
+                            data-request-data="delete_id: {{ publications.id }}"
+                            >
+                            <i class="material-icons">delete</i>
+                        </button>' } 
+                %}
+                {% endfor %} 
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+            {% partial '@_card_header' title="attach_money" name="ICO Capital"%}
+            <div class="card-body ">
+                <div class="row">
+                    <div class="col-md-3">
+                                                <h4>&nbsp;</h4>
+
+                    <div class="col-md-11">
+                        <select name="cap_nomination" class="selectpicker" data-size="7" data-style="btn btn-success btn-round" title="Nomination">
+                                    <option {% if ico.cap_nomination == 1 %}selected{% endif %} value="1">Bitcoin</option>
+                                    <option {% if ico.cap_nomination == 2 %}selected{% endif %} value="2">Ethereum</option>
+                                    <option {% if ico.cap_nomination == 3 %}selected{% endif %} value="3">Litecoin</option>
+                                    <option {% if ico.cap_nomination == 4 %}selected{% endif %} value="4">Neo</option>
+                                    <option {% if ico.cap_nomination == 5 %}selected{% endif %} value="5">Euro</option>
+                                    <option {% if ico.cap_nomination == 6 %}selected{% endif %} value="6">US Dollar</option>
+                                    <option {% if ico.cap_nomination == 7 %}selected{% endif %} value="7">Other</option>
+                        </select>
+
+                        <h4>&nbsp;</h4>
+                        <div class="form-group bmd-form-group" style="padding-top:20px">
+                            <label for="other" class="bmd-label-floating"> Other (please specify)</label>
+                            <input type="text" class="form-control" id="other" name="other"  autocomplete="off" style="cursor: auto;" value="{{ ico.other }}">
+                        </div>  
+                    </div>
+                    </div>
+                    <div class="col-md-9">
+                        <h4>&nbsp;</h4>
+                        <div class="form-group bmd-form-group" style="padding-top:20px">
+                            <label for="soft_cap" class="bmd-label-floating"> Soft Cap (Leave blank if not available)</label>
+                            <input type="number" class="form-control" id="slogan" name="soft_cap"  autocomplete="off" style="cursor: auto;" value="{{ ico.soft_cap }}">
+                        </div>    
+                        <div class="form-group bmd-form-group" style="padding-top:20px">
+                            <label for="hard_cap" class="bmd-label-floating"> Hard Cap  (Leave blank if not available)</label>
+                            <input type="number" class="form-control" id="slogan" name="hard_cap"  autocomplete="off" style="cursor: auto;" value="{{ ico.hard_cap }}">
+                        </div>    
+                    </div>
+
+                </div>
+            </div>

@@ -14,7 +14,7 @@ class BuilderTableCreateSmart2beIcoadviceIcoLocation extends Migration
             $table->integer('ico_id');
             $table->string('name')->nullable();
             $table->string('legal')->nullable();
-            $table->text('address');
+            $table->text('address')->nullable();
             $table->boolean('published')->default(0);
             $table->integer('status')->default(0);
             $table->boolean('approved')->default(0);

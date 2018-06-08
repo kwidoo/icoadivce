@@ -1,0 +1,28 @@
+<!-- Дизайн, цвет, обновление -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="togglebutton">
+            <label >
+                <input type="checkbox" id="published"{%if ico.status == 1 %}checked{% endif %} >
+                <span class="toggle" ></span>
+                    Published
+            </label>
+            <span class="toggle">&nbsp;&nbsp;&nbsp;Verification Status:</span>
+            {% if ico.status == 1 %}
+                {% if ico.approved == 0 %}
+                	<span class="badge badge-warning">pending</span>
+                {% endif %}
+
+                {% if ico.approved == 1 %}
+                	<span class="badge badge-success">approved</span>
+                {% endif %}
+
+                {% if ico.approved == 2 %}
+                	<span class="badge badge-danger">rejected</span>
+                {% endif %}
+            {% else %}
+                <span class="badge badge-default">not submitted</span>
+            {% endif %}
+        </div>
+    </div>
+</div>

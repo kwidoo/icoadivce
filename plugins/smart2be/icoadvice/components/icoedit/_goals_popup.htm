@@ -1,0 +1,71 @@
+
+<form class="form-horizontal" 
+	  role="form" name="tokenForm" 
+	  data-request="{{ __SELF__ }}::onGoalSave" 
+	  data-request-success="$('#modalPopupBody').html('');$('#modalPopup').modal('hide');"
+	  data-request-validate
+	  data-request-flash
+	>  
+
+	{{ form_token() }}     
+    {{ form_sessionKey() }}
+
+    {% partial '@_hidden' name='id' value=goals.id %}
+	<div class="card ">
+		{% partial '@_card_header_f' name=title title='dot-circle-o' %}
+	    <div class="card-body">
+	    	<div class="alert alert-danger" data-validate-error>
+    			<p data-message></p>
+			</div>
+            {% partial '@_checkbox' label="Publish" name="status" checked=goals.status %} 
+			<h4>&nbsp;</h4>
+			{% partial '@_field' label="Goal's Name" name="name" value=goals.name type="text" %}
+			{% partial '@_field' label="Description" name="description" value=goals.description type="text" %}
+			{% partial '@_field' label="Capital To Reach" name="cap" value=goals.cap type="text" %}
+			
+            {% partial '@_select' 
+            		label="Nomination" 
+            		name="currency" 
+            		size="3" 
+            		content = {'0':'BTC',
+            				   '1':'Ethereum',
+            				   '2':'Litecoin',
+            				   '3':'Neo',
+            				   '4':'Euro',
+            				   '5':'US Dollar',
+            				   '6':'Other'}
+            		value = goals.currency 
+            		size = 3 
+            %}
+			{% partial '@_field' label="Other" name="other" value=goals.other type="text" %}  	
+            {% partial '@_select' 
+            		label="Reached" 
+            		name="reached" 
+            		size="3" 
+            		content = {'0':'Not Reached',
+            				   '1':'In Progress',
+            				   '2':'Reached'}
+            		value = goals.reached 
+            		size = 3 
+            %}            
+        </div>
+        <div class="card-footer ">
+			<div class="col-md-12">
+	            <button 
+	            	data-attach-loading 
+	            	id="submit" 
+	            	type="submit" 
+	            	class="btn btn-fill btn-success">
+	            	Save
+	        	</button>
+	            <button 
+	            	type="button" 
+	            	class="btn btn-green btn-fill" 
+	            	style="float:right" 
+	            	data-dismiss="modal">
+	            	Close
+	            </button>
+	        </div> 
+        </div>
+    </div>
+</form>

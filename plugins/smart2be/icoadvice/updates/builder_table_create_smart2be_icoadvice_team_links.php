@@ -12,7 +12,7 @@ class BuilderTableCreateSmart2beIcoadviceTeamLinks extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->integer('team_id');
-            $table->integer('type')->default(0);
+            $table->string('type')->default(0);
             $table->string('other')->nullable();
             $table->string('url');
             $table->timestamp('created_at')->nullable();

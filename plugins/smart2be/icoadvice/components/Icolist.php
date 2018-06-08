@@ -28,7 +28,9 @@ class IcoList extends ComponentBase
                     else
                         $link[$ico->id] = '/storage/app/uploads/public/5b0/ecd/0bd/5b0ecd0bd7abe729741586.png';
                 }
-                $this->page['link'] = $link;
+                if (isset($link)) 
+                    $this->page['link'] = $link;
+                
             }
         } else {
             return Redirect::to('/login');

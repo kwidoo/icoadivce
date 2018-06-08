@@ -1,0 +1,78 @@
+<div class="card-body" >
+    {% partial '@_button' label='Add Token' action='onTokenEdit' target='#modalPopup' toggle='modal' %}
+	<div class="clearfix"></div>
+	<div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Platform</th>
+                    <th>Decimal</th>
+                    <th>Tracker</th>
+                    <th>Status</th>
+                    <th class="text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for token in ico.tokens  %}
+                <tr>
+                    <td>{{token.name}}</td>
+                    <td>
+                        {% if token.type == 0 %}
+                        Ethereum
+                        {% endif %}
+                        {% if token.type == 1 %}
+                        Neo
+                        {% endif %}
+                        {% if token.type == 2 %}
+                        Waves
+                        {% endif %}
+                        {% if token.type == 3 %}
+                        PoW
+                        {% endif %}
+                        {% if token.type == 4 %}
+                        PoS
+                        {% endif %}                       
+                        {% if token.type == 6 %}
+                        Other
+                        {% endif %}
+
+                    </td>
+                    <td>{{token.decimal}} </td>
+                    <td>{{token.tracker}} </td>
+                    <td>
+                        {% if token.status == 0 %}
+                        <span class="badge badge-info">Draft</span>
+                        {% endif %}
+                         {% if token.status == 1 %}
+                        <span class="badge badge-success">Published</span>
+                        {% endif %}
+                    </td>
+                   
+                    <td class="td-actions text-right">
+
+
+                        <button 
+                            type="button" 
+                            data-toggle="modal" 
+                            data-target="#modalPopup"
+                            data-request-data="token_id: {{token.id}}"
+                            data-request="onTokenEdit"
+                            class="btn btn-success btn-link">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button 
+                            type="button" 
+                            rel="tooltip" 
+                            class="btn btn-danger btn-link" 
+                            data-request="onTokenDelete"
+                            data-request-data="token_id: {{token.id}}">
+                            <i class="material-icons">delete</i>
+                        </button>
+                      </td>
+                </tr>
+                {% endfor %} 
+            </tbody>
+        </table>
+    </div>
+</div>

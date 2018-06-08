@@ -25,4 +25,15 @@ class IcoTokenPrice extends Model
      * @var string The database table used by the model.
      */
     public $table = 'smart2be_icoadvice_ico_token_price';
+
+    public function getStartDate()
+    {
+        // should be able to parse this format: Mar 2 2014 12:00:00:000AM
+        return \DateTime::createFromFormat("M j Y h:i:s:uA", $this->start_date);
+    }    
+    public function getEndDate()
+    {
+        // should be able to parse this format: Mar 2 2014 12:00:00:000AM
+        return \DateTime::createFromFormat("M j Y h:i:s:uA", $this->start_date);
+    }
 }
