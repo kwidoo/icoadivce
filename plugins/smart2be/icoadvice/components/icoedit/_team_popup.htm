@@ -10,14 +10,15 @@
     {{ form_sessionKey() }}
 
     {% partial '@_hidden' name='id' value=team.id %}
-	<div class="card ">
-
-	    {% partial '@_card_header' name=title title='person_add' %}
-
-	    <div class="card-body">
-	    	<div class="alert alert-danger" data-validate-error>
-    			<p data-message></p>
-			</div>
+	<div class="box">
+		<div class="box-header">
+			<h3>{{ title }}</h3>
+		</div>
+	    <div class="box-body">
+			<div id="error" class="alert alert-dismissable" data-validate-error>
+        		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        		<p data-message></p>
+    		</div>
 			{% partial '@_checkbox' label="Publish" name="status" checked=team.status %} 
 			<h4>&nbsp;</h4>
 			{% partial '@_field' label="First Name" name="first_name" value=team.first_name type="text" %}
@@ -80,7 +81,7 @@
 									    	<button 
 									    		type="button" 
 									    		rel="tooltip" 
-									    		class="btn btn-danger btn-link" 
+									    		class="btn btn-danger btn-round" 
 									    		data-request="onDeleteTeamLink" data-request-data="delete_id: {{tp.id}}">
 									            <i class="material-icons">delete</i>
 									        </button>
@@ -94,7 +95,7 @@
 	        	</div>
 	        </div>
 	    </div>
-	    <div class="card-footer ">
+	    <div class="box-footer">
 			<div class="col-md-12">
 	            <button 
 	            	data-attach-loading 
@@ -105,7 +106,7 @@
 	        	</button>
 	            <button 
 	            	type="button" 
-	            	class="btn btn-green btn-fill" 
+	            	class="btn btn-default btn-fill" 
 	            	style="float:right" 
 	            	data-dismiss="modal">
 	            	Close

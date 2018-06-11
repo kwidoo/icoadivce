@@ -164,4 +164,8 @@
   'Smart2be\\IcoAdvice\\Components\\IcoCard' => 'plugins/smart2be/icoadvice/components/IcoCard.php',
   'Smart2be\\IcoAdvice\\Components\\TeamEdit' => 'plugins/smart2be/icoadvice/components/TeamEdit.php',
   'Smart2be\\IcoAdvice\\Models\\IcoTokenPrice' => 'plugins/smart2be/icoadvice/models/IcoTokenPrice.php',
+  'backend\\Controllers\\media' => 'modules/backend/controllers/media.php',
+  'RainLab\\User\\Classes\\UserRedirector' => 'plugins/rainlab/user/classes/UserRedirector.php',
+  'toughdeveloper\\imageresizer\\Plugin' => 'plugins/toughdeveloper/imageresizer/Plugin.php',
+  'Smart2be\\IcoAdvice\\Models\\IcoLinks' => 'plugins/smart2be/icoadvice/models/IcoLinks.php',
 );

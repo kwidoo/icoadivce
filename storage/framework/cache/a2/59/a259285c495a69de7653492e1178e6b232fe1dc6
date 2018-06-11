@@ -1,4 +1,4 @@
-1528454597a:1:{s:12:"register.htm";a:11:{s:8:"fileName";s:12:"register.htm";s:7:"content";s:503:"title = "Register New Membership"
+1528739767a:1:{s:12:"register.htm";a:11:{s:8:"fileName";s:12:"register.htm";s:7:"content";s:503:"title = "Register New Membership"
 url = "/auth/register"
 layout = "login_layout"
 is_hidden = 0

@@ -1,29 +1,22 @@
-{% partial '@_card_header' title="business" name="ICO Description" %}
-
-<div class="card-body ">
-    <div class="row">
-        <div class="col-md-12">
-            <h4>&nbsp;</h4>
-            <div class="form-group bmd-form-group" style="padding-top:20px">
-                <label for="slogan" class="bmd-label-floating"> ICO Slogan (max. 160 symbols)</label>
-                <input type="text" class="form-control" id="slogan" name="slogan"  autocomplete="off" style="cursor: auto;" value="{{ ico.slogan }}">
-            </div>  
-        </div>      
-    </div>       
-    <div class="row">
-        <div class="col-md-6">
-            <h4>&nbsp;</h4>
-            <div class="form-group bmd-form-group " style="padding-top:20px">
-                <label for="short" class="bmd-label-floating"> Short Project Description (max. 160 symbols)</label>
-                <textarea id="short" name="short" class="form-control" maxlength="160" rows="8">{{ ico.short }} </textarea>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <h4>&nbsp;</h4>
-            <div class="form-group bmd-form-group " style="padding-top:20px">
-                <label for="description" class="bmd-label-floating">Full Project Description (max. 1000 symbols)</label>
-                <textarea id="description" name="description" class="form-control" maxlength="1000" rows="8">{{ ico.description }}</textarea>
-            </div>
-        </div>
-    </div>
+<div class="col-md-10">
+    <br>
+    <br>
+    {% partial "@_field" label="ICO Slogan (max. 160 symbols)" name="slogan" type="text" value=ico.slogan %}
 </div>
+<div class="col-md-10 ml-auto mr-auto">
+            {% partial '@_textarea' 
+                label="Short Project Description (max. 160 symbols)" 
+                name="short" 
+                value=ico.short
+                size=2
+                leghtn=160 
+            %}
+            {% partial '@_textarea' 
+                label="Full Project Description (max. 160 symbols)" 
+                name="description" 
+                value=ico.description
+                size=5
+                leghtn=1000
+            %}
+</div>
+    

@@ -1,0 +1,9 @@
+<div class="form-group">
+    {% if label %}
+    <label for="{{ name }}" >
+    {{ label }}
+    </label>
+    {% endif %}
+    <input type="email" class="form-control" id="{{ name }}" name="{{ name }}" value="{{ value }}">
+</div>
+

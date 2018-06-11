@@ -19,7 +19,7 @@ class BuilderTableCreateSmart2beIcoadviceIco extends Migration
             $table->text('description')->nullable();;           // Long description of project
             $table->string('soft_cap')->nullable();            // if '0' not present 
             $table->string('hard_cap')->nullable();            // if '0' not present
-            $table->integer('cap_nomination')->default(0);      // Cap currency or Other
+            $table->string('cap_nomination')->nullable();      // Cap currency or Other
             $table->string('other')->nullable();                // Currency name
             $table->integer('status')->default(0);
             $table->boolean('approved')->default(false);

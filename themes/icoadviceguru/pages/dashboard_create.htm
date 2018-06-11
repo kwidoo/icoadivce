@@ -1,6 +1,6 @@
 title = "Create New ICO"
 url = "/dashboard/create"
-layout = "dashboard"
+layout = "dashboard_lte"
 is_hidden = 0
 
 [icoForm]
@@ -11,10 +11,8 @@ redirect = "/login"
 ==
 {% component 'session' %}
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-			{% component 'icoForm' %}
-		</div>
+<section class="content">
+	<div class="row">
+		{% component 'icoForm' %}
 	</div>
-</div>
+</section>

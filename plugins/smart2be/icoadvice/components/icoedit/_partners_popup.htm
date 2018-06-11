@@ -11,29 +11,34 @@
     {{ form_sessionKey() }}
 
     {% partial '@_hidden' name='id' value=partners.id %}
-	<div class="card ">
-		{% partial '@_card_header_f' name=title title='user-circle-o' %}
-
-	    <div class="card-body">
-	    	<div class="alert alert-danger" data-validate-error>
-    			<p data-message></p>
-			</div>
+	<div class="box">
+		<div class="box-header">
+			{{ title }}
+		</div>
+	    <div class="box-body">
+			<div id="error" class="alert alert-dismissable" data-validate-error>
+        		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        		<p data-message></p>
+    		</div>
 			{% partial '@_checkbox' label="Publish" name="status" checked=partners.status %} 
 			<h4>&nbsp;</h4>			
 			{% partial '@_field' label="Partner's Name" name="name" value=partners.name type="text" %}
 			{% partial '@_field' label="Partner's Website" name="url" value=partners.url type="text" %}
-			{% partial '@_textarea' label="Partners's Description (max. 1000 symbols)" name="description" value=partners.description size=4 leghtn=1000 %}
-
-			{% partial '@_fileupload' 
-				label='Partners Logo'
-				width='128px'
-				height='128px'
-				value = partners.image 
-				dummy = 'upload-64x64.svg'
-				name = 'partners-upload' 
-			%}
+			<div class="col-md-12">
+				{% partial '@_textarea' label="Partners's Description (max. 1000 symbols)" name="description" value=partners.description size=4 lenght=1000 %}
+			</div>
+			<div class="col-md-12 ml-auto mr-auto">
+				{% partial '@_fileupload' 
+					label='Partners Logo'
+					width='128px'
+					height='128px'
+					value = partners.image.path 
+					dummy = 'upload-64x64.svg'
+					name = 'partners-upload' 
+				%}
+			</div>
         </div>
-        <div class="card-footer ">
+        <div class="box-footer">
 			<div class="col-md-12">
 	            <button 
 	            	data-attach-loading 
@@ -44,7 +49,7 @@
 	        	</button>
 	            <button 
 	            	type="button" 
-	            	class="btn btn-green btn-fill" 
+	            	class="btn btn-default btn-fill" 
 	            	style="float:right" 
 	            	data-dismiss="modal">
 	            	Close

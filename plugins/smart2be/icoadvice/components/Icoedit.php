@@ -10,6 +10,7 @@ use \Smart2be\IcoAdvice\Models\IcoPartners;
 use \Smart2be\IcoAdvice\Models\IcoLocation;
 use \Smart2be\IcoAdvice\Models\IcoDates;
 use \Smart2be\IcoAdvice\Models\IcoGoals;
+use \Smart2be\IcoAdvice\Models\IcoLinks;
 use \Smart2be\IcoAdvice\Models\IcoTimeline;
 use \Smart2be\IcoAdvice\Models\Team;
 use \Smart2be\IcoAdvice\Models\TeamLinks;
@@ -37,6 +38,7 @@ class IcoEdit extends ComponentBase
         $this->addJs('assets/js/uploader.js');
         $this->addJs('assets/js/checker.js');
         $this->addJs('assets/js/ajax-trigger.js');
+
         $user = Auth::getUser();
         $ico = $user->ico->where('id','=',$this->param('id'))->first();
         if ($ico) {
@@ -275,8 +277,6 @@ class IcoEdit extends ComponentBase
       * PUBLICATIONS PART
       * 
       * TODO:
-      *   1. image upload
-      *   2. dummy image
       *   3. confirmation
       */
 
@@ -342,8 +342,8 @@ class IcoEdit extends ComponentBase
     }
 
     /**
-      *
       * PARTNERS PART
+      * OK
       *
       */
     public function onAddPartner(){
@@ -363,7 +363,6 @@ class IcoEdit extends ComponentBase
             $partners = new IcoPartners;
             $partners->ico_id = $this->param('id');
         }
-      //  $partners->image = post('url');
         $partners->name = post('name');
         $partners->url = post('url');
         $partners->description = post('description');
@@ -388,7 +387,6 @@ class IcoEdit extends ComponentBase
 
             $partners->image()->add($file);
         }
-
         $partners->save();
         Flash::success('Partner Was Updated');
 
@@ -411,7 +409,7 @@ class IcoEdit extends ComponentBase
     /**
       *
       * LOCATIONS PART
-      *
+      * OK
       */
     public function onAddLocation(){
         if (post('locations_id')){
@@ -455,10 +453,10 @@ class IcoEdit extends ComponentBase
  
          }
     }    
-
     /**
       *
       * TEAM PART
+      * OK
       *
       */
     public function onAddTeamMember(){
@@ -524,8 +522,8 @@ class IcoEdit extends ComponentBase
          }
     }    
     /**
-      * Adds team link row to form
-      * 
+      * TEAM LINKS PART
+      * Save function in TEAM PART
       *
       **/    
     public function onAddTeamLink(){
@@ -579,10 +577,13 @@ class IcoEdit extends ComponentBase
 
     }
 
-
-
+    /**
+      * DATE PART
+      * 
+      *
+      **/    
     public function onAddDate(){
-        if (post('partners_id')){
+        if (post('dates_id')){
             $dates = IcoDates::find(post('dates_id'));
             return ['#modalPopupBody' => $this->renderPartial('@_dates_popup.htm',
                 ['title' => 'Edit Date', 'dates' => $dates
@@ -590,8 +591,50 @@ class IcoEdit extends ComponentBase
         } else
         return ['#modalPopupBody' => $this->renderPartial('@_dates_popup.htm',['title' => 'Add New Date'])];
     }
+ 
+    public function onDateSave(){
+        if (post('id')) {
+            $dates = IcoDates::find(post('id'));
+        } else {
+            $dates = new IcoDates;
+            $dates->ico_id = $this->param('id');
+        }
+      //  $dates->type = post('type');
+        if (post('type') == 99)
+            $dates->other = post('other');
+        else
+            $dates->other = '';
+        $dates->description = post('description');
+        $dates->start_date = date('Y-m-d H:i:s', strtotime(post('start_date')));
+        $dates->end_date = date('Y-m-d H:i:s', strtotime(post('end_date')));
+        if (post('status') == 'on')
+            $dates->status = 1;
+        else
+            $dates->status = 0;
+        
+        $dates->save();
+        Flash::success('Date Was Updated');
 
-
+        $user = Auth::getUser();
+        $ico = $user->ico->where('id','=',$this->param('id'))->first();  
+        return ['#_dates' => $this->renderPartial('@_dates.htm',['ico' => $ico])];
+    } 
+    public function onDateDelete(){
+         if (post('delete_id')) {
+            $dates = IcoDates::find(post('delete_id'));
+            $dates->delete();
+            
+            $user = Auth::getUser();
+            $ico = $user->ico->where('id','=',$this->param('id'))->first();  
+            return ['#_dates' => $this->renderPartial('@_dates.htm',['ico' => $ico])];
+ 
+         }
+    } 
+    /**
+      * GOAL PART
+      * OK
+      *
+      **/    
     public function onAddGoal(){
         if (post('goals_id')){
             $goals = IcoGoals::find(post('goals_id'));
@@ -618,7 +661,7 @@ class IcoEdit extends ComponentBase
             $goals->status = 1;
         else
             $goals->status = 0;
-        if (post('currency') == 6) 
+        if (post('currency') == 99) 
             $goals->other = post('other'); 
         else
             $goals->other = "";
@@ -640,8 +683,14 @@ class IcoEdit extends ComponentBase
  
          }
     }    
+    /**
+      * TIMELINE PART
+      * 
+      *
+      **/    
+
     public function onAddTimeline(){
-        if (post('timelines_id_id')){
+        if (post('timelines_id')){
             $timelines = IcoTimeline::find(post('timelines_id'));
             return ['#modalPopupBody' => $this->renderPartial('@_timelines_popup.htm',
                 ['title' => 'Edit Timeline Point', 'timelines' => $timelines
@@ -649,4 +698,93 @@ class IcoEdit extends ComponentBase
         } else
         return ['#modalPopupBody' => $this->renderPartial('@_timelines_popup.htm',['title' => 'Add New Timeline Point'])];
     }
-}    
+    public function onTimelineSave(){
+        if (post('id')) {
+            $timelines = IcoTimeline::find(post('id'));
+        } else {
+            $timelines = new IcoTimeline;
+            $timelines->ico_id = $this->param('id');
+        }
+        $timelines->name = post('name');
+        $timelines->description = post('description');
+        $timelines->start_date = date('Y-m-d H:i:s', strtotime(post('start_date')));
+        $timelines->end_date = date('Y-m-d H:i:s', strtotime(post('end_date')));
+ 
+        if (post('status') == 'on')
+            $timelines->status = 1;
+        else
+            $timelines->status = 0;
+        
+        $timelines->save();
+        Flash::success('Timeline Was Updated');
+
+        $user = Auth::getUser();
+        $ico = $user->ico->where('id','=',$this->param('id'))->first();  
+        return ['#_timelines' => $this->renderPartial('@_timelines.htm',['ico' => $ico])];
+    } 
+
+
+    public function onTimelineDelete(){
+         if (post('delete_id')) {
+            $timeline = IcoTimeline::find(post('delete_id'));
+            $timeline->delete();
+            
+            $user = Auth::getUser();
+            $ico = $user->ico->where('id','=',$this->param('id'))->first();  
+            return ['#_timelines' => $this->renderPartial('@_timelines.htm',['ico' => $ico])];
+ 
+         }
+    }    
+
+    /**
+      * LINKS PART
+      * OK
+      *
+      **/    
+   public function onAddLink(){
+        if (post('links_id')){
+            $links = IcoLinks::find(post('links_id'));
+            return ['#modalPopupBody' => $this->renderPartial('@_links_popup.htm',
+                ['title' => 'Edit Link', 'links' => $links
+              ])];
+        } else
+        return ['#modalPopupBody' => $this->renderPartial('@_links_popup.htm',['title' => 'Add New Link'])];
+    }
+    public function onLinkSave(){
+        if (post('id')) {
+            $links = IcoLinks::find(post('id'));
+        } else {
+            $links = new IcoLinks;
+            $links->ico_id = $this->param('id');
+        }
+        $links->type = post('type');
+        if (post('type') == 99) 
+            $links->other = post('other'); 
+        else
+            $links->other = "";
+        $links->url = post('url');
+        $links->description = post('description');
+        if (post('status') == 'on')
+            $links->status = 1;
+        else
+            $links->status = 0;
+        
+        $links->save();
+        Flash::success('Link Was Updated');
+
+        $user = Auth::getUser();
+        $ico = $user->ico->where('id','=',$this->param('id'))->first();  
+        return ['#_links' => $this->renderPartial('@_links.htm',['ico' => $ico])];
+    }
+    public function onLinkDelete(){
+         if (post('delete_id')) {
+            $links = IcoLinks::find(post('delete_id'));
+            $links->delete();
+            
+            $user = Auth::getUser();
+            $ico = $user->ico->where('id','=',$this->param('id'))->first();  
+            return ['#_links' => $this->renderPartial('@_links.htm',['ico' => $ico])];
+ 
+         }
+    }    }    
+

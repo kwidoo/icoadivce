@@ -1,20 +1,16 @@
-{% if length == false %}
-{% set length = 3 %}
-{% endif %}
-<div class="row">
-	{% if label %}
-    <label class="col-md-{{ length }} col-form-label">
+<div class="form-group">
+    {% if label %}
+	<label for="{{ name }}" class="col-sm-4 control-label">
     	{{ label }}
-    	<span data-validate-for="currency" style="color:red">
-    		&nbsp;<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-		</span>
 	</label>
-	{% endif %}
-	<div class="col-md-{{ length }}">
-	    <select name="{{ name }}" class="selectpicker" data-size="{{ size }} " data-style="btn btn-success btn-round" title="BTC">
-			{% for i in content %}
-			    <option {% if value == loop.index-1 %}selected{% endif %} value="{{loop.index-1}}">{{ i }}</option>
-	        {% endfor %}	
-	    </select>
+	<div class="col-sm-8">
+    {% else %}
+    <div class="col-sm-12">
+    {% endif %}
+		<select name="{{ name }}" class="form-control">
+			{% for key, i in content %}
+				<option {% if value == key %}selected{% endif %} value="{{ key }}">{{ i }}</option>
+		    {% endfor %}	    
+		</select>
 	</div>
 </div>

@@ -34,6 +34,7 @@ class Ico extends Model
     ];
 
     public $hasMany = [
+        'links' => 'Smart2be\IcoAdvice\Models\IcoLinks',
         'team' => 'Smart2be\IcoAdvice\Models\Team',
         'partners' => 'Smart2be\IcoAdvice\Models\IcoPartners',
         'publications' => 'Smart2be\IcoAdvice\Models\IcoPublications',

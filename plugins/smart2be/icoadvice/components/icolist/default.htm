@@ -1,14 +1,16 @@
 <div class="col-md-12">
-    <div class="card">
-        <div class="card-header card-header-success card-header-icon">
-            <div class="card-icon">
-                <i class="material-icons">assignment</i>
-            </div>
+    <div class="box">
+        <div class="box-header">
             <h4 class="card-title">My ICO List
             </h4>
         </div>
-        <div class="card-body">
-            <button class="btn btn-success btn-round" data-request="onIcoCreate">Create<div class="ripple-container"></div></button>
+        <div class="box-body">
+            <button 
+                class="btn btn-success btn-round" 
+                data-request="onIcoCreate">
+                Create
+                <div class="ripple-container"></div>
+            </button>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -51,10 +53,17 @@
                                 {% endif %}
                             </td>
                             <td class="td-actions text-right">
-                                <a href="{{ '/dashboard/edit/' ~ i.id }} " rel="tooltip" class="btn btn-success btn-link">
+                                <a 
+                                    href="{{ '/dashboard/edit/' ~ i.id }} " 
+                                    rel="tooltip" 
+                                    class="btn btn-success btn-round">
                                     <i class="material-icons">edit</i>
                                 </a>
-                                <button type="button" rel="tooltip" class="btn btn-danger btn-link" data-request="onIcoDelete">
+                                <button 
+                                    type="button" 
+                                    rel="tooltip" 
+                                    class="btn btn-danger btn-round" 
+                                    data-request="onIcoDelete">
                                     <i class="material-icons">delete</i>
                                 </button>
                               </td>

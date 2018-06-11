@@ -1,6 +1,6 @@
 title = "Dashboard"
 url = "/dashboard"
-layout = "dashboard"
+layout = "dashboard_lte"
 is_hidden = 0
 
 [icoList]
@@ -11,10 +11,9 @@ redirect = "/login"
 ==
 {% component 'session' %}
 
-<div class="content">
-    <div class="container-fluid">
+<section class="content">
         <div class="row">
 			{% component 'icoList' %}
 		</div>
 	</div>
-</div>
+</section>

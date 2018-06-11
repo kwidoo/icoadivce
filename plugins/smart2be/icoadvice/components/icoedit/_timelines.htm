@@ -1,57 +1,53 @@
-<div class="card-body">
-    {% partial '@_button' label='Add Timeline Point' action='onAddTimeline' target='#modalPopup' toggle='modal' %}
-	<div class="clearfix"></div>
-	<div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Description</th>
-                    <th>Status</th>
-                    <th class="text-right">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for timelines in ico.timeline  %}
-                <tr>
-                    <td>{{timelines.name}} </td>
-                    <td>{{timelines.start_date}}</td>
-                    <td>{{timelines.end_date}}</td>
-                    <td>{{timelines.description}} </td>
-                    <td>
-                        {% if timelines.status == 0 %}
-                        <span class="badge badge-info">Draft</span>
-                        {% endif %}
-                         {% if timelines.status == 1 %}
-                        <span class="badge badge-success">Published</span>
-                        {% endif %}
-                    </td>
-                   
-                    <td class="td-actions text-right">
-                        <button 
-                            type="button"  
-                            rel="tooltip" 
-                            class="btn btn-success btn-link" 
-                            data-request="onAddTimeline" 
-                            data-request-data="timelines_id: {{ timelines.id }}"
-                            data-toggle="modal" 
-                            data-target="#modalPopup">
-                            <i class="material-icons">edit</i>
-                        </button>
-                        <button 
-                            type="button" 
-                            rel="tooltip" 
-                            class="btn btn-danger btn-link" 
-                            data-request="onTimelineDelete"
-                            data-request-data="delete_id: {{ timelines.id }}">
-                            <i class="material-icons">delete</i>
-                        </button>
-                    </td>
-                </tr>
-                {% endfor %} 
-            </tbody>
-        </table>
-    </div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for timelines in ico.timeline  %}
+            <tr>
+                <td>{{timelines.name}} </td>
+                <td>{{timelines.start_date}}</td>
+                <td>{{timelines.end_date}}</td>
+                <td>{{timelines.description}} </td>
+                <td>
+                    {% if timelines.status == 0 %}
+                    <span class="badge badge-info">Draft</span>
+                    {% endif %}
+                     {% if timelines.status == 1 %}
+                    <span class="badge badge-success">Published</span>
+                    {% endif %}
+                </td>
+               
+                <td class="td-actions text-right">
+                    <button 
+                        type="button"  
+                        rel="tooltip" 
+                        class="btn btn-success btn-round" 
+                        data-request="onAddTimeline" 
+                        data-request-data="timelines_id: {{ timelines.id }}"
+                        data-toggle="modal" 
+                        data-target="#modalPopup">
+                        <i class="material-icons">edit</i>
+                    </button>
+                    <button 
+                        type="button" 
+                        rel="tooltip" 
+                        class="btn btn-danger btn-round" 
+                        data-request="onTimelineDelete"
+                        data-request-data="delete_id: {{ timelines.id }}">
+                        <i class="material-icons">delete</i>
+                    </button>
+                </td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
 </div>

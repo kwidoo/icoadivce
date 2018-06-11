@@ -1,93 +1,91 @@
-<div class="card-body">
-    
-    {% partial '@_button' label='Add Goal' action='onAddGoal' target='#modalPopup' toggle='modal' %}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Capital</th>
+                <th>Nomination</th>
+                <th>Status</th>
+                <th>Completed</th>
+                <th class="text-right">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for goals in ico.goals  %}
+            <tr>
+                <td>{{goals.name| length > 30 ? goals.name|slice(0, 30) ~ '...' : goals.name}}</td>
 
-	<div class="clearfix"></div>
-	<div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Capital</th>
-                    <th>Nomination</th>
-                    <th>Status</th>
-                    <th>Completed</th>
-                    <th class="text-right">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for goals in ico.goals  %}
-                <tr>
-                    <td>{{goals.name}}</td>
-                    <td>{{goals.description}}</td>
-                    <td>{{goals.cap}}</td>
-                    <td>
-                        {% if goals.nomination == 0 %}
-                        <span>BTC</span>
-                        {% endif %}
-                        {% if goals.nomination == 1 %}
-                        <span>Ethereum</span>
-                        {% endif %}
-                        {% if goals.nomination == 2 %}
-                        <span>Litecoin</span>
-                        {% endif %}
-                        {% if goals.nomination == 3 %}
-                        <span>Neo</span>
-                        {% endif %}
-                        {% if goals.nomination == 4 %}
-                        <span>Euro</span>
-                        {% endif %}
-                        {% if goals.nomination == 5 %}
-                        <span>US Dollar</span>
-                        {% endif %}
-                        {% if goals.nomination == 6 %}
-                        <span>Other</span>
-                        {% endif %}
-                    </td>
-                    
-                    <td>
-                        {% if goals.status == 0 %}
-                        <span class="badge badge-info">Draft</span>
-                        {% endif %}
-                         {% if goals.status == 1 %}
-                        <span class="badge badge-success">Published</span>
-                        {% endif %}
-                    </td>
-                    <td>
-                        {% if goals.reached == 0 %}
-                        <span class="badge badge-danger">Not Reached</span>
-                        {% endif %}
-                        {% if goals.reached == 1 %}
-                        <span class="badge badge-warning">In Progress</span>
-                        {% endif %}
-                         {% if goals.reached == 2 %}
-                        <span class="badge badge-success">Reached</span>
-                        {% endif %}
-                    </td>                    
-                    <td class="td-actions text-right">
+                <td>{{goals.description| length > 30 ? goals.description|slice(0, 30) ~ '...' : goals.description}}</td>
+                <td>{{goals.cap}}</td>
+                <td>
+                    {% if goals.currency == 0 %}
+                    <span>BTC</span>
+                    {% endif %}
+                    {% if goals.currency == 1 %}
+                    <span>Ethereum</span>
+                    {% endif %}
+                    {% if goals.currency == 2 %}
+                    <span>Litecoin</span>
+                    {% endif %}
+                    {% if goals.currency == 3 %}
+                    <span>Neo</span>
+                    {% endif %}
+                    {% if goals.currency == 4 %}
+                    <span>Euro</span>
+                    {% endif %}
+                    {% if goals.currency == 5 %}
+                    <span>US Dollar</span>
+                    {% endif %}
+                    {% if goals.currency == '99' %}
+                        <span>{{goals.other| length > 15 ? goals.other|slice(0, 15) ~ '...' : goals.other}}</span>
+                    {% endif %}
+                </td>
+                
+                <td>
+                    {% if goals.status == 0 %}
+                    <span class="badge badge-info">Draft</span>
+                    {% endif %}
+                     {% if goals.status == 1 %}
+                    <span class="badge badge-success">Published</span>
+                    {% endif %}
+                </td>
+                <td>
+                    {% if goals.reached == 0 %}
+                    <span class="badge badge-danger">Not Reached</span>
+                    {% endif %}
+                    {% if goals.reached == 1 %}
+                    <span class="badge badge-warning">In Progress</span>
+                    {% endif %}
+                     {% if goals.reached == 2 %}
+                    <span class="badge badge-success">Reached</span>
+                    {% endif %}
+                </td>                    
+                <td class="td-actions text-right">
+                <button 
+                        type="button"  
+                        rel="tooltip" 
+                        class="btn btn-success btn-round" 
+                        data-request="onAddGoal" 
+                        data-request-data="goals_id: {{ goals.id }}"
+                        data-toggle="modal" 
+                        data-target="#modalPopup">
+                        <i class="material-icons">edit</i>
+                    </button>
                     <button 
-                            type="button"  
-                            rel="tooltip" 
-                            class="btn btn-success btn-link" 
-                            data-request="onAddGoal" 
-                            data-request-data="goals_id: {{ goals.id }}"
-                            data-toggle="modal" 
-                            data-target="#modalPopup">
-                            <i class="material-icons">edit</i>
-                        </button>
-                        <button 
-                            type="button" 
-                            rel="tooltip" 
-                            class="btn btn-danger btn-link" 
-                            data-request="onGoalDelete"
-                            data-request-data="delete_id: {{ goals.id }}">
-                            <i class="material-icons">delete</i>
-                        </button>
-                      </td>
-                </tr>
-                {% endfor %} 
-            </tbody>
-        </table>
-    </div>
+                        id="delete"
+                        type="button" 
+                        rel="tooltip" 
+                        class="btn btn-danger btn-round" 
+                        data-request="onGoalDelete"
+                        data-request-data="delete_id: {{ goals.id }}"
+                        data-request-confirm='Are you sure?'
+                        >
+                        <i class="material-icons">delete</i>
+                    </button>
+                  </td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>
 </div>

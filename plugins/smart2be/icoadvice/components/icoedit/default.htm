@@ -1,77 +1,134 @@
-{% flash %}
-    <div class="col-md-12">
-        <div class="alert alert-{{ type }}">{{ message }}</div>
-    </div>
-{% endflash %}
-
-<div class="col-md-12">
-    <form class="form-horizontal" role="form" name="icoForm" data-request="{{ __SELF__ }}::onSave" data-request-success="$('.confirm-container').removeClass('hide');">
-        {{ form_token() }} 
-        {{ form_sessionKey() }}
-        {% partial '@_status_bar' %}
-
-        <div class="card">
-            
-            {% partial '@_project_main' %}
-            <br>
-            <br>
+<div class="col-md-9">
+    <div class="box">
+        <form class="form-horizontal" role="form" name="icoForm" data-request="{{ __SELF__ }}::onSave" data-request-success="$('.confirm-container').removeClass('hide');">
+            {{ form_token() }} 
+            {{ form_sessionKey() }}
+            <div class="box-header">
+                <h3>ICO General Info</h3>
+            </div>
+            <div class="box-body">
+                {% partial '@_project_main' %}
                 {% partial '@_capital' %}
-            <br>
-            <br>
                 {% partial '@_description' %}
-            <br>
-            <br>
-                {% partial '@_card_header_f' title="btc" name="Project's Tokens"%}
-                <div id="_tokens">
-                     {% partial '@_tokens' %}
-                </div>
-                {% partial '@_card_header' title="calendar_today" name="Project Dates"%}
-                <div id="_dates">
-                    {% partial '@_dates' %}
-                </div>
-                {% partial '@_card_header' title="calendar_today" name="Project Timeline"%}
-                <div id="_timelines">
-                    {% partial '@_timelines' %}
-                </div>
-                {% partial '@_card_header_f' title="dot-circle-o" name="Goals"%}
-                <div id="_goals">
-                    {% partial '@_goals' %}
-                </div>
-                {% partial '@_card_header' title="person_add" name="Team"%}
-                <div id="_team">
-                    {% partial '@_team' %}
-                </div>
-
-                {% partial '@_card_header_f' title="map" name="Project Locations"%}
-                <div id="_locations">
-                    {% partial '@_locations' %}
-                </div>
-
-                {% partial '@_card_header_f' title="user-circle-o" name="Partners"%}
-                <div id="_partners">
-                    {% partial '@_partners' %}
-                </div>
-
-                {% partial '@_card_header_f' title="link" name="Publications"%}
-                <div id="_publications">
-                    {% partial '@_publications' %}
-                </div>
-            <br>
-            <div class="card-footer ">
+            </div>
+            <div class="box-footer ">
                 <div class="col-md-9">
-
-                    <input type="submit" class="btn btn-fill btn-success" name="submit" id="update0" value="Update">
-                    &nbsp;
-                    <input type="submit" class="btn btn-fill btn-success" name="submit" id="update1" value="Update and Close">
-                
+                    <input 
+                        type="submit" 
+                        class="btn btn-fill btn-success" 
+                        name="submit" 
+                        id="update0" 
+                        value="Update">
                 </div>
                 <div class="col-md-3" >
-                    <a href="{{ '/dashboard' }}"  class="btn btn-fill btn-default" style="float:right">Close</a>
+                    <a 
+                        href="{{ '/dashboard' }}"  
+                        class="btn btn-fill btn-default" 
+                        style="float:right">Close</a>
                 </div>
             </div>
-        </div> 
-    </form>
+        </form>
+    </div>
 </div>
+<div class="col-md-9">
+    <div class="box">  
+        <div class="box-header">        
+            <h3>Links</h3>
+            {% partial '@_button' label='Add Link' action='onAddLink' target='#modalPopup' toggle='modal' %}
+        </div>    
+        <div id="_links" class="box-body">
+            {% partial '@_links' %}
+        </div>
+    </div>
+    <div class="box">  
+        <div class="box-header">        
+            <h3>Contacts</h3>
+            {% partial '@_button' label='Add Contact' action='onAddContact' target='#modalPopup' toggle='modal' %}
+        </div>    
+        <div id="_contacts" class="box-body">
+            {% partial '@_tokens' %}
+
+        </div>
+    </div>
+    <div class="box">  
+        <div class="box-header">        
+            <h3>Project's Tokens</h3>
+            {% partial '@_button' label='Add Token' action='onTokenEdit' target='#modalPopup' toggle='modal' %}
+        </div>    
+        <div id="_tokens" class="box-body">
+            {% partial '@_tokens' %}
+
+        </div>
+    </div>    <div class="box">  
+        <div class="box-header">        
+            <h3>Project's Dates</h3>
+            {% partial '@_button' label='Add Date' action='onAddDate' target='#modalPopup' toggle='modal' %}
+        </div>    
+        <div id="_dates" class="box-body">
+            {% partial '@_dates' %}
+
+        </div>
+    </div>    
+    <div class="box">  
+        <div class="box-header">        
+            <h3>Project's Timeline</h3>
+            {% partial '@_button' label='Add Timline Point' action='onAddTimeline' target='#modalPopup' toggle='modal' %}
+        </div>    
+        <div id="_timelines" class="box-body">
+            {% partial '@_timelines' %}
+
+        </div>
+    </div>                  
+     <div class="box">  
+        <div class="box-header">        
+            <h3>Project's Goals</h3>
+            {% partial '@_button' label='Add Goal' action='onAddGoal' target='#modalPopup' toggle='modal' %}
+        </div>    
+        <div id="_goals" class="box-body">
+            {% partial '@_goals' %}
+        </div>
+    </div>      
+     <div class="box">  
+        <div class="box-header">        
+            <h3>Team</h3>
+            {% partial '@_button' label='Add Team Member' action='onAddTeamMember' target='#modalPopup' toggle='modal' %}
+        </div>    
+        <div id="_team" class="box-body">
+            {% partial '@_team' %}
+
+        </div>
+    </div>          
+    <div class="box">  
+        <div class="box-header">        
+            <h3>Project's Locations</h3>
+            {% partial '@_button' label='Add Location' action='onAddLocation' target='#modalPopup' toggle='modal' %}
+        </div>    
+        <div id="_locations" class="box-body">
+            {% partial '@_locations' %}
+
+        </div>
+    </div>          
+    <div class="box">  
+        <div class="box-header">        
+            <h3>Project's Partners</h3>
+            {% partial '@_button' label='Add Partner' action='onAddParnter' target='#modalPopup' toggle='modal' %}
+        </div>    
+        <div id="_partners" class="box-body">
+            {% partial '@_partners' %}
+
+        </div>
+    </div> 
+         <div class="box">  
+        <div class="box-header">        
+            <h3>Publications</h3>
+            {% partial '@_button' label='Add Publication' action='onAddPublication' target='#modalPopup' toggle='modal' %}
+        </div>    
+        <div id="_publications" class="box-body">
+            {% partial '@_publications' %}
+        </div>
+    </div>                       
+</div>
+
 <div class="control-popup modal fade" id="modalPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content" id="modalPopupBody">

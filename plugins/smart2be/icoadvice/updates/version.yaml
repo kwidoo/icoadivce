@@ -51,3 +51,6 @@
 1.0.18:
     - 'Created table smart2be_icoadvice_ico_partners'
     - builder_table_create_smart2be_icoadvice_ico_partners.php
+1.0.19:
+    - 'Created table smart2be_icoadvice_ico_links'
+    - builder_table_create_smart2be_icoadvice_links.php

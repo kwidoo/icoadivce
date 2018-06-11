@@ -1,0 +1,69 @@
+
+<form class="form-horizontal" 
+	  role="form" name="tokenForm" 
+	  data-request="{{ __SELF__ }}::onLinkSave" 
+	  data-request-success="$('#modalPopupBody').html('');$('#modalPopup').modal('hide');"
+	  data-request-validate
+	  data-request-flash
+	>  
+
+	{{ form_token() }}     
+    {{ form_sessionKey() }}
+
+    {% partial '@_hidden' name='id' value=links.id %}
+	<div class="box">
+		<div class="box-header">
+			<h3>{{ title }}</h3>
+		</div>
+	    <div class="box-body">
+			<div id="error" class="alert alert-dismissable" data-validate-error>
+        		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        		<p data-message></p>
+    		</div>
+			{% partial '@_checkbox' label="Publish" name="status" checked=publications.status %} 
+			{% partial '@_select' 
+            		label="Link Type" 
+            		name="type" 
+            		size="3" 
+            		content = {'0':'Website',
+            				   '1':'Whitepaper',
+            				   '2':'Bounty',
+            				   '3':'LinkedIn',
+            				   '4':'Facebook',
+            				   '5':'Twitter',
+            				   '99':'Other'}
+            		value = links.type 
+            %}
+			{% partial '@_field' label="Other (please specify)" name="other" value=links.other type="text" %}
+			{% partial '@_field' label="Link URL" name="url" value=links.url type="text" %}
+			<div class="col-md-12">
+				{% partial '@_textarea' 
+					label="Link Description (max. 1000 symbols)" 
+					name="description" 
+					value=links.description 
+					size=4 
+					leghtn=1000 
+				%}
+			</div>
+			
+        </div>
+        <div class="box-footer ">
+			<div class="col-md-12">
+	            <button 
+	            	data-attach-loading 
+	            	id="submit" 
+	            	type="submit" 
+	            	class="btn btn-round btn-success">
+	            	Save
+	        	</button>
+	            <button 
+	            	type="button" 
+	            	class="btn btn-default btn-round" 
+	            	style="float:right" 
+	            	data-dismiss="modal">
+	            	Close
+	            </button>
+	        </div> 
+        </div>
+    </div>
+</form>

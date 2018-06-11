@@ -1,6 +1,4 @@
-<div class="card-body" >
-    {% partial '@_button' label='Add Token' action='onTokenEdit' target='#modalPopup' toggle='modal' %}
-	<div class="clearfix"></div>
+<div class="box-body" >
 	<div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -16,7 +14,7 @@
             <tbody>
                 {% for token in ico.tokens  %}
                 <tr>
-                    <td>{{token.name}}</td>
+                    <td>{{token.name| length > 30 ? token.name|slice(0, 30) ~ '...' : token.name}}</td>
                     <td>
                         {% if token.type == 0 %}
                         Ethereum
@@ -33,13 +31,14 @@
                         {% if token.type == 4 %}
                         PoS
                         {% endif %}                       
-                        {% if token.type == 6 %}
+                        {% if token.type == 99 %}
                         Other
                         {% endif %}
 
                     </td>
                     <td>{{token.decimal}} </td>
-                    <td>{{token.tracker}} </td>
+                    <td><a href="{{token.tracker}}" alt="Token Tracker">{{token.tracker| length > 30 ? token.tracker|slice(0, 30) ~ '...' : token.tracker}}</a></td>
+
                     <td>
                         {% if token.status == 0 %}
                         <span class="badge badge-info">Draft</span>
@@ -51,21 +50,21 @@
                    
                     <td class="td-actions text-right">
 
-
                         <button 
                             type="button" 
                             data-toggle="modal" 
                             data-target="#modalPopup"
                             data-request-data="token_id: {{token.id}}"
                             data-request="onTokenEdit"
-                            class="btn btn-success btn-link">
+                            class="btn btn-success btn-round">
                             <i class="material-icons">edit</i>
                         </button>
                         <button 
                             type="button" 
                             rel="tooltip" 
-                            class="btn btn-danger btn-link" 
+                            class="btn btn-danger btn-round" 
                             data-request="onTokenDelete"
+                            data-request-confirm='Are you sure?'
                             data-request-data="token_id: {{token.id}}">
                             <i class="material-icons">delete</i>
                         </button>

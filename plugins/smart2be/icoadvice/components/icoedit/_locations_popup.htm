@@ -10,21 +10,25 @@
     {{ form_sessionKey() }}
 
     {% partial '@_hidden' name='id' value=locations.id %}
-	<div class="card ">
-		{% partial '@_card_header_f' name=title title='map' %}
-
-	    <div class="card-body">
-	    	<div class="alert alert-danger" data-validate-error>
-    			<p data-message></p>
-			</div>
+	<div class="box">
+		<div class="box-header">
+			<h3>{{ title }}</h3>
+		</div>
+	    <div class="box-body">
+			<div id="error" class="alert alert-dismissable" data-validate-error>
+        		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        		<p data-message></p>
+    		</div>
 			{% partial '@_checkbox' label="Publish" name="status" checked=locations.status %} 
 			<h4>&nbsp;</h4>
 			{% partial '@_field' label="Location's Name" name="name" value=locations.name type="text" %}
 			{% partial '@_field' label="Location's Legal Name" name="legal" value=locations.legal type="text" %}
+			<div class="col-md-12">
 			{% partial '@_textarea' label="Location's Address (max. 1000 symbols)" name="address" value=locations.address size=4 leghtn=1000 %}
+			</div>
 				
         </div>
-        <div class="card-footer ">
+        <div class="box-footer">
 			<div class="col-md-12">
 	            <button 
 	            	data-attach-loading 
@@ -35,7 +39,7 @@
 	        	</button>
 	            <button 
 	            	type="button" 
-	            	class="btn btn-green btn-fill" 
+	            	class="btn btn-default btn-fill" 
 	            	style="float:right" 
 	            	data-dismiss="modal">
 	            	Close

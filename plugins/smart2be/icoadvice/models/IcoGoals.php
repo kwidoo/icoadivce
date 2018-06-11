@@ -19,6 +19,12 @@ class IcoGoals extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'name' => 'required|string',
+        'description' => 'required|max:1600',
+        'cap' => 'required',
+        'currency' =>'required|digits_between:0,99',    // 99 - всегда Other
+        'other' => 'required_if:currency,99|string',
+        'reached' => 'required|digits_between:0,2'      // 
     ];
 
     /**

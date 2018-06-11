@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
-	jQuery('#published').click(function(){
-		jQuery(this).request('onPublish');
-		console.log('toggled');
-	});
+	//jQuery('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+      //      checkboxClass: 'icheckbox_flat-green',
+       //     radioClass   : 'iradio_flat-green'
+       // });
 });

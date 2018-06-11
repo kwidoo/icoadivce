@@ -4,12 +4,13 @@ layout = "login_layout"
 is_hidden = 0
 
 [account]
-redirect = "/dashboard"
+redirect = 0
 paramCode = "code"
 forceSecure = 0
 
 [session]
 security = "guest"
+redirect = "/dashboard"
 ==
 {% component 'session' %}
 

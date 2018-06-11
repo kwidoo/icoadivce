@@ -1,6 +1,6 @@
 title = "Edit Your ICO"
 url = "/dashboard/edit/:id"
-layout = "dashboard"
+layout = "dashboard_lte"
 is_hidden = 0
 
 [icoEdit]
@@ -11,10 +11,13 @@ redirect = "/login"
 ==
 {% component 'session' %}
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-			{% component 'icoEdit' %}
-		</div>
+<section class="content">
+    <div class="row">
+    	{% flash %}
+    <div class="alert alert-{{ type }}">
+        {{ message }}
+    </div>
+{% endflash %}
+		{% component 'icoEdit' %}
 	</div>
-</div>
+</section>

@@ -51,7 +51,7 @@ class Icos extends ComponentBase
        
         // Сохранение ICO и соответствующего юзера
         $user = Auth::getUser();
-        $ico = Ico::create(['name' => post('name'), 'tiker' => post('name')]);
+        $ico = Ico::create(['name' => post('name'), 'tiker' => post('tiker')]);
         $ico->users = [$user];
         if (post('file-upload')) $ico->logo()->add($file);
         $ico->save();

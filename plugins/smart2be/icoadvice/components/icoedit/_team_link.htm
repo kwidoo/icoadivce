@@ -1,13 +1,20 @@
 {% for tp in team_link %}
 <tr>
     <td>
-        <input type="hidden" name="link_id{{tp.id}}" value="{{tp.id}}">
-        <select name="type{{tp.id}}" class="selectpicker" data-size="3" data-style="btn btn-green btn-round" >
-            <option {% if tp.type == 0 %}selected{%endif%} value="0">LinkedIn</option>
-            <option {% if tp.type == 1 %}selected{%endif%} value="1">Facebook</option>
-            <option {% if tp.type == 2 %}selected{%endif%} value="2">Twitter</option>
-            <option {% if tp.type == 20 %}selected{%endif%} value="20">Other</option>
-        </select>
+        {% partial '@_hidden' name='link_id' ~ tp.id  value = tp.id %}
+        {% partial '@_select' 
+                    label='' 
+                    name='type' ~ tp.id 
+                    size='3' 
+                    content = {'0':'Linkedin',
+                               '1':'Facebook',
+                               '2':'Twitter',
+                               '3':'Slack',
+                               '4':'Git',
+                               '5':'Blog',
+                               '99':'Other'}
+                    value = tp.type 
+            %}
     </td>
     <td>
         <input name="other{{tp.id}}" type="text" class="form-control  value="{{ tp.type }}">
@@ -20,7 +27,7 @@
         <button 
             type="button" 
             rel="tooltip" 
-            class="btn btn-danger btn-link" 
+            class="btn btn-danger btn-round" 
             data-request="onDeleteTeamLink" data-request-data="delete_id: {{tp.id}}">
             <i class="material-icons">delete</i>
         </button>
