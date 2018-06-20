@@ -17,6 +17,10 @@ class IcoPartners extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'name' => 'required|string|max:50',
+        'url' => 'nullable|url',
+        'description' => 'required|string|max:1000',
+        'status' => 'digits_between:0,1'
     ];
 
     /**

@@ -20,11 +20,12 @@ class IcoGoals extends Model
      */
     public $rules = [
         'name' => 'required|string',
-        'description' => 'required|max:1600',
+        'description' => 'nullable|max:1000',
         'cap' => 'required',
         'currency' =>'required|digits_between:0,99',    // 99 - всегда Other
         'other' => 'required_if:currency,99|string',
-        'reached' => 'required|digits_between:0,2'      // 
+        'reached' => 'required|digits_between:0,2',
+        'status' => 'digits_between:0,1'      // 
     ];
 
     /**

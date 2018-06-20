@@ -1,3 +1,12 @@
+{% set status = {'0':'Draft',
+                 '1':'Published'
+            } 
+%}
+{% set types = {'0':'Founder',
+               '1':'Employee',
+               '2':'Advisor'
+            } 
+%}
 <div class="table-responsive">
     <table class="table table-striped">
         {% set test = ico.team %}
@@ -18,25 +27,13 @@
                 <td>{{team.first_name| length > 15 ? team.first_name|slice(0, 15) ~ '...' : team.first_name}}</td>
                 <td>{{team.last_name| length > 15 ? team.last_name|slice(0, 15) ~ '...' : team.last_name}}</td>
                 <td>
-                    {% if team.type == 0 %}
-                    <span class="badge badge-success">Founder</span>
-                    {% endif %}
-                    {% if team.type == 1 %}
-                    <span class="badge badge-warning">Employee</span>
-                    {% endif %}
-                    {% if team.type == 2 %}
-                    <span class="badge badge-default">Advisor</span>
-                    {% endif %}
+                    <span class="badge badge-success">{{ types[team.type] }}</span>
                 </td>
                 <td>{{team.title| length > 30 ? team.title|slice(0, 30) ~ '...' : team.title}}</td>
                 <td>
-                    {% if team.status == 0 %}
-                    <span class="badge badge-info">Draft</span>
-                    {% endif %}
-                     {% if team.status == 1 %}
-                    <span class="badge badge-success">Published</span>
-                    {% endif %}
-                </td>
+                    <span class="badge">{{ status[team.status] }} </span>
+                </td>               
+
                 <td>
                 	{% if team.links %}
                         {% for tp in team.links %}
@@ -51,7 +48,6 @@
                             {% endif %}
                         {% endfor %}
                 	{% endif %}
-					
               	</td>
                  
                 <td class="td-actions text-right">

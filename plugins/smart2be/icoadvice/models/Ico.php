@@ -19,6 +19,18 @@ class Ico extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'name' => 'required|string',
+        'tiker' => 'required|string|max:20',
+        'start_date' => 'required|date',
+        'end_date' => 'required_if:start_date,null|date|after_or_equal:start_date',
+        'cap_nomination' => 'required|digits_between:0,99',
+        'other' => 'required_if:cap_nomination,99',
+        'soft_cap' => 'nullable|string',
+        'hard_cap' => 'nullable|string',
+        'slogan' => 'nullable|string',
+        'short' => 'nullable|string',
+        'description' => 'nullable|string'
+
     ];
 
     /**
@@ -35,6 +47,7 @@ class Ico extends Model
 
     public $hasMany = [
         'links' => 'Smart2be\IcoAdvice\Models\IcoLinks',
+        'contacts' => 'Smart2be\IcoAdvice\Models\IcoContacts',
         'team' => 'Smart2be\IcoAdvice\Models\Team',
         'partners' => 'Smart2be\IcoAdvice\Models\IcoPartners',
         'publications' => 'Smart2be\IcoAdvice\Models\IcoPublications',

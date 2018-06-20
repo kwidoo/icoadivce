@@ -1,0 +1,37 @@
+{% for i in ico %}
+    {% set difference = date(i.start_date).diff(date(now)) %}
+    {% set leftDays = difference.days %}
+    <div class="col-lg-4 col-sm-6">
+        <div class="single-ico-list-box">
+            <div class="thumb">
+                {% if i.logo %}
+                    <img src="{{ i.logo.path | resize(200, 200, { mode: 'crop', quality: '80', extension: 'png' })}}" alt="{{ i.name }} Logo">
+                {% else %}
+                    <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg' }}" alt="{{ i.name }} Logo"/>
+                {% endif %}
+            </div>
+            <div class="content"> 
+                {% if i.rating %}
+                    <ul class="ratings">
+                        <li>
+                            {% for a in i %}
+                            <i class="fas fa-star"></i>
+                            {% endfor %}
+                        </li>
+                    </ul>
+                {% endif %}
+                <h4>{{ i.name }}
+                {% if  i.slogan %}
+                    <br/><small>{{ i.slogan }}</small>
+                {% elseif i.short %}
+                    <br/><small>{{ i.short }}</small>
+                {% else %}
+                    <br>
+                {% endif %}
+                </h4>
+               {{ leftDays }} Days Before ICO
+                <a href="#" class="boxed-btn-rounded"><i class="fas fa-caret-right"></i> <span class="title">Read More</span></a>
+            </div>
+        </div>
+    </div>
+{% endfor %}

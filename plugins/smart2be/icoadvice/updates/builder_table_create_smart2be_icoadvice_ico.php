@@ -24,7 +24,10 @@ class BuilderTableCreateSmart2beIcoadviceIco extends Migration
             $table->integer('status')->default(0);
             $table->boolean('approved')->default(false);
             $table->integer('admin_id')->nullable();
-            $table->dateTime('approved_at')->nullable();;
+            $table->integer('featured_id')->nullable(); 
+            $table->timestamp('start_date')->nullable();
+            $table->timestamp('end_date')->nullable();
+            $table->timestamp('approved_at')->nullable();
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
             $table->timestamp('deleted_at')->nullable();

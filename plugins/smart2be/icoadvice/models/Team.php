@@ -17,6 +17,10 @@ class Team extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'first_name' => 'required|string|max:50',
+        'last_name' => 'required|string|max:50',
+        'type' => 'required|digits_between:0,2',
+        'status' => 'required|digits_between:0,1'
     ];
 
     /**
@@ -30,7 +34,7 @@ class Team extends Model
         'documents' => ['Smart2be\IcoAdvice\Models\TeamDocuments', 'key' => 'team_id']
     ];
 
-    public $attachMany = [
+    public $attachOne = [
         'photo' => ['System\Models\File'],
     ];
 }

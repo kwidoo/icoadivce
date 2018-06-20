@@ -1,33 +1,54 @@
+{% set types = {'0':'Website',
+               '1':'Email',
+               '2':'Phone',
+               '3':'Address',
+               '3':'Skype',
+               '4':'Telegram',
+               '5':'Whatsapp',
+               '6':'WeChat',
+               '7':'QQ',
+               '8':'ICQ',
+               '99':'Other'}
+            %}
+{% set status = {'0':'Draft',
+                 '1':'Published'
+                } 
+%}
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Logo</th>
-                <th>URL</th>
-                <th>Description</th>
+                <th>Type</th>
+                <th>Value</th>
+                <th>Description</th> 
                 <th>Status</th>
                 <th class="text-right">Actions</th>
             </tr>
         </thead>
         <tbody>
-            {% for publications in ico.publications  %}
-            {% partial "@_list_row" 
-                columns = {
-                    '0': 
-                        (publications.image) ? 
-                                '<a href="' ~ publications.url ~ '" >
-                                    <img src="' ~ publications.image.path ~ '" width="128px" />
-                                </a>':
-                                '<img src="/plugins/smart2be/icoadvice/assets/images/no-logo-128x64.svg" width="128px" />',
-                    '1': publications.url,
-                    '2': publications.description,
-                    '3': (publications.status == 0) ? '<span class="badge badge-info">Draft</span>' : '<span class="badge badge-success">Published</span>',
-                    '4': '<button 
+            
+            {% for contacts in ico.contacts  %}
+            <tr>
+                <td>
+                    {% if contacts.type == 99 %} 
+                        <span>{{contacts.other| length > 15 ? contacts.other|slice(0, 15) ~ '...' : contacts.other}}</span>
+                    {% else%}
+                        <span>{{ types[contacts.type] }}</span>
+                    {% endif %}
+                    
+                </td>
+                <td>{{contacts.value| length > 15 ? contacts.value|slice(0, 15) ~ '...' : contacts.value}}</td>
+                <td>{{contacts.description| length > 30 ? contacts.description|slice(0, 30) ~ '...' : contacts.description}}</td>                 
+                <td>
+                    <span class="badge">{{ status[contacts.status] }} </span>
+                </td>
+                <td class="text-right">
+                    <button 
                         type="button"  
                         rel="tooltip" 
                         class="btn btn-success btn-round" 
-                        data-request="onAddPublication" 
-                        data-request-data="publications_id: ' ~  publications.id ~ '"
+                        data-request="onAddLink" 
+                        data-request-data="contacts_id: {{ contacts.id }}"
                         data-toggle="modal" 
                         data-target="#modalPopup">
                         <i class="material-icons">edit</i>
@@ -36,12 +57,12 @@
                         type="button" 
                         rel="tooltip" 
                         class="btn btn-danger btn-round" 
-                        data-request="onPublicationDelete"
-                        data-request-data="delete_id: ' ~ publications.id ~ '"
+                        data-request="onLinkDelete"
+                        data-request-data="delete_id: {{ contacts.id }}"
                         >
                         <i class="material-icons">delete</i>
-                    </button>' } 
-            %}
+                    </button>
+                </td>
             {% endfor %} 
         </tbody>
     </table>

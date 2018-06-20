@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ this.page.title }} | Premium ICO List</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="{{ [
+                            'assets/css/bootstrap.min.css',
+                            'assets/css/flaticon.css',
+                            'assets/css/bootstrap-datepicker.min.css',
+                            'assets/css/fontawesome-all.min.css',
+                            'assets/css/animate.css',
+                            'assets/css/owl.carousel.min.css', 
+                            'assets/css/magnific-popup.css',
+                            'assets/css/style.css',
+                            'assets/css/responsive.css',
+                            'assets/css/goal.scss',
+                            'assets/css/timeline.scss'] 
+                            | theme }}">
+</head>
+
+<body> 
+
+    {% partial 'top-menu' %}
+    {% page %}
+    {% partial 'footer' %}
+
+    <script src="{{[
+        'assets/js/jquery.js',
+        'assets/js/popper.min.js', 
+        'assets/js/bootstrap.min.js',
+        'assets/js/owl.carousel.min.js',
+        'assets/js/jquery.magnific-popup.js',
+        'assets/js/waypoints.min.js',
+        'assets/js/waypoints.min.js',
+        'assets/js/wow.min.js',
+        'assets/js/bootstrap-datepicker.min.js', 
+        'assets/js/jquery.counterup.min.js'
+        ] |theme }}"></script>
+    <script src="{{'assets/js/main.js' |theme}}"></script>
+    
+</body>
+</html>

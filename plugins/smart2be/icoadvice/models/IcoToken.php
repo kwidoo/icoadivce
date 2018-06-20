@@ -20,6 +20,9 @@ class IcoToken extends Model
         'name' => 'required|string',
         'type' => 'required|digits_between:0,99', 
         'other' => 'required_if:type,99|string',
+        'price' => 'required|string',
+        'nomination' => 'required|digits_between:0,99',
+        'other_currency' => 'required_if:nomination,99',
         'decimal' => 'required',
         'tracker' => 'nullable|url',
     ];

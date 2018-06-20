@@ -1,3 +1,17 @@
+{% set types = {'0':'Ethereum',
+                   '1':'Neo',
+                   '2':'Waves',
+                   '3':'Neo',
+                   '4':'Waves',
+                   '5':'PoW',
+                   '6':'PoS',
+                   '99':'Other'
+                }
+%}
+{% set status = {'0':'Draft',
+                 '1':'Published'
+                } 
+%}
 <div class="box-body" >
 	<div class="table-responsive">
         <table class="table table-striped">
@@ -16,36 +30,18 @@
                 <tr>
                     <td>{{token.name| length > 30 ? token.name|slice(0, 30) ~ '...' : token.name}}</td>
                     <td>
-                        {% if token.type == 0 %}
-                        Ethereum
-                        {% endif %}
-                        {% if token.type == 1 %}
-                        Neo
-                        {% endif %}
-                        {% if token.type == 2 %}
-                        Waves
-                        {% endif %}
-                        {% if token.type == 3 %}
-                        PoW
-                        {% endif %}
-                        {% if token.type == 4 %}
-                        PoS
-                        {% endif %}                       
                         {% if token.type == 99 %}
-                        Other
+                            {{token.other| length > 15 ? token.other|slice(0, 15) ~ '...' : token.other}}
+                        {% else %}
+                            {{ types[token.type ]}}
                         {% endif %}
-
+                        
                     </td>
                     <td>{{token.decimal}} </td>
                     <td><a href="{{token.tracker}}" alt="Token Tracker">{{token.tracker| length > 30 ? token.tracker|slice(0, 30) ~ '...' : token.tracker}}</a></td>
 
                     <td>
-                        {% if token.status == 0 %}
-                        <span class="badge badge-info">Draft</span>
-                        {% endif %}
-                         {% if token.status == 1 %}
-                        <span class="badge badge-success">Published</span>
-                        {% endif %}
+                        <span class="badge">{{ status[token.status] }} </span>
                     </td>
                    
                     <td class="td-actions text-right">

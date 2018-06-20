@@ -1,4 +1,18 @@
-
+{% set currency = {'0':'BTC',
+                   '1':'Ethereum',
+                   '2':'Litecoin',
+                   '3':'Neo',
+                   '4':'Waves',
+                   '5':'Euro',
+                   '6':'US Dollar',
+                   '99':'Other'
+                }
+%}
+{% set reached = {'0':'Not Reached',
+                  '1':'In Progress',
+                  '2':'Reached',
+                } 
+%}
 <form class="form-horizontal" 
 	  role="form" name="tokenForm" 
 	  data-request="{{ __SELF__ }}::onGoalSave" 
@@ -35,13 +49,7 @@
             		label="Nomination" 
             		name="currency" 
             		size="3" 
-            		content = {'0':'BTC',
-            				   '1':'Ethereum',
-            				   '2':'Litecoin',
-            				   '3':'Neo',
-            				   '4':'Euro',
-            				   '5':'US Dollar',
-            				   '99':'Other'}
+            		content = currency
             		value = goals.currency 
             %}
 			{% partial '@_field' label="Other (please specify)" name="other" value=goals.other type="text" %}  	
@@ -49,9 +57,7 @@
             		label="Reached" 
             		name="reached" 
             		size="3" 
-            		content = {'0':'Not Reached',
-            				   '1':'In Progress',
-            				   '2':'Reached'}
+            		content = reached
             		value = goals.reached 
             %}            
         </div>

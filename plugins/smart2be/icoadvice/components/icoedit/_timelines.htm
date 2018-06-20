@@ -1,3 +1,7 @@
+{% set status = {'0':'Draft',
+                 '1':'Published'
+            } 
+%}
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -13,18 +17,15 @@
         <tbody>
             {% for timelines in ico.timeline  %}
             <tr>
-                <td>{{timelines.name}} </td>
-                <td>{{timelines.start_date}}</td>
-                <td>{{timelines.end_date}}</td>
-                <td>{{timelines.description}} </td>
+                <td>{{timelines.name| length > 30 ? timelines.name|slice(0, 30) ~ '...' : timelines.name}} </td>
+                <td>{{timelines.start_date | date("m/d/Y")}}</td>
+                <td>{{timelines.end_date | date("m/d/Y")}}</td>
+                <td>{{timelines.description| length > 30 ? timelines.description|slice(0, 30) ~ '...' : timelines.description}}</td>
+
                 <td>
-                    {% if timelines.status == 0 %}
-                    <span class="badge badge-info">Draft</span>
-                    {% endif %}
-                     {% if timelines.status == 1 %}
-                    <span class="badge badge-success">Published</span>
-                    {% endif %}
-                </td>
+                    <span class="badge">{{ status[timelines.status] }} </span>
+                </td>               
+
                
                 <td class="td-actions text-right">
                     <button 

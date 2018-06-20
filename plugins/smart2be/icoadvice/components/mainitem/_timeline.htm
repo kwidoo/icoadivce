@@ -1,0 +1,33 @@
+{% set currency = {'0':'BTC',
+                   '1':'ETH',
+                   '2':'LTC',
+                   '3':'NEO',
+                   '4':'Waves',
+                   '5':'EUR',
+                   '6':'USD',
+                   '99':'Other'
+                }
+%}
+{% set reached = {'0':'Not Reached',
+                  '1':'In Progress',
+                  '2':'Reached',
+                } 
+%}
+<div class="hr-breaak-line"></div>
+<div class="timeline-page-content-area">
+    <h4>Project's Timeline</h4>
+	  <section id="timeline">
+	  	{% for timeline in ico.timeline %}
+  <article>
+    <div class="inner">
+      <span class="date">{{timeline.start_date |date('d/m/Y')}} {{timeline.end_date |date('d/m/Y')}}
+        </span>
+      <h2>{{timeline.name}}</h2>
+      <p>{{timeline.description}}</p>
+    </div>
+  </article>
+  {% endfor %}
+  
+</section>
+
+</div>

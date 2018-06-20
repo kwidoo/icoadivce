@@ -1,4 +1,9 @@
-
+{% set types = {'0':'pre-ICO',
+                '1':'ICO',
+                '2':'Post-ICO',
+                '99':'Other'
+                } 
+%}
 <form class="form-horizontal" 
 	  role="form" name="tokenForm" 
 	  data-request="{{ __SELF__ }}::onDateSave" 
@@ -23,16 +28,13 @@
 			{% partial '@_checkbox' label="Publish" name="status" checked=dates.status %} 
 
 			<h4>&nbsp;</h4>		        	
-			{% partial '@_datetime' label="Start Date" name='start_date' value=dates.start_date.getStartDate | date('m/d/Y') %}
-        	{% partial '@_datetime' label="End Date" name='end_date' value=dates.end_date.getStartDate | date('m/d/Y') %}
+			{% partial '@_datetime' label="Start Date" name='start_date' value=dates.start_date | date('m/d/Y') %}
+        	{% partial '@_datetime' label="End Date" name='end_date' value=dates.end_date | date('m/d/Y') %}
         	{% partial '@_select' 
             		label="Type" 
             		name="type" 
             		size="3" 
-            		content = {'0':'Pre-ICO',
-            				   '1':'ICO',
-            				   '2':'Post-ICO',
-            				   '99':'Other'}
+            		content = types
             		value = dates.type 
             %}
 			{% partial '@_field' label="Other (plead specify)" name="other" value=dates.other type="text" %}

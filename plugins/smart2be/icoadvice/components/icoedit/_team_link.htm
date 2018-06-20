@@ -1,27 +1,35 @@
+{% set links = {'0':'LinkedIn',
+               '1':'Facebook',
+               '2':'Twitter',
+               '3':'Bitcointalk Profile',
+               '4':'Blog',
+               '5':'Website',
+               '6':'Youtube',
+               '7':'Telegram',
+               '8':'Git',
+               '9':'Slack',
+               '99':'Other'}
+            %}
 {% for tp in team_link %}
 <tr>
     <td>
         {% partial '@_hidden' name='link_id' ~ tp.id  value = tp.id %}
+
         {% partial '@_select' 
                     label='' 
                     name='type' ~ tp.id 
                     size='3' 
-                    content = {'0':'Linkedin',
-                               '1':'Facebook',
-                               '2':'Twitter',
-                               '3':'Slack',
-                               '4':'Git',
-                               '5':'Blog',
-                               '99':'Other'}
+                    content = links
                     value = tp.type 
             %}
     </td>
     <td>
-        <input name="other{{tp.id}}" type="text" class="form-control  value="{{ tp.type }}">
+        {% partial '@_field' label="" name='other' ~ tp.id value=tp.other type="text" %}
     </td>
     <td>
-        <input name="url{{tp.id}}" type="text" class="form-control  value="{{ tp.url }}">
+        {% partial '@_field' label="" name='url' ~ tp.id value=tp.url type="text" %}
     </td>
+    
 
     <td class="text-right">
         <button 

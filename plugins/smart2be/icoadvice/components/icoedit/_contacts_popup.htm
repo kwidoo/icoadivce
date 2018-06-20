@@ -1,0 +1,74 @@
+{% set types = {'0':'Website',
+               '1':'Email',
+               '2':'Phone',
+               '3':'Address',
+               '3':'Skype',
+               '4':'Telegram',
+               '5':'Whatsapp',
+               '6':'WeChat',
+               '7':'QQ',
+               '8':'ICQ',
+               '99':'Other'}
+            %}
+<form class="form-horizontal" 
+	  role="form" name="tokenForm" 
+	  data-request="{{ __SELF__ }}::onContactSave" 
+	  data-request-success="$('#modalPopupBody').html('');$('#modalPopup').modal('hide');"
+	  data-request-validate
+	  data-request-flash
+	>  
+
+	{{ form_token() }}     
+    {{ form_sessionKey() }}
+
+    {% partial '@_hidden' name='id' value=contacts.id %}
+	<div class="box">
+		<div class="box-header">
+			<h3>{{ title }}</h3>
+		</div>
+	    <div class="box-body">
+			<div id="error" class="alert alert-dismissable" data-validate-error>
+        		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        		<p data-message></p>
+    		</div>
+			{% partial '@_checkbox' label="Publish" name="status" checked=contacts.status %} 
+			{% partial '@_select' 
+            		label="Contact Type" 
+            		name="type" 
+            		size="3" 
+            		content = types
+            		value = contacts.type 
+            %}
+			{% partial '@_field' label="Other (please specify)" name="other" value=contacts.other type="text" %}
+			{% partial '@_field' label="Contact Data" name="value" value=contacts.url type="text" %}
+			<div class="col-md-12">
+				{% partial '@_textarea' 
+					label="Description (max. 1000 symbols)" 
+					name="description" 
+					value=contacts.description 
+					size=4 
+					leghtn=1000 
+				%}
+			</div>
+			
+        </div>
+        <div class="box-footer">
+			<div class="col-md-12">
+	            <button 
+	            	data-attach-loading 
+	            	id="submit" 
+	            	type="submit" 
+	            	class="btn btn-round btn-success">
+	            	Save
+	        	</button>
+	            <button 
+	            	type="button" 
+	            	class="btn btn-default btn-round" 
+	            	style="float:right" 
+	            	data-dismiss="modal">
+	            	Close
+	            </button>
+	        </div> 
+        </div>
+    </div>
+</form>

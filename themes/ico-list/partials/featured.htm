@@ -1,0 +1,26 @@
+<section class="live-token-sale">
+    <div class="container">
+        {% partial 'list-top' %}
+        <div class="row">
+            <div class="col-lg-12 remove-col-padding">
+                <div class="tab-content"> 
+                    <div class="tab-pane container active" id="active_tab">
+                        <div class="row">
+                            {% component 'featuredItems'  %}                        
+                        </div>
+                    </div>
+                    <div class="tab-pane container fade" id="upcoming_tab"> 
+                        <div class="row">
+                            {% component 'featuredItems'  %}                                               
+                        </div>
+                    </div>
+                    <div class="tab-pane container fade" id="ending_tab">
+                        <div class="row">
+                            {% component 'featuredItems'  %}                       
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

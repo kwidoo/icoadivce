@@ -1,0 +1,44 @@
+{%
+    set left = {'2':'Tokensale will end in: ',
+                '1':'Tokensale Will start in '}
+%}
+<div class="details-page-inner">
+    <div class="timer-area">
+        <h2 style="margin-bottom:0">{{ ico.name }}</h2>
+        {% if ico.slogan %}
+            <h4>{{ ico.slogan }}</h4>
+            <br>
+        {% endif %}
+        {% if counter != 0 %}
+            <div class="timer-wrapper text-center">
+                <h4>{{ left[counter] }}</h4>
+                <ul>
+                    <li>
+                        <div class="single-timer-box">
+                            <span class="days" id="countDays">00</span>
+                            <span class="name">days</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="single-timer-box">
+                            <span class="days" id="countHours">{{d.h}}</span>
+                            <span class="name">HOU</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="single-timer-box">
+                            <span class="days" id="countMin">{{d.i}}</span>
+                            <span class="name">Min</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="single-timer-box">
+                            <span class="days" id="countSec">{{d.s}}</span>
+                            <span class="name">sec</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
+    </div>
+</div>

@@ -1,4 +1,21 @@
-
+{% set types = {'0':'Website',
+                               '1':'Whitepaper',
+                               '2':'Bounty',
+                               '3':'Bitcointalk ANN',
+                               '4':'Bitcointalk Bounty',
+                               '5':'Token Tracker',
+                               '6':'Smart Contract',
+                               '7':'Blog',
+                               '8':'Linkedin',
+                               '9':'Facebook',
+                               '10':'Twitter',
+                               '11':'WeChat',
+                               '12':'QQ',
+                               '13':'Telegram',
+                               '14':'Git',
+                               '15':'Slack',
+                               '99':'Other'}
+                            %}
 <form class="form-horizontal" 
 	  role="form" name="tokenForm" 
 	  data-request="{{ __SELF__ }}::onLinkSave" 
@@ -20,18 +37,12 @@
         		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
         		<p data-message></p>
     		</div>
-			{% partial '@_checkbox' label="Publish" name="status" checked=publications.status %} 
+			{% partial '@_checkbox' label="Publish" name="status" checked=links.status %} 
 			{% partial '@_select' 
             		label="Link Type" 
             		name="type" 
             		size="3" 
-            		content = {'0':'Website',
-            				   '1':'Whitepaper',
-            				   '2':'Bounty',
-            				   '3':'LinkedIn',
-            				   '4':'Facebook',
-            				   '5':'Twitter',
-            				   '99':'Other'}
+            		content = types
             		value = links.type 
             %}
 			{% partial '@_field' label="Other (please specify)" name="other" value=links.other type="text" %}
@@ -47,7 +58,7 @@
 			</div>
 			
         </div>
-        <div class="box-footer ">
+        <div class="box-footer">
 			<div class="col-md-12">
 	            <button 
 	            	data-attach-loading 

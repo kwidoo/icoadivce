@@ -1,4 +1,7 @@
-
+{% set status = {'0':'Draft',
+                 '1':'Published'
+                } 
+%}
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -17,12 +20,7 @@
                 <td>{{locations.legal | length > 30 ? locations.legal|slice(0, 30) ~ '...' : locations.legal}}</td>
                 <td>{{locations.address| length > 30 ? locations.address|slice(0, 30) ~ '...' : locations.address}}</td>
                 <td>
-                    {% if locations.status == 0 %}
-                    <span class="badge badge-info">Draft</span>
-                    {% endif %}
-                     {% if locations.status == 1 %}
-                    <span class="badge badge-success">Published</span>
-                    {% endif %}
+                    <span class="badge">{{ status[locations.status] }} </span>
                 </td>
                
                 <td class="td-actions text-right">

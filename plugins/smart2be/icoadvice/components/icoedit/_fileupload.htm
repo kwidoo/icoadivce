@@ -1,19 +1,19 @@
 <div class="row">
     <div class="col-md-4 text-center">
         <h4 class="title">
-        	{{ label |raw }}<br>
-        	<small>{{ width }} x {{ height}}</small>
-	    </h4>
+            {{ label |raw }}<br>
+            <small>{{ width }} x {{ height}}</small>
+        </h4>
         <div class="fileinput fileinput-new text-center" data-provides="fileinput">
             <div class="fileinput-new thumbnail" style="min-width:{{ width }};max-width:{{ width }}">
                 {% if value %}
-                	<img src="{{ value }}" alt="...">
- 				{% else%}
-					<img src ='/plugins/smart2be/icoadvice/assets/images/{{ dummy }}' alt="...">
-				{%endif%}
+                    <img src="{{ value }}" alt="...">
+                {% else%}
+                    <img src ='/plugins/smart2be/icoadvice/assets/images/{{ dummy }}' alt="...">
+                {%endif%}
             </div>
             <div id="{{ name ~ '-preview' }}" class="fileinput-preview fileinput-exists thumbnail">
-            	<p></p>
+                <p></p>
             </div>
             <div>
                 <span class="btn btn-success btn-round btn-file">
@@ -25,5 +25,5 @@
                 <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
             </div>
         </div>
-    </div>
+    </div> 
 </div>

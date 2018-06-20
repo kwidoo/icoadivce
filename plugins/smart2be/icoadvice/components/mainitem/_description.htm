@@ -1,0 +1,9 @@
+<div class="hr-breaak-line"></div>
+<div class="details-page-content-area">
+    <h4>Project Description</h4>
+    {% if ico.description %}
+        <p>{{ ico.description }}</p>
+    {% else %}
+        <p>{{ ico.short }}</p>
+    {% endif %}
+</div>

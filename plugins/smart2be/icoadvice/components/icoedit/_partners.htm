@@ -1,4 +1,7 @@
-
+{% set status = {'0':'Draft',
+                 '1':'Published'
+                } 
+%}
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -31,12 +34,7 @@
                 </td>
                 <td>{{partners.description| length > 15 ? partners.description|slice(0, 15) ~ '...' : partners.description}}</td>
                 <td>
-                    {% if partners.status == 0 %}
-                    <span class="badge badge-info">Draft</span>
-                    {% endif %}
-                     {% if partners.status == 1 %}
-                    <span class="badge badge-success">Published</span>
-                    {% endif %}
+                    <span class="badge">{{ status[partners.status] }} </span>
                 </td>
                
                 <td class="td-actions text-right">

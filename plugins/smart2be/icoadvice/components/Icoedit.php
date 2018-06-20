@@ -11,6 +11,7 @@ use \Smart2be\IcoAdvice\Models\IcoLocation;
 use \Smart2be\IcoAdvice\Models\IcoDates;
 use \Smart2be\IcoAdvice\Models\IcoGoals;
 use \Smart2be\IcoAdvice\Models\IcoLinks;
+use \Smart2be\IcoAdvice\Models\IcoContacts;
 use \Smart2be\IcoAdvice\Models\IcoTimeline;
 use \Smart2be\IcoAdvice\Models\Team;
 use \Smart2be\IcoAdvice\Models\TeamLinks;
@@ -38,6 +39,7 @@ class IcoEdit extends ComponentBase
         $this->addJs('assets/js/uploader.js');
         $this->addJs('assets/js/checker.js');
         $this->addJs('assets/js/ajax-trigger.js');
+     //   $this->addJs('../uploader/assets/js/uploader.js');
 
         $user = Auth::getUser();
         $ico = $user->ico->where('id','=',$this->param('id'))->first();
@@ -82,13 +84,18 @@ class IcoEdit extends ComponentBase
             $ico->tiker = post('tiker');
             $ico->soft_cap = post('soft_cap');
             $ico->hard_cap = post('hard_cap');
-            $ico->cap_nomination = post('cap_nomination');
-            $ico->other = post('other');
+            $ico->cap_nomination = post('currency');
+            if ($ico->cap_nomination == '99') 
+                $ico->other = post('other');
+            else
+                $ico->other = "";
             $ico->slogan = post('slogan');
             $ico->short = post('short');
             $ico->description = post('description');
+            $ico->start_date = date('Y-m-d H:i:s', strtotime(post('start_date')));
+            $ico->end_date = date('Y-m-d H:i:s', strtotime(post('end_date')));
             $ico->save();
-          //  Flash::success('Data successfully saved!');
+            Flash::success('Data successfully saved!');
 
         } else {
 
@@ -167,7 +174,7 @@ class IcoEdit extends ComponentBase
         $token->decimal = post('decimal');
         $token->tracker = post('tracker');
         $token->type = post('platform');
-        if (post('platform') == 5) 
+        if (post('platform') == 99) 
             $token->other = post('other'); 
         else
             $token->other = "";
@@ -175,6 +182,17 @@ class IcoEdit extends ComponentBase
             $token->status = 1; 
         else
             $token->status = 0;
+        $token->price = post('price');
+        $token->nomination = post('nomination');
+        if (post('nomination') == 99) 
+            $token->other_currency = post('other_currency'); 
+        else
+            $token->other_currency = "";
+
+
+
+
+
         $token->save();
         Flash::success('Token Was Updated');
 
@@ -226,9 +244,9 @@ class IcoEdit extends ComponentBase
                 $tokens_prices[$p]['start_date'] = $data['start_date'.$p];
                 $tokens_prices[$p]['end_date'] = $data['end_date'.$p];
                 $tokens_prices[$p]['bonus'] = $data['bonus'.$p];
-                if ($data['value'.$p] = '') 
-                    $tokens_prices[$p]['value'] = 0;
-                else
+              //  if ($data['value'.$p] = '') 
+                //    $tokens_prices[$p]['value'] = 0;
+              //  else
                     $tokens_prices[$p]['value'] = $data['value'.$p];
                 $tokens_prices[$p]['nomination'] = $data['nomination'.$p];
             }
@@ -501,7 +519,10 @@ class IcoEdit extends ComponentBase
                 $team_link = new TeamLinks;
                 $team_link->team_id = $team->id;
                 $team_link->type = $data['type'.$p];
-                $team_link->other = $data['other'.$p];
+                if ($data['type'.$p] == 99)
+                    $team_link->other = $data['other'.$p];
+                else
+                    $team_link->other = '';
                 $team_link->url = $data['url'.$p];
                 $team_link->save();
             }
@@ -599,7 +620,7 @@ class IcoEdit extends ComponentBase
             $dates = new IcoDates;
             $dates->ico_id = $this->param('id');
         }
-      //  $dates->type = post('type');
+        $dates->type = post('type');
         if (post('type') == 99)
             $dates->other = post('other');
         else
@@ -786,5 +807,58 @@ class IcoEdit extends ComponentBase
             return ['#_links' => $this->renderPartial('@_links.htm',['ico' => $ico])];
  
          }
-    }    }    
+    }     
+
+    /**
+      * Contacts PART
+      * OK
+      *
+      **/    
+   public function onAddContact(){
+        if (post('contacts_id')){
+            $contacts = IcoLinks::find(post('links_id'));
+            return ['#modalPopupBody' => $this->renderPartial('@_contacts_popup.htm',
+                ['title' => 'Edit Contact', 'contacts' => $contacts
+              ])];
+        } else
+        return ['#modalPopupBody' => $this->renderPartial('@_contacts_popup.htm',['title' => 'Add New Contact'])];
+    }
+    public function onContactSave(){
+        if (post('id')) {
+            $contacts = IcoContacts::find(post('id'));
+        } else {
+            $contacts = new IcoContacts;
+            $contacts->ico_id = $this->param('id');
+        }
+        $contacts->type = post('type');
+        if (post('type') == 99) 
+            $contacts->other = post('other'); 
+        else
+            $contacts->other = "";
+        $contacts->value = post('value');
+        $contacts->description = post('description');
+        if (post('status') == 'on')
+            $contacts->status = 1;
+        else
+            $contacts->status = 0;
+        
+        $contacts->save();
+        Flash::success('Link Was Updated');
+
+        $user = Auth::getUser();
+        $ico = $user->ico->where('id','=',$this->param('id'))->first();  
+        return ['#_contacts' => $this->renderPartial('@_contacts.htm',['ico' => $ico])];
+    }
+    public function onContactDelete(){
+         if (post('delete_id')) {
+            $contacts = IcoContacts::find(post('delete_id'));
+            $contacts->delete();
+            
+            $user = Auth::getUser();
+            $ico = $user->ico->where('id','=',$this->param('id'))->first();  
+            return ['#_contacts' => $this->renderPartial('@_contacts.htm',['ico' => $ico])];
+ 
+         }
+    }    
+}    
 

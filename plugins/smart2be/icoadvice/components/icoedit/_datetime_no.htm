@@ -1,0 +1,8 @@
+{% if label %}
+    <label for="{{ name }}">
+        {{ label }}
+    </label>
+{% endif %}
+<div class="input-group date" style="padding-bottom:15px">
+    <input name="{{name}}" type="text" class="form-control pull-right datepickers" id="datepicker" value="{{ value }}">
+</div>

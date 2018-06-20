@@ -19,6 +19,11 @@ class IcoTokenPrice extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'start_date' => 'required_if:end_date,null|date',
+        'end_date' => 'required_if:start_date,null|date|after_or_equal:start_date',
+        'bonus' => 'required|digits_between:0,2',  
+        'value' => 'required',
+        'nomination' => 'required|digits_between:0,99',
     ];
 
     /**

@@ -1,0 +1,82 @@
+{% set platforms = {
+    '0':'Ethereum',
+    '1':'Neo',
+    '2':'Waves',
+    '3':'Neo',
+    '4':'Waves',
+    '5':'PoW',
+    '6':'PoS',
+    '99':'Other'}
+%}
+{% set nomination = {
+    '0':'BTC',
+    '1':'Ethereum',
+    '2':'Litecoin',
+    '3':'Neo',
+    '4':'Waves',
+    '5':'Euro',
+    '6':'US Dollar',
+    '7':'%'}
+%}
+{% set bonus = {
+    '0':'Discount',
+    '1':'Bonus',
+    '2':'Fixed'}
+%}
+<div class="hr-breaak-line"></div>
+<div class="status-area-wrapper">
+    <h4>Tokens, Price, Discounts and Bonuses</h4>
+    {% for token in ico.tokens %}
+        <ul class="status-area-lists">
+            <li>
+                <div class="single-status-list-box">
+                    <span class="title">Token Name</span>
+                    <span class="box-text">{{ token.name }}</span>
+                </div>
+            </li>
+            <li>
+                <div class="single-status-list-box">
+                    <span class="title" style="text-align:center">Platform</span>
+                    {% if token.type == '99' %}
+                    <span class="box-text">{{ token.other }}</span>
+                    {% else %}
+                    <span class="box-text">{{ platforms[token.type]}}</span>
+                    {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="single-status-list-box">
+                    <span class="title" style="text-align:center">Decimal</span>
+                    <span class="box-text">{{ token.decimal }}</span>
+                </div>
+            </li>
+            <li>
+                <div class="single-status-list-box">
+                    <span class="title" style="text-align:center">ICO Price</span>
+                    <span class="box-text">{{ token.price }}
+                    {% if token.nomination == 99 %}
+                        {{ token.other_currency }}
+                    {% else %}
+                        {{ nomination[token.nomination] }}
+                    {% endif %}  
+
+                    </span>
+                </div>
+            </li>
+            <li>
+                <div class="single-status-list-box">
+                    <span class="title" style="text-align:center"></span>
+                    
+                </div>
+            </li>
+        </ul>
+        {% if token.tokenPrice %}
+            <br>
+            {% for price in token.tokenPrice %}
+            <div style="padding-top:10px">
+                <b>{{ price.start_date | date('d F Y')}} - {{ price.end_date | date('d F Y')}}:</b> {{ bonus[price.bonus] }} - {{ price.value }} {{ nomination[price.nomination] }}
+            </div>
+            {% endfor %}
+        {% endif %} 
+    {% endfor %}
+</div>

@@ -18,7 +18,8 @@ class IcoPublications extends Model
      */
     public $rules = [
         'url' => 'required|url',
-        'description' => 'nullable|alpha_dash'
+        'description' => 'nullable|string|max:1000',
+        'status' => 'digits_between:0,1'
     ];
 
     /**

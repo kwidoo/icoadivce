@@ -1,9 +1,30 @@
+{% set types = {'0':'Website',
+                               '1':'Whitepaper',
+                               '2':'Bounty',
+                               '3':'Bitcointalk ANN',
+                               '4':'Bitcointalk Bounty',
+                               '5':'Token Tracker',
+                               '6':'Smart Contract',
+                               '7':'Blog',
+                               '8':'Linkedin',
+                               '9':'Facebook',
+                               '10':'Twitter',
+                               '11':'WeChat',
+                               '12':'QQ',
+                               '13':'Telegram',
+                               '14':'Git',
+                               '15':'Slack',
+                               '99':'Other'}
+                            %}
+{% set status = {'0':'Draft',
+                 '1':'Published'
+                } 
+%}
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>Type</th>
-                <th>Other</th>
                 <th>Link</th>
                 <th>Description</th> 
                 <th>Status</th>
@@ -11,23 +32,33 @@
             </tr>
         </thead>
         <tbody>
+            
             {% for links in ico.links  %}
-            {% partial "@_list_row" 
-                columns = {
-                    '0': 
-                        (links.type) ? 
-                                links.type :
-                                links.type,
-                    '1': links.other,
-                    '2': links.url,
-                    '3': links.description,
-                    '4': (links.status == 0) ? '<span class="badge badge-info">Draft</span>' : '<span class="badge badge-success">Published</span>',
-                    '5': '<button 
+            <tr>
+                <td>
+                    {% for key, value in types %}
+                        {% if links.type == key %}
+                            {% if key == 99 %} 
+                                <span>{{links.other| length > 15 ? links.other|slice(0, 15) ~ '...' : links.other}}</span>
+                            {% else%}
+                                <span>{{ value }}</span>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                    
+                </td>
+                <td>{{links.url| length > 15 ? links.url|slice(0, 15) ~ '...' : links.url}}</td>
+                <td>{{links.description| length > 30 ? links.description|slice(0, 30) ~ '...' : links.description}}</td>                 
+                <td>
+                    <span class="badge">{{ status[links.status] }} </span>
+                </td>
+                <td class="text-right">
+                    <button 
                         type="button"  
                         rel="tooltip" 
                         class="btn btn-success btn-round" 
                         data-request="onAddLink" 
-                        data-request-data="links_id: ' ~  links.id ~ '"
+                        data-request-data="links_id: {{ links.id }}"
                         data-toggle="modal" 
                         data-target="#modalPopup">
                         <i class="material-icons">edit</i>
@@ -37,11 +68,11 @@
                         rel="tooltip" 
                         class="btn btn-danger btn-round" 
                         data-request="onLinkDelete"
-                        data-request-data="delete_id: ' ~ links.id ~ '"
+                        data-request-data="delete_id: {{ links.id }}"
                         >
                         <i class="material-icons">delete</i>
-                    </button>' } 
-            %}
+                    </button>
+                </td>
             {% endfor %} 
         </tbody>
     </table>

@@ -1,0 +1,93 @@
+{% set team_links = {
+    '0':'LinkedIn',
+    '1':'Facebook',
+    '2':'Twitter',
+    '3':'Bitcointalk Profile',
+    '4':'Blog',
+    '5':'Website',
+    '6':'Youtube',
+    '7':'Telegram',
+    '8':'Git',
+    '9':'Slack',
+    '99':'Other'}
+%}
+            
+{% set team_links_fa = {
+    '0':'fab fa-linkedin',
+    '1':'fab fa-facebook',
+    '2':'fab fa-twitter',
+    '3':'Bitcointalk Profile',
+    '4':'Blog',
+    '5':'Website',
+    '6':'fab fa-youtube',
+    '7':'fab fa-telegram',
+    '8':'fab fa-git',
+    '9':'fab fa-slack',
+    '99':'Other'}
+%}
+                    <div class="hr-breaak-line"></div>
+                    <div class="our-team-area">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h4 class="title">Our Team</h4>
+                            </div>
+                            {% for member in ico.team %}
+                                {% if member.type in 0..1 %}
+                                    <div class="col-lg-4 col-sm-6">
+                                        <div class="single-team--member">
+                                            <div class="thumb">
+                                                {% if member.photo %}
+                                                    <img src="{{ member.photo.path }}" alt="{{member.first_name}} {{member.last_name}}">
+                                                {% else %}
+                                                    <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-photo-64x64.svg'}}"  alt="{{member.first_name}} {{member.last_name}}" />
+                                               {% endif %}
+                                            </div>
+                                            <div class="content">
+                                                <span class="post">
+                                                    {{member.first_name}} {{member.last_name}}<br>
+                                                    {{member.title}}
+                                                </span>
+                                                {% if member.links %}
+                                                    <ul class="status-area-lists">
+
+                                                    {% for l in member.links %}
+                                                        <li>
+                                                            <div class="" style="text-align: center; padding-left:10px;padding-top:10px;display:inline-block">
+                                                                <a href="{{ l.url }}" target="_blank"> 
+                                                                    <i class="{{ team_links_fa[l.type] }} fa-2x" aria-hidden="true"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                    {% endfor%}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            <div class="col-lg-12">
+                                <h4 class="title">Advisors</h4>
+                            </div>
+                            {% for member in ico.team %}
+                                {% if member.type == 2 %}
+                                    <div class="col-lg-4 col-sm-6">
+                                        <div class="single-team--member">
+                                            <div class="thumb">
+                                                {% if member.photo %}
+                                                    <img src="{{ member.photo.path }}" alt="{{member.first_name}} {{member.last_name}}">
+                                                {% else %}
+                                                    <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-photo-64x64.svg'}}"  alt="{{member.first_name}} {{member.last_name}}" />
+                                               {% endif %}
+                                            </div>
+                                            <div class="content">
+                                                <span class="post">
+                                                    {{member.first_name}} {{member.last_name}}<br>
+                                                {{member.title}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>

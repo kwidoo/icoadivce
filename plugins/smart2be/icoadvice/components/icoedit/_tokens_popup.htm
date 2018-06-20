@@ -1,3 +1,14 @@
+{% set currency = {'0':'BTC',
+                   '1':'Ethereum',
+                   '2':'Litecoin',
+                   '3':'Neo',
+                   '4':'Waves',
+                   '5':'Euro',
+                   '6':'US Dollar',
+                   '99':'Other'
+                }
+                %}
+
 <form class="form-horizontal" 
 	  role="form" name="tokenForm" 
 	  data-request="{{ __SELF__ }}::onTokenSave" 
@@ -36,14 +47,24 @@
             		value = token.type 
             		size = 3 
             %}
- 			{% partial '@_field' label="Other" name="other" value=token.other type="text" %}
+ 			{% partial '@_field' label="Other Platform" name="other" value=token.other type="text" %}
+ 			{% partial '@_field' label="Price" name="price" value=token.price type="text" %}
+            {% partial '@_select' 
+            		label="Price Curreny" 
+            		name="nomination" 
+            		size="3" 
+            		content = currency
+            		value = token.nomination 
+            		size = 3 
+            %}
+ 			{% partial '@_field' label="Other Currency" name="other_currency" value=token.other_currency type="text" %}
  			{% partial '@_field' label="Decimal" name="decimal" value=token.decimal type="text" %}
  			{% partial '@_field' label="Tracker" name="tracker" value=token.tracker type="text" %}
 
             <div class="row">
             	<div class="col-md-4"> 
 	        		<button class="btn btn-round btn-info" data-request="onAddTokenPrice">
-	        			Add Price
+	        			Add Bonus
 	        			<div class="ripple-container"></div>
 	        		</button>
 	    		</div>
@@ -69,23 +90,23 @@
 						        	<tr>
 									    <td>
 											<input type="hidden" name="price_id{{tp.id}}" value="{{tp.id}}">
-									    	        {% partial 
-									            '@_datetime' 
+									    	{% partial 
+									            '@_datetime_no' 
 									            name='start_date'~tp.id 
-									            value=tp.start_date.getStartDate | date('m/d/Y H:i:s') 
+									            value=tp.start_date | date('m/d/Y') 
 									        %}
 									    </td>
 									    <td>	
 									        {% partial 
-									            '@_datetime' 
+									            '@_datetime_no' 
 									            name='end_date'~tp.id 
-									            value=tp.end_date.getEndDate | date('m/d/Y H:i:s') 
+									            value=tp.end_date | date('m/d/Y') 
 									        %}
 									    </td>
 									    <td>
 									        {% partial '@_select' 
 									            length="12"
-									            name=bonus ~ tp.id 
+									            name='bonus' ~ tp.id 
 									            size="3" 
 									            content = {'0':'Discount',
 									                       '1':'Bonus',
@@ -100,21 +121,22 @@
 									    <td>    
 									        {% partial '@_select' 
 									                length="12"
-									                name=nomination ~ tp.id 
+									                name='nomination' ~ tp.id 
 									                size="3" 
 									                content = {'0':'BTC',
 									                           '1':'Ethereum',
 									                           '2':'Litecoin',
 									                           '3':'Neo',
-									                           '4':'Euro',
-									                           '5':'US Dollar',
-									                           '6':'%'}
+									                           '4':'Waves',
+									                           '5':'Euro',
+									                           '6':'US Dollar',
+									                           '7':'%'}
 									                value = tp.nomination 
 									                size = 3 
 									        %}
 									    </td>
 									    <td class="text-right">
-									    	<button type="button" rel="tooltip" class="btn btn-danger btn-link" data-request="onDeleteTokenPrice" data-request-data="delete_id: {{tp.id}}">
+									    	<button type="button" rel="tooltip" class="btn btn-danger btn-round" data-request="onDeleteTokenPrice" data-request-data="delete_id: {{tp.id}}">
 									            <i class="material-icons">delete</i>
 									        </button>
 									    </td>

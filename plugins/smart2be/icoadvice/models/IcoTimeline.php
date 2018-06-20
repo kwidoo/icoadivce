@@ -17,6 +17,13 @@ class IcoTimeline extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'name' => 'required|string',
+        'description' => 'nullable|string|max:1000',
+        'start_date' => 'required_if:end_date,null|date',
+        'end_date' => 'required_if:start_date,null|date|after_or_equal:start_date',
+        'status' => 'required|digits_between:0,1',
+
+
     ];
 
     /**

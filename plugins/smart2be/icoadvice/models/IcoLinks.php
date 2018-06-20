@@ -17,8 +17,11 @@ class IcoLinks extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'status' => 'required|digits_between:0,1',
         'url' => 'required|url',
-        'description' => 'nullable|alpha_dash'
+        'type' => 'required|digits_between:0,99',
+        'other' => 'required_if:type,99|string',
+        'description' => 'nullable|string'
     ];
 
     /**
@@ -26,7 +29,4 @@ class IcoLinks extends Model
      */
     public $table = 'smart2be_icoadvice_ico_links';
 
-    public $attachOne = [
-        'image' => ['System\Models\File'],
-    ];
 }

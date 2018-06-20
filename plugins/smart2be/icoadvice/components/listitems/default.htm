@@ -1,0 +1,64 @@
+{% for i in ico %}
+<tr class="traending_ico_tr">
+    <td data-label="coin_name" class="coin_name">
+        <div class="trending-coin-box">
+            <div class="icon">
+                {% if i.logo %}
+                    <img src="{{ i.logo.path | resize(128, 128, { mode: 'crop', quality: '80', extension: 'png' }) }} " alt="{{i.name }} Logo" >
+                {% else %}
+                    <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg'}}"  alt="{{i.name }} Logo" width="128px"/>
+                {% endif %}
+            </div>
+            <div class="content">
+                {% if i.rating %}
+                <ul class="rating">
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-star"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-star"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-star"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-star"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fas fa-star"></i>
+                        </a>
+                    </li>
+                </ul>
+                {%endif%}
+                <h4>{{i.name}}</h4>
+            </div>
+        </div>
+    </td>
+    <td data-label="ratings" class="ratings_td">
+        <div class="ratings-column">
+            <span class="ratings-number">4.0</span>
+            <span class="rate">Rate</span>
+        </div>
+    </td>
+    <td data-label="start_price">
+
+        <span class="start-price">$0.021</span>
+        
+    </td>
+    <td data-label="founding_target">
+        <span class="founding-target">$11,300,000</span>
+    </td>
+    <td data-label="ico_date">
+        <span class="ico-date">{{ i.end_date | date('d F Y') }}</span>
+    </td>
+    <td data-label="action">
+        <a href="ico/{{i.id}}" class="action-btn">More</a>
+    </td>
+</tr>
+<tr>
+    <td colspan="6" class="tr-separator">
+        <span></span>
+    </td>
+</tr>
+{% endfor %}

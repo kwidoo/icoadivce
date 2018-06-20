@@ -19,6 +19,12 @@ class IcoDates extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'description' => 'nullable|string|max:1000',
+        'start_date' => 'required_if:end_date,null|date',
+        'end_date' => 'required_if:start_date,null|date|after_or_equal:start_date',
+        'status' => 'required|digits_between:0,1',  
+        'type' => 'required|digits_between:0,99',
+        'other' => 'required_if:type,99' 
     ];
 
     /**
@@ -26,3 +32,4 @@ class IcoDates extends Model
      */
     public $table = 'smart2be_icoadvice_ico_dates';
 }
+ 

@@ -3,3 +3,7 @@ robot/*
 vendor/*
 bootstrap/*
 modules/*
+
+\.DS_Store
+
+storage/

@@ -1,0 +1,59 @@
+<div class="details-page-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-xl col-md-4">
+                <aside class="sidebar details-page">
+                    <div class="widget-area images">
+                        <div class="widget-body">
+                            <img src="{{ ico.logo.path | resize(270,270) }}" alt="sidebar image">
+                        </div>
+                    </div>
+                    <div class="widget-area banner">
+                        <div class="widget-body">
+                            <img src="{{'assets/img/add-banner.jpg' |theme}}" alt="add banner image">
+                        </div>
+                    </div>
+                </aside>
+            </div>
+            <div class="col-lg-xl col-md-8">
+                {% partial '@_details' %}
+                <div class="hr-breaak-line"></div>
+                {% partial '@_dates' %}
+                
+                {% if ico.links %}
+                    {% partial '@_links' %}
+                {% endif %}
+
+                {% if (ico.short or ico.description) %}
+                    {% partial '@_description' %}
+                {% endif %}
+
+                {% if ico.tokens %}
+                    {% partial '@_tokens' %}
+                {% endif %}
+
+                {% if ico.goals %}
+                    {% partial '@_goals' %}
+                {% endif %}
+
+                {% if ico.timeline %}
+                    {% partial '@_timeline' %}
+                {% endif %}
+
+                {% if ico.team %}
+                    {% partial '@_team' %}
+                {% endif %}
+
+                {% if ico.partners %}
+                    {% partial '@_partners' %}
+                {% endif %}
+
+                {% if ico.publications %}
+                    {% partial '@_publications' %}
+                {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+==
+function onStart(){
+    $this['user'] = Auth::getUser();
+}
+==
+<nav class="navbar navbar-area navbar-expand-lg navbar-light ">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand logo" href="{{ '/' }}">
+                <img src="{{'assets/img/logo.svg' | theme }}" width="300px" alt="logo image">
+            </a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#icoadvice" aria-controls="icoadvice"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="icoadvice">
+            
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{'about'}}">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{'publish'}}">Publish ico</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{'blog'}}">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{'contact'}}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"
+                        {% if not user %}
+                        href="{{ 'login' }} " 
+                        data-toggle="modal" 
+                        data-target="#login-modal">Login
+                        {% else %}
+                        href="{{'/dashboard'}}">Dashboard
+                        {% endif %}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

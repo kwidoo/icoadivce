@@ -1,13 +1,77 @@
 <div class="col-md-9">
+    <div class="box box-warning">  
+        <div class="box-header ">        
+            <h3>Management Panel</h3>
+            <div class="col-md-12">
+                <a 
+                    href="#assets"
+                    type="button" 
+                    class="btn btn-info">
+                    Go To Assets
+                </a>
+                &nbsp;
+                <button 
+                    type="button" 
+                    data-toggle="{{ toggle }}" 
+                    data-target="{{ target }}"            
+                    data-request="{{ onPublish }}"
+                    class="btn btn-success">
+                    Publish ICO
+                </button>
+                &nbsp;
+     
+                <button 
+                    type="button" 
+                    data-toggle="{{ toggle }}" 
+                    data-target="{{ target }}"            
+                    data-request="{{ action }}"
+                    class="btn btn-danger">
+                    Hide ICO
+                </button>
+                &nbsp;
+
+                <button 
+                    type="button" 
+                    data-toggle="{{ toggle }}" 
+                    data-target="{{ target }}"            
+                    data-request="{{ action }}"
+                    class="btn btn-success">
+                    Publish All Assets
+                </button>
+                &nbsp;
+     
+                <button 
+                    type="button" 
+                    data-toggle="{{ toggle }}" 
+                    data-target="{{ target }}"            
+                    data-request="{{ action }}"
+                    class="btn btn-danger">
+                    Hide All Assets
+                </button>
+            </div>
+        </div>    
+    </div>
+</div>
+<div class="col-md-9">
     <div class="box">
-        <form class="form-horizontal" role="form" name="icoForm" data-request="{{ __SELF__ }}::onSave" data-request-success="$('.confirm-container').removeClass('hide');">
+        <form 
+            class="form-horizontal" 
+            role="form" name="icoForm" 
+            data-request="{{ __SELF__ }}::onSave" 
+            data-request-success="$('.confirm-container').removeClass('hide');"
+             data-request-validate
+            data-request-flash>
             {{ form_token() }} 
             {{ form_sessionKey() }}
             <div class="box-header">
                 <h3>ICO General Info</h3>
             </div>
             <div class="box-body">
-                {% partial '@_project_main' %}
+            <div id="error" class="alert alert-dismissable" data-validate-error>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <p data-message></p>
+            </div>                
+            {% partial '@_project_main' %}
                 {% partial '@_capital' %}
                 {% partial '@_description' %}
             </div>
@@ -30,6 +94,7 @@
         </form>
     </div>
 </div>
+
 <div class="col-md-9">
     <div class="box">  
         <div class="box-header">        
@@ -46,7 +111,7 @@
             {% partial '@_button' label='Add Contact' action='onAddContact' target='#modalPopup' toggle='modal' %}
         </div>    
         <div id="_contacts" class="box-body">
-            {% partial '@_tokens' %}
+            {% partial '@_contacts' %}
 
         </div>
     </div>
@@ -111,7 +176,7 @@
     <div class="box">  
         <div class="box-header">        
             <h3>Project's Partners</h3>
-            {% partial '@_button' label='Add Partner' action='onAddParnter' target='#modalPopup' toggle='modal' %}
+            {% partial '@_button' label='Add Partner' action='onAddPartner' target='#modalPopup' toggle='modal' %}
         </div>    
         <div id="_partners" class="box-body">
             {% partial '@_partners' %}

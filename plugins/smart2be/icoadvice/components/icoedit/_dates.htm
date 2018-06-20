@@ -1,3 +1,13 @@
+{% set status = {'0':'Draft',
+                 '1':'Published'
+                } 
+%}
+{% set types = {'0':'pre-ICO',
+                '1':'ICO',
+                '2':'Post-ICO',
+                '99':'Other'
+                } 
+%}
 <div class="table-responsive">
     <table class="table table-striped">
         <thead>
@@ -13,27 +23,20 @@
         <tbody>
             {% for dates in ico.dates  %}
             <tr>
-                <td>{{dates.start_date}}</td>
-                <td>{{dates.end_date}}</td>
+                <td>{{dates.start_date | date('m/d/Y')}}</td>
+                <td>{{dates.end_date | date('m/d/Y')}}</td>
                 <td>
-                    {% if dates.type == 0 %}
-                    <span class="badge badge-info">pre-ICO</span>
-                    {% endif %}
-                    {% if dates.status == 1 %}
-                    <span class="badge badge-info">ICO Stage No.</span>
-                    {% endif %}
-                    {% if dates.status == 2 %}
-                    <span class="badge badge-info">Other</span>
+                    {% if dates.type == 99 %}
+                        <span class="badge">{{ dates.other }}</span>
+                    {% else %}
+                        <span class="badge">{{ types[dates.type] }} </span>
                     {% endif %}
                 </td>
-                <td>{{dates.description}} </td>
                 <td>
-                    {% if dates.status == 0 %}
-                    <span class="badge badge-info">Draft</span>
-                    {% endif %}
-                     {% if dates.status == 1 %}
-                    <span class="badge badge-success">Published</span>
-                    {% endif %}
+                    {{dates.description| length > 15 ? dates.description|slice(0, 15) ~ '...' : dates.description}}
+                </td>
+                <td>
+                    <span class="badge">{{ status[dates.status] }} </span>
                 </td>
                
                 <td class="td-actions text-right">

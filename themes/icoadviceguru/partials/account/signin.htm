@@ -1,59 +1,32 @@
-<div class="alert alert-danger text-center" data-validate-error style="display:none">
-    <p data-message></p>
-</div>
-
-<div class="col-md-4 col-sm-6 ml-auto mr-auto">    
-    <div class="card card-signup">
-        <form data-request="onSignin" data-request-validate >            
-          <div class="card-header card-header-primary text-center">
-                <h4 class="card-title">Log in</h4>
-        <!--          <div class="social-line">
-                    <a href="#pablo" class="btn btn-just-icon btn-link">
-                        <i class="fa fa-facebook-square"></i>
-                    </a>
-                    <a href="#pablo" class="btn btn-just-icon btn-link">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="#pablo" class="btn btn-just-icon btn-link">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                </div> -->
-            </div>
-     <!--       <p class="description text-center">Or Be Classical</p> -->
-            <div class="card-body">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="material-icons">mail</i>
-                        </span>
-                    </div>
-                    <input name="login" type="text" class="form-control" id="userSigninLogin" placeholder="Enter your {{ loginAttributeLabel|lower }}" />
-                </div>
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <i class="material-icons">lock_outline</i>
-                        </span>
-                    </div>
-                    <input name="password" type="password" class="form-control" id="userSigninPassword" placeholder="Enter your password" />
-                </div>
-                <!-- If you want to add a checkbox to this form, uncomment this code
-
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" name="optionsCheckboxes" checked>
-                        Subscribe to newsletter
+<div class="tab-content" id="nav-tabContent"><!-- tab content-->
+    <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-login-tab">
+        <div class="login-form-wrapper"><!-- login form wrapper start -->
+            <form data-request="onSignin" 
+                  data-request-validate>            
+                <div class="form-element square login"><!-- form element login start -->
+                    <label>Enter Email
+                        <span>**</span>
                     </label>
-                </div> -->
-                <div class="text-center">
-                    <button type="submit" class="btn btn-primary ">Login</button>
-
-                </div>
-                <div class="text-left">
-                    <a href="{{ 'forgot' }}">I forgot my password</a><br>
-                    <a href="{{ 'register' }}">Register a new membership</a>
-                </div>
-            </div>
-        </form>
+                    <input 
+                        type="email" 
+                        name="login"  
+                        id="userSigninLogin" 
+                        placeholder="Type your email...." 
+                        class="input-field-square">
+                </div><!-- form element login end -->
+                <div class="form-element square login"><!-- form element login start -->
+                    <label>Password
+                        <span>**</span>
+                    </label>
+                    <input 
+                        name="password" 
+                        type="password" 
+                        id="userSigninPassword" 
+                        placeholder="Type your email...." 
+                        class="input-field-square">
+                </div><!-- form element login end -->
+                <button type="button" class="submit-form-btn">login</button>
+            </form>
+        </div><!-- login form wrapper end -->
     </div>
 </div>

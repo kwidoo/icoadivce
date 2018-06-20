@@ -1,0 +1,22 @@
+<div class="status-area-wrapper">
+    <ul class="status-area-lists">
+        <li>
+            <div class="single-status-list-box">
+                <span class="title">Start Date</span>
+                <span class="box-text">{{ ico.start_date | date('d F Y')}}</span>
+            </div>
+        </li>
+        <li>
+            <div class="single-status-list-box">
+                <span class="title">End Date</span>
+                <span class="box-text">{{ ico.end_date | date('d F Y')}}</span>
+            </div>
+        </li>
+        <li>
+            <div class="single-status-list-box">
+                <span class="title">Status</span>
+                <span class="box-text">{{status}}</span>
+            </div>
+        </li>
+    </ul>
+</div>

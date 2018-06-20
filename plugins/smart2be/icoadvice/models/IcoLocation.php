@@ -17,6 +17,11 @@ class IcoLocation extends Model
      * @var array Validation rules
      */
     public $rules = [
+        'name' => 'required|string',
+        'legal' => 'nullable|string',
+        'address' => 'required|string|max:1000',
+        'status' => 'digits_between:0,1'
+
     ];
 
     /**
@@ -28,3 +33,4 @@ class IcoLocation extends Model
         'documents' => 'Smart2be\IcoAdvice\Models\IcoLocationDocuments'
     ];
 }
+ 

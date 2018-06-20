@@ -1,0 +1,15 @@
+<div class="hr-breaak-line"></div>
+<div class="details-page-inner">
+    <div class="timer-area">
+        <h2 style="margin-bottom:0">Partners</h2>
+        <br>
+        {% for partner in ico.partners %}
+            <div class="col-md-3 text-center">
+            <a href="{{partner.url}}" style="color:black;font-weight:200">
+                <img src="{{partner.image.path}}" /><br>
+                {{ partner.name }}
+            </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
