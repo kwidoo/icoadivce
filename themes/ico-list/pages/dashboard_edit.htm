@@ -7,17 +7,35 @@ is_hidden = 0
 
 [session]
 security = "user"
-redirect = "/login"
+redirect = "home"
+
+[imageUploader imageUploader2]
+placeholderText = "Click or drag images to upload"
+maxSize = 5
+fileTypes = ".gif,.jpg,.jpeg,.png"
+imageWidth = 128
+imageHeight = 128
+imageMode = "crop"
+
+==
+<?php
+use \Smart2be\IcoAdvice\Models\Ico;
+use \Smart2be\IcoAdvice\Models\Team;
+
+
+function onInit()
+{
+    $this->imageUploader2->bindModel('logo', Ico::find($this->param('id')));
+}
+function onRefreshFiles()
+{
+	$this->pageCycle();
+}
+?>
 ==
 {% component 'session' %}
-
 <section class="content">
     <div class="row">
-    	{% flash %}
-    <div class="alert alert-{{ type }}">
-        {{ message }}
-    </div>
-{% endflash %}
 		{% component 'icoEdit' %}
 	</div>
 </section>

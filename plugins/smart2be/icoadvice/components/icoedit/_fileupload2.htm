@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <div class="fileinput fileinput-new" data-provides="fileinput">
+            <div id="{{ name }}-value" class="fileinput-new thumbnail" style="min-width:{{ width }};max-width:{{ width }}">
+                {% if value %}
+                    <img src="{{ value }}" alt="...">
+                {% else%}
+                    <img src ='/plugins/smart2be/icoadvice/assets/images/{{ dummy }}' alt="...">
+                {%endif%}
+            </div>
+            <div id="{{ name ~ '-preview' }}" class="fileinput-new thumbnail hide" style="min-width:{{ width }};max-width:{{ width }}">
+                <p></p>
+            </div>
+            <div style="text-align:left;">
+                <p id="{{ name }}-file">
+                {% if value %}
+                {{ label |raw }}<br>
+                <small>{{ width }} x {{ height}}</small>
+                <input type="hidden" name="{{name}}-filename" value="{{label}}">
+                {% endif %}
+                </p>
+                <span class="btn btn-success btn-round btn-file">
+                    <span class="fileinput-exists">Change</span>
+                    <input id="{{ name }}-original" type="file" name="{{ name }}-original" accept="image/gif, image/jpeg, image/png"/>
+                    <input id="{{ name }}-upload" type="hidden" name="{{ name }}-upload"  />
+                </span>
+                <a id="{{ name }}-remove" href="#" class="btn btn-danger btn-round fileinput-exists{% if not value %} hide{% endif %}">
+                    <i class="fa fa-times"></i> Remove
+                </a>
+
+            </div>
+        </div>
+    </div> 
+</div>
+<script>
+
+</script>

@@ -17,10 +17,10 @@
         <tbody>
             {% for timelines in ico.timeline  %}
             <tr>
-                <td>{{timelines.name| length > 30 ? timelines.name|slice(0, 30) ~ '...' : timelines.name}} </td>
-                <td>{{timelines.start_date | date("m/d/Y")}}</td>
-                <td>{{timelines.end_date | date("m/d/Y")}}</td>
-                <td>{{timelines.description| length > 30 ? timelines.description|slice(0, 30) ~ '...' : timelines.description}}</td>
+                <td>{{timelines.name| length > 15 ? timelines.name|slice(0, 15) ~ '...' : timelines.name}} </td>
+                <td>{{timelines.start_date | date("Y-m-d")}}</td>
+                <td>{{timelines.end_date | date("Y-m-d")}}</td>
+                <td>{{timelines.description| length > 15 ? timelines.description|slice(0, 15) ~ '...' : timelines.description}}</td>
 
                 <td>
                     <span class="badge">{{ status[timelines.status] }} </span>

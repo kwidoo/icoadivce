@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="col-md-8">
     <div class="box">
         <div class="box-header">
             <h4 class="card-title">My ICO List
@@ -26,7 +26,12 @@
                     <tbody>
                         {% for i in ico  %}
                         <tr>
-                            <td><img src="{{link[i.id]}}" width="64" alt="Project's Logo"/></td>
+                            <td>
+                                {% if i.logo %}
+                                    <img src="{{ i.logo.path }}" width="64px" alt="Project's Logo"/></td>
+                                {% else %}
+                                    <img src="/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg" width="64px" alt="No Project's Logo">
+                                {% endif %}
                             <td>{{i.name}}</td>
                             <td>{{i.tiker}}</td>
                             <td>

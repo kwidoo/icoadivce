@@ -1,64 +1,267 @@
-{% for i in ico %}
-<tr class="traending_ico_tr">
-    <td data-label="coin_name" class="coin_name">
-        <div class="trending-coin-box">
-            <div class="icon">
-                {% if i.logo %}
-                    <img src="{{ i.logo.path | resize(128, 128, { mode: 'crop', quality: '80', extension: 'png' }) }} " alt="{{i.name }} Logo" >
-                {% else %}
-                    <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg'}}"  alt="{{i.name }} Logo" width="128px"/>
-                {% endif %}
+{% set nomination = {'0':'BTC',
+                   '1':'ETH',
+                   '2':'LTC',
+                   '3':'Neo',
+                   '4':'Waves',
+                   '5':'EUR',
+                   '6':'USD',
+                   '99':'Other'}
+%}
+<div class="row"> 
+    <div class="col-lg-12">
+        <div class="tab-content">
+            <div class="tab-pane active" id="active_live_tab">
+                <div class="trending-coin-offering-table"> 
+                <table class="table trending-table table-responsive"> 
+                    <thead>
+                        <tr>
+                            <th scope="col" class="coin_name_th">Days Left</th>
+                            <th scope="col" class="coin_name_th">Name</th>
+                            <th scope="col" class="start_price_th">Coin</th>
+                            <th scope="col" class="start_price_th" >Start Price</th>
+                            <th scope="col" class="founding_target_th" >Soft Cap</th>
+                            <th scope="col" class="founding_target_th" >Hard Cap</th>
+                            <th scope="col" class="ico_date_th">ICO End Date</th>
+                            <th scope="col" class="action_th"></th>
+                        </tr> 
+                        <tr>
+                            <td colspan="8" class="th-separator">
+                                <span></span>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            {% for i in ico %}
+                            <tr class="traending_ico_tr">
+                                <td data-label="days_left" class="days_left" style="text-align:center">       
+                                    {% set difference = date(i.end_date).diff(date(now)) %}
+                                    {% set leftDays = difference.days %}        
+                                    <div class="listitems-days-left">{{ leftDays }}</div>
+                                    <div class="listitems-days-left-label">Days Left</div>
+                                </td>
+                                <td data-label="coin_name" class="coin_name">
+                                    <div class="trending-coin-box">
+                                        <div class="icon">
+                                            {% if i.logo %}
+                                                <img src="{{ i.logo.path | resize(128, 128, { mode: 'crop', quality: '80', extension: 'png' }) }} " alt="{{i.name }} Logo"  title="{{i.name }} Logo">
+                                            {% else %}
+                                                <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg'}}"  alt="{{i.name }} Logo" width="128px"  title="{{i.name }} Logo"/>
+                                            {% endif %}
+                                        </div>
+                                        <div class="content">
+                                            {% if i.rating %}
+                                            <ul class="rating">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            {%endif%}
+                                            <h3 class="listitems-name">{{i.name}}</h3>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-label="start_price">
+                                    {% if i.tokens[0] %}
+                                        <span class="start-price">{{ i.tokens[0].name }}&nbsp;
+                                        </span>
+                                    {% else %}
+                                        <span class="start-price">
+                                            N/A
+                                        </span>
+                                    {% endif %}
+                                    
+                                </td>
+                                    <td data-label="start_price">
+                                    {% if i.tokens[0] %}
+                                        <span class="start-price">{{ i.tokens[0].price }}&nbsp;
+                                        {% if i.tokens[0].nomination == 99 %}
+                                             {{ i.tokens[0].other }}
+                                        {% else %}
+                                            {{ nomination[i.tokens[0].nomination]}} 
+                                        {% endif %}
+                                        </span>
+                                    {% else %}
+                                        <span class="start-price">
+                                            N/A
+                                        </span>
+                                    {% endif %}
+                                    
+                                </td>
+                                <td data-label="founding_target">
+                                    <span class="founding-target">{{ i.soft_cap }}&nbsp;
+                                    {% if i.cap_nomination == 99 %}
+                                        {{ i.other }}
+                                    {% else %}
+                                        {{ nomination[i.cap_nomination]}} 
+                                    {% endif %}
+                                    </span>
+                                </td>   
+                                <td data-label="founding_target">
+                                    <span class="founding-target">{{ i.hard_cap }}&nbsp;        
+                                    {% if i.cap_nomination == 99 %}
+                                        {{ i.other }}
+                                    {% else %}
+                                        {{ nomination[i.cap_nomination]}} 
+                                    {% endif %} </span>
+                                </td>
+                                <td data-label="ico_date">
+                                    <span class="ico-date">{{ i.end_date | date('d F Y') }}</span>
+                                </td>
+                                <td data-label="action">
+                                    <a href="ico/{{i.id}}" class="action-btn" alt="{{ i.name }} ICO">More</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="tr-separator">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
-            <div class="content">
-                {% if i.rating %}
-                <ul class="rating">
-                    <li>
-                        <a href="#">
-                            <i class="fas fa-star"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fas fa-star"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fas fa-star"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fas fa-star"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fas fa-star"></i>
-                        </a>
-                    </li>
-                </ul>
-                {%endif%}
-                <h4>{{i.name}}</h4>
+            <div class="tab-pane" id="upcoming_live_tab">
+                <div class="trending-coin-offering-table"> 
+                    <table class="table trending-table table-responsive"> 
+                        <thead>
+                            <tr>
+                                <th scope="col" class="coin_name_th">Days Before</th>
+                                <th scope="col" class="coin_name_th">Name</th>
+                                <th scope="col" class="start_price_th">Coin</th>
+                                <th scope="col" class="start_price_th" >Start Price</th>
+                                <th scope="col" class="founding_target_th" >Soft Cap</th>
+                                <th scope="col" class="founding_target_th" >Hard Cap</th>
+                                <th scope="col" class="ico_date_th">ICO Start Date</th>
+                                <th scope="col" class="action_th"></th>
+                            </tr> 
+                            <tr>
+                                <td colspan="8" class="th-separator">
+                                    <span></span>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in upcoming %}
+                            <tr class="traending_ico_tr">
+                                <td data-label="days_left" class="days_left" style="text-align:center">       
+                                    {% set difference = date(i.start_date).diff(date(now)) %}
+                                    {% set leftDays = difference.days %}        
+                                    <div class="listitems-days-left">{{ leftDays }}</div>
+                                    <div class="listitems-days-left-label">Days Before</div>
+                                </td>
+                                <td data-label="coin_name" class="coin_name">
+                                    <div class="trending-coin-box">
+                                        <div class="icon">
+                                            {% if i.logo %}
+                                                <img src="{{ i.logo.path | resize(128, 128, { mode: 'crop', quality: '80', extension: 'png' }) }} " alt="{{i.name }} Logo"  title="{{i.name }} Logo">
+                                            {% else %}
+                                                <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg'}}"  alt="{{i.name }} Logo" title="{{i.name }} Logo" width="128px"/>
+                                            {% endif %}
+                                        </div>
+                                        <div class="content">
+                                            {% if i.rating %}
+                                            <ul class="rating">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fas fa-star"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            {%endif%}
+                                            <h3 class="listitems-name">{{i.name}}</h3>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td data-label="start_price">
+                                    {% if i.tokens[0] %}
+                                        <span class="start-price">{{ i.tokens[0].name }}&nbsp;
+                                        </span>
+                                    {% else %}
+                                        <span class="start-price">
+                                            N/A
+                                        </span>
+                                    {% endif %}
+                                    
+                                </td>
+                                    <td data-label="start_price">
+                                    {% if i.tokens[0] %}
+                                        <span class="start-price">{{ i.tokens[0].price }}&nbsp;
+                                        {% if i.tokens[0].nomination == 99 %}
+                                             {{ i.tokens[0].other }}
+                                        {% else %}
+                                            {{ nomination[i.tokens[0].nomination]}} 
+                                        {% endif %}
+                                        </span>
+                                    {% else %}
+                                        <span class="start-price">
+                                            N/A
+                                        </span>
+                                    {% endif %}
+                                    
+                                </td>
+                                <td data-label="founding_target">
+                                    <span class="founding-target">{{ i.soft_cap }}&nbsp;
+                                    {% if i.cap_nomination == 99 %}
+                                        {{ i.other }}
+                                    {% else %}
+                                        {{ nomination[i.cap_nomination]}} 
+                                    {% endif %}
+                                    </span>
+                                </td>   
+                                <td data-label="founding_target">
+                                    <span class="founding-target">{{ i.hard_cap }}&nbsp;        
+                                    {% if i.cap_nomination == 99 %}
+                                        {{ i.other }}
+                                    {% else %}
+                                        {{ nomination[i.cap_nomination]}} 
+                                    {% endif %} </span>
+                                </td>
+                                <td data-label="ico_date">
+                                    <span class="ico-date">{{ i.start_date | date('d F Y') }}</span>
+                                </td>
+                                <td data-label="action">
+                                    <a href="ico/{{i.id}}" class="action-btn">More</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6" class="tr-separator">
+                                    <span></span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </td>
-    <td data-label="ratings" class="ratings_td">
-        <div class="ratings-column">
-            <span class="ratings-number">4.0</span>
-            <span class="rate">Rate</span>
-        </div>
-    </td>
-    <td data-label="start_price">
+    </div>
+</div>
 
-        <span class="start-price">$0.021</span>
-        
-    </td>
-    <td data-label="founding_target">
-        <span class="founding-target">$11,300,000</span>
-    </td>
-    <td data-label="ico_date">
-        <span class="ico-date">{{ i.end_date | date('d F Y') }}</span>
-    </td>
-    <td data-label="action">
-        <a href="ico/{{i.id}}" class="action-btn">More</a>
-    </td>
-</tr>
-<tr>
-    <td colspan="6" class="tr-separator">
-        <span></span>
-    </td>
-</tr>
-{% endfor %}
+

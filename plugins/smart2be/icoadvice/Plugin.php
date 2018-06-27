@@ -19,6 +19,7 @@ class Plugin extends PluginBase
             '\Smart2be\IcoAdvice\Components\TeamEdit' => 'teamEdit',
             '\Smart2be\IcoAdvice\Components\FeaturedItems' => 'featuredItems',
             '\Smart2be\IcoAdvice\Components\ListItems' => 'listItems',
+            '\Smart2be\IcoAdvice\Components\SeoItem' => 'seoItem',
             '\Smart2be\IcoAdvice\Components\MainItem' => 'mainItem'
         ];
     }

@@ -1,9 +1,3 @@
-{% flash %}
-    <div class="col-md-12">
-        <div class="alert alert-{{ type }}">{{ message }}</div>
-    </div>
-{% endflash %}
-
 <div class="col-md-9">
     <div class="box">
         <div class="box-header">
@@ -14,36 +8,30 @@
             role="form" 
             name="icoForm" 
             data-request="{{ __SELF__ }}::onSave" 
-            data-request-success="$('.confirm-container').removeClass('hide');">
+            data-request-success="$('.confirm-container').removeClass('hide');"
+            data-request-validate
+            data-request-flash>
+            <div id="error" class="alert alert-dismissable" data-validate-error>
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <p data-message></p>
+            </div>   
             <div class="box-body ">
-    				{{ form_token() }} 
-    				{{ form_sessionKey() }}
+    			{{ form_token() }} 
+    			{{ form_sessionKey() }}
 
                 {% partial '@_field' label="ICO Name" name="name" type="text" %}
                 {% partial '@_field' label="ICO Short Name" name="tiker" type="text" %}
-                <div class="col-md-12 ml-auto mr-auto">
-                    {% partial '@_fileupload' 
-                        label='Partners Logo'
-                        width='128px'
-                        height='128px'
-                        value = partners.image.path 
-                        dummy = 'upload-64x64.svg'
-                        name = 'file-upload' 
-                    %}
-                </div>
             </div>
                 
     	    <div class="box-footer ">
-                <button 
-                    type="submit" 
-                    value="create" 
-                    class="btn btn-round btn-success">
+                <button type="submit" 
+                        value="create" 
+                        class="btn btn-round btn-success">
                     Create
                 </button>
-                <a 
-                    href="{{ '/dashboard' }}"  
-                    class="btn btn-default btn-fill" 
-                    style="float:right" >Cancel</a>
+                <a href="{{ '/dashboard' }}"  
+                   class="btn btn-default btn-fill" 
+                   style="float:right" >Cancel</a>
     	    </div>
         </form>
     </div>

@@ -1387,7 +1387,7 @@ ul {
       .subscribe-area .subscribe-wrapper .subscribe-form .submit-btn:focus {
         outline: none; }
       .subscribe-area .subscribe-wrapper .subscribe-form .submit-btn:hover {
-        background-color: #FF6C00; }
+        background-color: #6ca900; }
 
 /*-----------------------------
     Treanding Coin Offering
@@ -1537,6 +1537,70 @@ td.tr-separator {
 td.th-separator {
   padding: 0; }
 
+
+
+  .trending-coin-offering-area .token-sale-top-bar {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 0px 30px; }
+    .trending-coin-offering-area .token-sale-top-bar .left-content {
+      padding-top: 7px; }
+      .trending-coin-offering-area .token-sale-top-bar .left-content h4 {
+        color: #131222;
+        font-size: 14px;
+        line-height: 24px;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 9px 0; }
+    .trending-coin-offering-area .token-sale-top-bar .right-content {
+      text-align: right; }
+      .trending-coin-offering-area .token-sale-top-bar .right-content .tab-navbar {
+        display: inline-block; }
+        .trending-coin-offering-area .token-sale-top-bar .right-content .tab-navbar .nav-tabs {
+          border: none; }
+          .trending-coin-offering-area .token-sale-top-bar .right-content .tab-navbar .nav-tabs .nav-item .nav-link {
+            position: relative;
+            text-transform: uppercase;
+            font-size: 14px;
+            line-height: 26px;
+            font-weight: 700;
+            color: #a5a4b2;
+            padding: 15px 20px;
+            border: none; }
+            .trending-coin-offering-area .token-sale-top-bar .right-content .tab-navbar .nav-tabs .nav-item .nav-link:after {
+              position: absolute;
+              left: 0;
+              bottom: -2px;
+              width: 100%;
+              height: 4px;
+              background-color: #6ca900;
+              content: '';
+              -webkit-transition: all 0.3s ease-in;
+              -moz-transition: all 0.3s ease-in;
+              -o-transition: all 0.3s ease-in;
+              transition: all 0.3s ease-in;
+              visibility: hidden;
+              opacity: 0; }
+            .trending-coin-offering-area .token-sale-top-bar .right-content .tab-navbar .nav-tabs .nav-item .nav-link.active {
+              border: none;
+              color: #6ca900; }
+              .trending-coin-offering-area .token-sale-top-bar .right-content .tab-navbar .nav-tabs .nav-item .nav-link.active:after {
+                visibility: visible;
+                opacity: 1; }
+            .trending-coin-offering-area .token-sale-top-bar .right-content .tab-navbar .nav-tabs .nav-item .nav-link:hover {
+              border-color: transparent;
+              color: #6ca900; }
+              .trending-coin-offering-area .token-sale-top-bar .right-content .tab-navbar .nav-tabs .nav-item .nav-link:hover:after {
+                visibility: visible;
+                opacity: 1; }
+      .trending-coin-offering-area .token-sale-top-bar .right-content .short-icon {
+        display: inline-block; }
+        .trending-coin-offering-area .token-sale-top-bar .right-content .short-icon a {
+          padding: 0 5px; }
+          .trending-coin-offering-area .token-sale-top-bar .right-content .short-icon a:last-child {
+            padding-right: 0; }
+
+
 /*----------------------
     Testimonial Area
 -----------------------*/
@@ -1672,7 +1736,7 @@ td.th-separator {
       justify-content: center; }
   .sidebar.details-page .widget-area.images {
     border: none;
-    background-color: #f7f7f7; }
+    background-color: transparent; }
     .sidebar.details-page .widget-area.images .widget-body {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -2813,3 +2877,18 @@ td.th-separator {
       color: #7d7c8f;
       line-height: 26px;
       display: block; }
+
+
+.listitems-days-left {
+  font-size:30px;
+}
+.listitems-days-left-label{
+  font-size:15px;
+}
+.listitems-name{
+  font-size: 18px;
+}
+.featured-header{
+  font-size: 25px;
+}
+

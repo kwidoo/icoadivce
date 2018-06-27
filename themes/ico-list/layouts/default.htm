@@ -1,12 +1,37 @@
+[account]
+redirect = "dashboard"
+paramCode = "code"
+forceSecure = 0
+
+[gtmCode]
+
+[SeoCmsPage]
+
+[seoItem]
+==
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ this.page.title }} | Premium ICO List</title>
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{'assets/favicon/apple-icon-57x57.png'|theme }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{'assets/favicon/apple-icon-60x60.png'|theme }}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{{'assets/favicon/apple-icon-72x72.png'|theme }}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{'assets/favicon/apple-icon-76x76.png'|theme }}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{{'assets/favicon/apple-icon-114x114.png'|theme }}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{'assets/favicon/apple-icon-120x120.png'|theme }}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{{'assets/favicon/apple-icon-144x144.png'|theme }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{'assets/favicon/apple-icon-152x152.png'|theme }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{'assets/favicon/apple-icon-180x180.png'|theme }}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{'assets/favicon/android-icon-192x192.png'|theme }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{'assets/favicon/favicon-32x32.png'|theme }}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{{'assets/favicon/favicon-96x96.png'|theme }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{'assets/favicon/favicon-16x16.png'|theme }}">
+    <link rel="manifest" href="{{'assets/favicon/manifest.json'|theme }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{'assets/favicon/ms-icon-144x144.png'|theme }}">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="{{ [
                             'assets/css/bootstrap.min.css',
                             'assets/css/flaticon.css',
@@ -20,9 +45,54 @@
                             'assets/css/goal.scss',
                             'assets/css/timeline.scss'] 
                             | theme }}">
+    <link href="https://cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+        /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+    </style>        
+    {% component 'gtmCode' %}
+    {% if this.page.id == 'home' %}
+        {% component 'SeoCmsPage' %}
+    {% endif %}
+    {% if this.page.id == 'ico' %}
+        {% component 'seoItem' %}
+    {% endif %}
+
+    <script type="application/ld+json">{
+        "@context": "http://schema.org",
+        "@id": "https://icoadvice.guru/#website",
+        "@type": "WebSite",
+        "url": "https://icoadvice.guru/",
+        "name": "icoadvice guru",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://icoadvice.guru/search/{search_string}?src=mc_google",
+            "query-input": "required name=search_string"
+        }
+    }
+    </script>
+    <script type='application/ld+json'> {
+        "@context": "http://www.schema.org",
+        "@type": "Organization",
+        "@id": "https://icoadvice.guru/#organization",
+        "name": "coinschedule ",
+        "url": "https://icoadvice.guru/",
+        "logo": "https://icoadvice.guru/",
+        "image": "https://icoadvice.guru/",
+        "description": "The Best Cryptocurrency Token Sales and ICO List Listing Cryptocurrency ICOs, Token Sales, Blockchain Events and ICO Stats",
+        "sameAs": [
+                "https://www.linkedin.com/company/icoadviceguru",
+                "https://www.reddit.com/user/icoadviceguru/",
+                "https://www.facebook.com/guuruus/",
+                "https://twitter.com/icoadviceguru",
+            ]
+    }
+    </script>
 </head>
 
 <body> 
+    <div style="display:none">{% component 'localePicker' %}</div>
 
     {% partial 'top-menu' %}
     {% page %}
@@ -35,12 +105,28 @@
         'assets/js/owl.carousel.min.js',
         'assets/js/jquery.magnific-popup.js',
         'assets/js/waypoints.min.js',
-        'assets/js/waypoints.min.js',
         'assets/js/wow.min.js',
         'assets/js/bootstrap-datepicker.min.js', 
-        'assets/js/jquery.counterup.min.js'
+        'assets/js/countdown.js'
         ] |theme }}"></script>
-    <script src="{{'assets/js/main.js' |theme}}"></script>
-    
+
+
+
+    <script type='text/javascript' src='https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script type='text/javascript'>
+        (function($) {
+            window.fnames = new Array(); 
+            window.ftypes = new Array();
+            fnames[0]='EMAIL';
+            ftypes[0]='email';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
+
+
+
+    {% framework extra %} 
+    {% scripts %}
+
 </body>
 </html>

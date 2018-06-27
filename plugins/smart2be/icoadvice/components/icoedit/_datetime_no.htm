@@ -4,5 +4,5 @@
     </label>
 {% endif %}
 <div class="input-group date" style="padding-bottom:15px">
-    <input name="{{name}}" type="text" class="form-control pull-right datepickers" id="datepicker" value="{{ value }}">
+    <input name="{{name}}" type="text" class="form-control pull-right datepickers" id="{{name}}" value="{{ value | date('Y-m-d')}}">
 </div>

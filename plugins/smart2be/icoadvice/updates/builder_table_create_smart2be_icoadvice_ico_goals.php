@@ -14,7 +14,7 @@ class BuilderTableCreateSmart2beIcoadviceIcoGoals extends Migration
             $table->integer('ico_id');
             $table->string('name')->nullable();
             $table->text('description')->nullable();
-            $table->decimal('cap')->nullable();
+            $table->text('cap')->nullable();
             $table->integer('currency');
             $table->string('other')->nullable();
             $table->integer('status')->default(0);

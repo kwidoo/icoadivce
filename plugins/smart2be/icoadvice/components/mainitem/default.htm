@@ -3,14 +3,9 @@
         <div class="row">
             <div class="col-lg-xl col-md-4">
                 <aside class="sidebar details-page">
-                    <div class="widget-area images">
+                    <div class="widget-area images" style="padding-top:0">
                         <div class="widget-body">
                             <img src="{{ ico.logo.path | resize(270,270) }}" alt="sidebar image">
-                        </div>
-                    </div>
-                    <div class="widget-area banner">
-                        <div class="widget-body">
-                            <img src="{{'assets/img/add-banner.jpg' |theme}}" alt="add banner image">
                         </div>
                     </div>
                 </aside>
@@ -19,8 +14,7 @@
                 {% partial '@_details' %}
                 <div class="hr-breaak-line"></div>
                 {% partial '@_dates' %}
-                
-                {% if ico.links %}
+                {% if ico.links | length > 0 %}
                     {% partial '@_links' %}
                 {% endif %}
 
@@ -28,29 +22,29 @@
                     {% partial '@_description' %}
                 {% endif %}
 
-                {% if ico.tokens %}
+                {% if ico.tokens | length > 0 %}
                     {% partial '@_tokens' %}
                 {% endif %}
 
-                {% if ico.goals %}
-                    {% partial '@_goals' %}
+                {% if ico.goals | length > 0%}
+                    {% partial '@_goals'  %}
                 {% endif %}
 
-                {% if ico.timeline %}
-                    {% partial '@_timeline' %}
+                {% if ico.timeline | length > 0%}
+                    {% partial '@_timeline'  %}
                 {% endif %}
 
-                {% if ico.team %}
-                    {% partial '@_team' %}
+                {% if ico.team | length > 0 %}
+                    {% partial '@_team'  %}
                 {% endif %}
 
-                {% if ico.partners %}
+                {% if ico.partners | length > 0 %}
                     {% partial '@_partners' %}
                 {% endif %}
 
-                {% if ico.publications %}
+                {% if ico.publications | length > 0 %}
                     {% partial '@_publications' %}
-                {% endif %}
+                {% endif %} 
 
                 </div>
             </div>

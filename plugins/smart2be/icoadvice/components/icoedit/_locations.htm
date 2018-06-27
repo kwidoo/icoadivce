@@ -16,9 +16,9 @@
         <tbody>
             {% for locations in ico.locations  %}
             <tr>
-                <td>{{locations.name | length > 30 ? locations.name|slice(0, 30) ~ '...' : locations.name}}</td>
-                <td>{{locations.legal | length > 30 ? locations.legal|slice(0, 30) ~ '...' : locations.legal}}</td>
-                <td>{{locations.address| length > 30 ? locations.address|slice(0, 30) ~ '...' : locations.address}}</td>
+                <td>{{locations.name | length > 15 ? locations.name|slice(0, 15) ~ '...' : locations.name}}</td>
+                <td>{{locations.legal | length > 15 ? locations.legal|slice(0, 15) ~ '...' : locations.legal}}</td>
+                <td>{{locations.address| length > 15 ? locations.address|slice(0, 15) ~ '...' : locations.address}}</td>
                 <td>
                     <span class="badge">{{ status[locations.status] }} </span>
                 </td>

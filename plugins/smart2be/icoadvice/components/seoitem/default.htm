@@ -1,0 +1,32 @@
+{% if __SELF__.ogTitle %}
+     <title>{{__SELF__.ogTitle}} | ICO Advice Guru</title> 
+{% endif %}{% if __SELF__.seo_description %}
+     <meta name="description" content="{{__SELF__.seo_description}}">
+     <meta property="twitter:description" content="{{__SELF__.seo_description}}">
+{% endif %}
+  
+{% if __SELF__.ogUrl %}
+    <meta property="og:url" content="{{ __SELF__.ogUrl }}" />
+{% endif %}
+
+{% if __SELF__.ogSiteName %}
+    <meta property="og:site_name" content="{{ __SELF__.ogSiteName }}" />
+    <meta property="og:title" content="{{ __SELF__.ogSiteName }}" />
+    <meta property="twitter:title" content="{{ __SELF__.ogSiteName }}" />
+{% endif %}
+
+{% if __SELF__.ogDescription %}
+    <meta property="og:description" content="{{ __SELF__.ogDescription }}" />
+{% endif %}
+
+{% if __SELF__.ogFbAppId %}
+    <meta property="fb:app_id" content="{{ __SELF__.ogFbAppId  }}" />
+{% endif %}
+{% if __SELF__.ogImage %}
+    <meta property="og:image" content="{{ __SELF__.ogImage }}" />
+    <meta property="twitter:image" content="{{ __SELF__.ogImage }}" />
+{% endif %}
+    <meta name="robots" content="{{__SELF__.robot_index}},{{__SELF__.robot_follow}}">
+    <meta property="og:type" content="website" />
+    <meta property="twitter:card" content="website" />
+	<meta property="og:locale" content="en_GB" />

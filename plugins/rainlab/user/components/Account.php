@@ -179,6 +179,8 @@ class Account extends ComponentBase
                 $data['login'] = post('username', post('email'));
             }
 
+
+
             $validation = Validator::make($data, $rules);
             if ($validation->fails()) {
                 throw new ValidationException($validation);
@@ -234,7 +236,8 @@ class Account extends ComponentBase
 
             $rules = [
                 'email'    => 'required|email|between:6,255',
-                'password' => 'required|between:4,255|confirmed'
+                'password' => 'required|between:4,255|confirmed',
+                'password_confirmation' => 'required_with:password|between:4,255'
             ];
 
             if ($this->loginAttribute() == UserSettings::LOGIN_USERNAME) {
@@ -515,5 +518,10 @@ class Account extends ComponentBase
         }
 
         return Redirect::secure(Request::path());
+    }
+
+    public function onLogout(){
+        Auth::logout();
+        return Redirect::to('/');
     }
 }

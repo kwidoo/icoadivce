@@ -15,7 +15,7 @@
                         {% if user.avatar %}
                             <img class="img-circle user-image" src="{{ user.avatar.path }}" alt="User Avatar">
                         {% else %}
-                            <img class="img-circle user-image" src="assets/images/user.png"  alt="No User Avatar">
+                            <img class="img-circle user-image" src="/plugins/smart2be/icoadvice/assets/images/no-photo-64x64.svg"  alt="No User Avatar">
                         {% endif %}
                         <span class="hidden-xs">
                             {% if (user.name or user.surname) %}
@@ -30,7 +30,7 @@
                             {% if user.avatar %}
                                 <img class="img-circle" src="{{ user.avatar.path }}" alt="User Avatar">
                             {% else %}
-                                <img class="img-circle" src="assets/images/user.png"  alt="No User Avatar">
+                                <img class="img-circle" src="/plugins/smart2be/icoadvice/assets/images/no-photo-64x64.svg"  alt="No User Avatar">
                             {% endif %}
                             <p>
                                 {% if (user.name or user.surname) %}
@@ -43,7 +43,7 @@
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="{{ profile }} " class="btn btn-default btn-flat">Profile</a>
+                                <a href="{{ '/dashboard/profile' }} " class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <a data-request="onLogout" class="btn btn-default btn-flat" data-request-data="redirect: '/'">Sign out</a>

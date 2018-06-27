@@ -1,3 +1,4 @@
+
 {% set types = {'0':'Founder',
                '1':'Employee',
                '2':'Advisor'
@@ -48,10 +49,16 @@
             		content = types
             		value = team.type 
             		size = 3 
-            %}       
+            %}        
+            <div class="row">
+            	<div class="col-md-8 ml-auto mr-auto">
+            		{% partial '@_fileupload2' name="team" label=team.photo.file_name value=team.photo.path width="128px" height="128px" dummy="no-photo-64x64.svg"%}
+            		<script>
+            		</script>
+            	</div>
+        	</div>
+        	<h4>&nbsp;</h4>
 
-            
-            
             <div class="row">
             	<div class="col-md-4"> 
 	        		<button class="btn btn-round btn-info" data-request="onAddTeamLink">

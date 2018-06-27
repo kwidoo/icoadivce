@@ -21,9 +21,9 @@ class Ico extends Model
     public $rules = [
         'name' => 'required|string',
         'tiker' => 'required|string|max:20',
-        'start_date' => 'required|date',
+        'start_date' => 'required:update|date',
         'end_date' => 'required_if:start_date,null|date|after_or_equal:start_date',
-        'cap_nomination' => 'required|digits_between:0,99',
+        'cap_nomination' => 'required:update|digits_between:0,99',
         'other' => 'required_if:cap_nomination,99',
         'soft_cap' => 'nullable|string',
         'hard_cap' => 'nullable|string',

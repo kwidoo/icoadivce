@@ -16,14 +16,14 @@
     '0':'fab fa-linkedin',
     '1':'fab fa-facebook',
     '2':'fab fa-twitter',
-    '3':'Bitcointalk Profile',
-    '4':'Blog',
-    '5':'Website',
+    '3':'fab fa-bitcoin',
+    '4':'fab fa-blogger',
+    '5':'fas fa-external-link-square-alt',
     '6':'fab fa-youtube',
     '7':'fab fa-telegram',
     '8':'fab fa-git',
     '9':'fab fa-slack',
-    '99':'Other'}
+    '99':'fas fa-link'}
 %}
                     <div class="hr-breaak-line"></div>
                     <div class="our-team-area">
@@ -43,23 +43,20 @@
                                                {% endif %}
                                             </div>
                                             <div class="content">
-                                                <span class="post">
+                                                <span class="post" style="text-transform: capitalize;">
                                                     {{member.first_name}} {{member.last_name}}<br>
                                                     {{member.title}}
                                                 </span>
                                                 {% if member.links %}
-                                                    <ul class="status-area-lists">
-
+                                                    <div class="row">
                                                     {% for l in member.links %}
-                                                        <li>
-                                                            <div class="" style="text-align: center; padding-left:10px;padding-top:10px;display:inline-block">
+                                                        <div class="col-md-2 ml-auto mr-auto">
                                                                 <a href="{{ l.url }}" target="_blank"> 
-                                                                    <i class="{{ team_links_fa[l.type] }} fa-2x" aria-hidden="true"></i><br>
+                                                                    <i class="{{ team_links_fa[l.type] }}" aria-hidden="true"></i><br>
                                                                 </a>
-                                                            </div>
-                                                        </li>
+                                                        </div>
                                                     {% endfor%}
-                                                    </ul>
+                                                    </div>
                                                 {% endif %}
                                             </div>
                                         </div>
@@ -81,9 +78,23 @@
                                                {% endif %}
                                             </div>
                                             <div class="content">
-                                                <span class="post">
+                                                <span class="post" style="text-transform: capitalize;">
                                                     {{member.first_name}} {{member.last_name}}<br>
-                                                {{member.title}}</span>
+                                                {{member.title}}
+                                                </span>
+                                                {% if member.links %}
+                                                    <ul class="status-area-lists">
+                                                    {% for l in member.links %}
+                                                        <li>
+                                                            <div class="" style="text-align: center; padding-left:10px;padding-top:10px;display:inline-block">
+                                                                <a href="{{ l.url }}" target="_blank"> 
+                                                                    <i class="{{ team_links_fa[l.type] }} fa-2x" aria-hidden="true"></i><br>
+                                                                </a>
+                                                            </div>
+                                                        </li>
+                                                    {% endfor%}
+                                                    </ul>
+                                                {% endif %}
                                             </div>
                                         </div>
                                     </div>

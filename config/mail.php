@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => 'smtp.mailgun.org',
+    'host' => 'server02.smart2be.com',
 
     /*
     |--------------------------------------------------------------------------
@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'noreply@domain.tld', 'name' => 'OctoberCMS'],
+    'from' => ['address' => 'guru@icoadvice.guru', 'name' => 'ICO Guru'],
 
     /*
     |--------------------------------------------------------------------------
@@ -81,7 +81,7 @@ return [
     |
     */
 
-    'username' => null,
+    'username' => 'guru@icoadvice.guru',
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return [
     |
     */
 
-    'password' => null,
+    'password' => '1@yskh78KnP^BNrzX0uFX5T10IxS',
 
     /*
     |--------------------------------------------------------------------------

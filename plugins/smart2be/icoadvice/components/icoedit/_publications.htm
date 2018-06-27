@@ -20,8 +20,8 @@
                                     <img src="' ~ publications.image.path ~ '" width="128px" />
                                 </a>':
                                 '<img src="/plugins/smart2be/icoadvice/assets/images/no-logo-128x64.svg" width="128px" />',
-                    '1': publications.url,
-                    '2': publications.description,
+                    '1': (publications.url| length > 15) ? publications.url|slice(0, 15) ~ '...' : publications.url,
+                    '2': publications.description, 
                     '3': (publications.status == 0) ? '<span class="badge badge-info">Draft</span>' : '<span class="badge badge-success">Published</span>',
                     '4': '<button 
                         type="button"  

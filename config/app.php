@@ -28,7 +28,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'October CMS',
+    'name' => 'ICO Advice Guru',
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'url' => 'http://localhost',
+    'url' => 'http://icoadvice.local/',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return [
     |
     */
 
-    'key' => '3tiwIUXMlczu3auWSSyUEKLq6GOdFczT',
+    'key' => 'LNQy14qq0EyfIiYhICnYObDc3b8o04Kg',
 
     'cipher' => 'AES-256-CBC',
 

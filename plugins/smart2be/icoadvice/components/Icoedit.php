@@ -15,6 +15,7 @@ use \Smart2be\IcoAdvice\Models\IcoContacts;
 use \Smart2be\IcoAdvice\Models\IcoTimeline;
 use \Smart2be\IcoAdvice\Models\Team;
 use \Smart2be\IcoAdvice\Models\TeamLinks;
+use \Responsiv\Uploader\Components\ImageUploader;
 use Redirect;
 use Storage;
 use System\Models\File;
@@ -27,7 +28,6 @@ use ValidationException;
 
 class IcoEdit extends ComponentBase
 {
-
   	public function componentDetails(){
   	    return [
   	        'name' => 'Ico List Edit Page',
@@ -35,51 +35,27 @@ class IcoEdit extends ComponentBase
   	    ];
   	}
 
+
+
     public function onRun(){
-        $this->addJs('assets/js/uploader.js');
+
         $this->addJs('assets/js/checker.js');
         $this->addJs('assets/js/ajax-trigger.js');
-     //   $this->addJs('../uploader/assets/js/uploader.js');
 
         $user = Auth::getUser();
         $ico = $user->ico->where('id','=',$this->param('id'))->first();
         if ($ico) {
             $this->page['ico'] = $ico;
-                if ($ico->logo)
-                    $this->page['link'] = $ico->logo->getPath();
-                else
-                    $this->page['link'] = '/storage/app/uploads/public/5b0/ecd/0bd/5b0ecd0bd7abe729741586.png';
-            
-           // $this->page['link'] = $ico->logo->getPath();
-
         } else {
           return Redirect::to('dashboard');
         }
     }
 
     public function onSave(){
-        Log::info('Logging: '.implode(Input::all()));
 
         $user = Auth::getUser();
         $ico = $user->ico->where('id','=',$this->param('id'))->first();
         if ($ico) {
-
-            if (post('file-upload')) 
-            {
-                /* Если меняется лого сохраняем его */
-                $content = explode(',',post('file-upload'));
-                $filetype = explode(';', explode('/', $content[0])[1])[0];
-                $filename = md5(uniqid(rand(), true)).'.'.$filetype;
-                $file = base64_decode($content[1]); 
-                Storage::put('media/logo/'.$filename, $file);
-
-                $file = new File;
-                $file->data = storage_path('/app/media/logo/'.$filename);
-                $file->is_public = true;
-                $file->save();
-
-                $ico->logo()->add($file);
-            }
             $ico->name = post('name');
             $ico->tiker = post('tiker');
             $ico->soft_cap = post('soft_cap');
@@ -322,12 +298,20 @@ class IcoEdit extends ComponentBase
         else
             $publications->status = 0;
 
-        if (post('publications-upload')) 
+        $publications->save();
+
+        if (!post('publications-filename') && !post('publications-upload'))
+        {
+            $publications->image()->delete();
+            $publications->save();
+        }
+
+        if (post('publications-filename') && post('publications-upload')) 
         {
             /* Если меняется лого сохраняем его */
             $content = explode(',',post('publications-upload'));
             $filetype = explode(';', explode('/', $content[0])[1])[0];
-            $filename = md5(uniqid(rand(), true)).'.'.$filetype;
+            $filename = post('publications-filename');
             $file = base64_decode($content[1]); 
             Storage::put('media/logo/'.$filename, $file);
 
@@ -337,9 +321,9 @@ class IcoEdit extends ComponentBase
             $file->save();
 
             $publications->image()->add($file);
+            $publications->save();
         }
 
-        $publications->save();
         Flash::success('Publication Was Updated');
 
         $user = Auth::getUser();
@@ -350,6 +334,7 @@ class IcoEdit extends ComponentBase
     public function onPublicationDelete(){
          if (post('delete_id')) {
             $publications = IcoPublications::find(post('delete_id'));
+            $publications->image()->delete();
             $publications->delete();
             
             $user = Auth::getUser();
@@ -389,12 +374,20 @@ class IcoEdit extends ComponentBase
         else
             $partners->status = 0;
 
-        if (post('partners-upload')) 
+
+        $partners->save();
+        if (!post('partners-filename') && !post('partners-upload'))
+        {
+            $partners->image()->delete();
+            $partners->save();
+        }
+
+        if (post('partners-filename') && post('partners-upload')) 
         {
             /* Если меняется лого сохраняем его */
             $content = explode(',',post('partners-upload'));
             $filetype = explode(';', explode('/', $content[0])[1])[0];
-            $filename = md5(uniqid(rand(), true)).'.'.$filetype;
+            $filename = post('partners-filename');
             $file = base64_decode($content[1]); 
             Storage::put('media/logo/'.$filename, $file);
 
@@ -404,8 +397,8 @@ class IcoEdit extends ComponentBase
             $file->save();
 
             $partners->image()->add($file);
+            $partners->save();
         }
-        $partners->save();
         Flash::success('Partner Was Updated');
 
         $user = Auth::getUser();
@@ -415,6 +408,7 @@ class IcoEdit extends ComponentBase
     public function onPartnerDelete(){
          if (post('delete_id')) {
             $partners = IcoPartners::find(post('delete_id'));
+            $partners->image()->delete();
             $partners->delete();
             
             $user = Auth::getUser();
@@ -479,30 +473,69 @@ class IcoEdit extends ComponentBase
       */
     public function onAddTeamMember(){
         if (post('team_id')){
-            $team = Team::find(post('team_id'));
+            $team = Team::find(post('team_id')); 
             return ['#modalPopupBody' => $this->renderPartial('@_team_popup.htm',
-                ['title' => 'Edit Team Member', 'team' => $team])];
-        } else
-        return ['#modalPopupBody' => $this->renderPartial('@_team_popup.htm',['title' => 'Add New Team Member'])];
+                ['title' => 'Edit Team Member', 'team' => $team ])]; 
+        } else {
+            
+            return ['#modalPopupBody' => $this->renderPartial('@_team_popup.htm',['title' => 'Add New Team Member'])];
+        }
     }
 
     public function onTeamSave(){
         if (post('id')) {
             $team = Team::find(post('id'));
+            $team->first_name = post('first_name');
+            $team->last_name = post('last_name');
+            $team->title = post('title');
+            $team->type = post('type');
+            if (post('status') == 'on')
+                $team->status = 1;
+            else
+                $team->status = 0;
+            $team->save();
+
         } else {
             $team = new Team;
             $team->ico_id = $this->param('id');
+            $team->first_name = post('first_name');
+            $team->last_name = post('last_name');
+            $team->title = post('title');
+            $team->type = post('type');
+            if (post('status') == 'on')
+                $team->status = 1;
+            else
+                $team->status = 0;
+            $team->save();
         }
-      //  $partners->image = post('url');
-        $team->first_name = post('first_name');
-        $team->last_name = post('last_name');
-        $team->title = post('title');
-        $team->type = post('type');
-        if (post('status') == 'on')
-            $team->status = 1;
-        else
-            $team->status = 0;
-        $team->save();
+        if (post('team-filename') && post('team-upload')) 
+        {
+            /* Если меняется лого сохраняем его */
+            $content = explode(',',post('team-upload'));
+            $filetype = explode(';', explode('/', $content[0])[1])[0];
+            $filename = post('team-filename');
+            $file = base64_decode($content[1]); 
+            Storage::put('media/logo/'.$filename, $file);
+
+            $file = new File;
+            $file->data = storage_path('/app/media/logo/'.$filename);
+          //  $file->file_name = post('team-filename');
+            $file->is_public = true;
+            $file->save();
+
+            $team->photo()->add($file);
+            $team->save();
+        } 
+        if (!post('team-filename') && !post('team-upload'))
+        {
+            $team->photo()->delete();
+            $team->save();
+        }
+
+
+
+
+
         Flash::success('Team Member Was Updated');
        
         $data = post();
@@ -534,6 +567,7 @@ class IcoEdit extends ComponentBase
     public function onTeamDelete(){
          if (post('delete_id')) {
             $team = Team::find(post('delete_id'));
+            $team->photo()->delete();
             $team->delete();
             
             $user = Auth::getUser();
@@ -695,8 +729,8 @@ class IcoEdit extends ComponentBase
     }
     public function onGoalDelete(){
          if (post('delete_id')) {
-            $team = IcoGoals::find(post('delete_id'));
-            $team->delete();
+            $goal = IcoGoals::find(post('delete_id'));
+            $goal->delete();
             
             $user = Auth::getUser();
             $ico = $user->ico->where('id','=',$this->param('id'))->first();  
@@ -859,6 +893,6 @@ class IcoEdit extends ComponentBase
             return ['#_contacts' => $this->renderPartial('@_contacts.htm',['ico' => $ico])];
  
          }
-    }    
+    }   
 }    
 

@@ -1,13 +1,17 @@
 title = "Dashboard"
 url = "/dashboard"
 layout = "dashboard_lte"
+meta_title = "Dashboard"
 is_hidden = 0
+robot_index = "noindex"
+robot_follow = "nofollow"
 
 [icoList]
 
 [session]
 security = "user"
-redirect = "/login"
+allowedUserGroups[] = "registered"
+redirect = "home"
 ==
 {% component 'session' %}
 

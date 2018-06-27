@@ -26,8 +26,8 @@
 			<div class="col-md-12">
 				{% partial '@_textarea' label="Description (max. 1000 symbols)" name="description" value=timelines.description size=4 leghtn=1000 %}
 			</div>
-        	{% partial '@_datetime' label="Start Date" name='start_date' value=timelines.start_date | date('m/d/Y') %}
-        	{% partial '@_datetime' label="End Date" name='end_date' value=timelines.end_date | date('m/d/Y') %}
+        	{% partial '@_datetime' label="Start Date" name='start_date' value=timelines.start_date | date('Y-m-d') %}
+        	{% partial '@_datetime' label="End Date" name='end_date' value=timelines.end_date | date('Y-m-d') %}
         </div>
         <div class="box-footer">
 			<div class="col-md-12">

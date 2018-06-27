@@ -1,37 +1,136 @@
-{% for i in ico %}
-    {% set difference = date(i.start_date).diff(date(now)) %}
-    {% set leftDays = difference.days %}
-    <div class="col-lg-4 col-sm-6">
-        <div class="single-ico-list-box">
-            <div class="thumb">
-                {% if i.logo %}
-                    <img src="{{ i.logo.path | resize(200, 200, { mode: 'crop', quality: '80', extension: 'png' })}}" alt="{{ i.name }} Logo">
-                {% else %}
-                    <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg' }}" alt="{{ i.name }} Logo"/>
-                {% endif %}
-            </div>
-            <div class="content"> 
-                {% if i.rating %}
-                    <ul class="ratings">
-                        <li>
-                            {% for a in i %}
-                            <i class="fas fa-star"></i>
-                            {% endfor %}
-                        </li>
-                    </ul>
-                {% endif %}
-                <h4>{{ i.name }}
-                {% if  i.slogan %}
-                    <br/><small>{{ i.slogan }}</small>
-                {% elseif i.short %}
-                    <br/><small>{{ i.short }}</small>
-                {% else %}
-                    <br>
-                {% endif %}
-                </h4>
-               {{ leftDays }} Days Before ICO
-                <a href="#" class="boxed-btn-rounded"><i class="fas fa-caret-right"></i> <span class="title">Read More</span></a>
+<section class="live-token-sale">
+    <div class="container">
+        {% partial 'list-top' %}
+        <div class="row">
+            <div class="col-lg-12 remove-col-padding">
+                <div class="tab-content"> 
+                    <div class="tab-pane container active" id="active_tab">
+                        <div class="row">
+                        {% for i in ico_active %}
+                            {% set difference = date(i.start_date).diff(date(now)) %}
+                            {% set leftDays = difference.days %}
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="single-ico-list-box">
+                                    <div class="thumb">
+                                        {% if i.logo %}
+                                            <img src="{{ i.logo.path | resize(200, 200, { mode: 'crop', quality: '80', extension: 'png' })}}" alt="{{ i.name }} Logo">
+                                        {% else %}
+                                            <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg' }}" alt="{{ i.name }} Logo"/>
+                                        {% endif %}
+                                    </div>
+                                    <div class="content"> 
+                                        {% if i.rating %}
+                                            <ul class="ratings">
+                                                <li>
+                                                    {% for a in i %}
+                                                    <i class="fas fa-star"></i>
+                                                    {% endfor %}
+                                                </li>
+                                            </ul>
+                                        {% endif %}
+                                        <h3 style="font-size:18px">{{ i.name }}
+                                        {% if  i.slogan %}
+                                            <br/><small>{{ i.slogan }}</small>
+                                        {% elseif i.short %}
+                                            <br/><small>{{ i.short }}</small>
+                                        {% else %}
+                                            <br>
+                                        {% endif %}
+                                        </h3>
+                                       {{ leftDays }} Days Left
+                                        <a href="ico/{{i.id}}" class="boxed-btn-rounded" alt="{{i.name}} ICO"><i class="fas fa-caret-right"></i> <span class="title">Read More</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                    <div class="tab-pane container fade" id="upcoming_tab"> 
+                        <div class="row">
+                        {% for i in ico_upcoming %}
+                            {% set difference = date(i.start_date).diff(date(now)) %}
+                            {% set leftDays = difference.days %}
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="single-ico-list-box">
+                                    <div class="thumb">
+                                        {% if i.logo %}
+                                            <img src="{{ i.logo.path | resize(200, 200, { mode: 'crop', quality: '80', extension: 'png' })}}" alt="{{ i.name }} Logo">
+                                        {% else %}
+                                            <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg' }}" alt="{{ i.name }} Logo"/>
+                                        {% endif %}
+                                    </div>
+                                    <div class="content"> 
+                                        {% if i.rating %}
+                                            <ul class="ratings">
+                                                <li>
+                                                    {% for a in i %}
+                                                    <i class="fas fa-star"></i>
+                                                    {% endfor %}
+                                                </li>
+                                            </ul>
+                                        {% endif %}
+                                        <h4>{{ i.name }}
+                                        {% if  i.slogan %}
+                                            <br/><small>{{ i.slogan }}</small>
+                                        {% elseif i.short %}
+                                            <br/><small>{{ i.short }}</small>
+                                        {% else %}
+                                            <br>
+                                        {% endif %}
+                                        </h4>
+                                       {{ leftDays }} Days Before ICO
+                                        <a href="ico/{{i.id}}" class="boxed-btn-rounded"><i class="fas fa-caret-right"></i> <span class="title">Read More</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}                        </div>
+                    </div>
+                    <div class="tab-pane container fade" id="ending_tab">
+                        <div class="row">
+                            {% for i in ico_ended %}
+                            {% set difference = date(i.start_date).diff(date(now)) %}
+                            {% set leftDays = difference.days %}
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="single-ico-list-box">
+                                    <div class="thumb">
+                                        {% if i.logo %}
+                                            <img src="{{ i.logo.path | resize(200, 200, { mode: 'crop', quality: '80', extension: 'png' })}}" alt="{{ i.name }} Logo">
+                                        {% else %}
+                                            <img src="{{ '/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg' }}" alt="{{ i.name }} Logo"/>
+                                        {% endif %}
+                                    </div>
+                                    <div class="content"> 
+                                        {% if i.rating %}
+                                            <ul class="ratings">
+                                                <li>
+                                                    {% for a in i %}
+                                                    <i class="fas fa-star"></i>
+                                                    {% endfor %}
+                                                </li>
+                                            </ul>
+                                        {% endif %}
+                                        <h4>{{ i.name }}
+                                        {% if  i.slogan %}
+                                            <br/><small>{{ i.slogan }}</small>
+                                        {% elseif i.short %}
+                                            <br/><small>{{ i.short }}</small>
+                                        {% else %}
+                                            <br>
+                                        {% endif %}
+                                        </h4>
+                                        ICO has ended
+                                        <a href="ico/{{i.id}}" class="boxed-btn-rounded"><i class="fas fa-caret-right"></i> <span class="title">Read More</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}    
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-{% endfor %}
+</section>
+
+
+

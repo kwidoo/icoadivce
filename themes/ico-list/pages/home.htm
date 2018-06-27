@@ -1,14 +1,14 @@
 title = "ICO Advice Guru"
-url = "/"
+url = "/:id"
 layout = "default"
+meta_title = "Premium ICO List"
+meta_description = "The original list of ICOs (Initial Coin Offering) and Token Sales, Crypto Conferences and News for Bitcoin, Ethereum, Waves, Ripple and other altcoins"
 is_hidden = 0
-
-[featuredItems]
-
-[listItems]
-
+seo_keywords = "ico,icos,ico list,cryptocurrency,crowdsale,token sale,crowdfunding,cryptocoin,bitcoin,altcoin,roadmap"
+robot_index = "index"
+robot_follow = "follow"
 ==
 {% partial 'header' %}
-{% partial 'featured' %}
+   {% partial 'featured' %}
 {% partial 'subscribe' %}
-{% partial 'list' %}
+   {% partial 'list' %}

@@ -1,0 +1,14 @@
+fields:
+    url:
+        label: 'smart2be.icoadvice::lang.publication.url'
+        type: text
+
+    description:
+        label: 'smart2be.icoadvice::lang.publication.description'
+        type: text
+
+    image:
+        label: 'smart2be.icoadvice::lang.team.logo'
+        span: auto
+        type: fileupload
+        mode: image

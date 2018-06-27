@@ -27,16 +27,14 @@
 			<div class="col-md-12">
 				{% partial '@_textarea' label="Partners's Description (max. 1000 symbols)" name="description" value=partners.description size=4 lenght=1000 %}
 			</div>
-			<div class="col-md-12 ml-auto mr-auto">
-				{% partial '@_fileupload' 
-					label='Partners Logo'
-					width='128px'
-					height='128px'
-					value = partners.image.path 
-					dummy = 'upload-64x64.svg'
-					name = 'partners-upload' 
-				%}
-			</div>
+			<div class="row">
+            	<div class="col-md-8 ml-auto mr-auto">
+            		{% partial '@_fileupload2' name="partners" label=partners.image.file_name value=partners.image.path width="128px" height="64px" dummy="no-logo-128x64.svg"%}
+            		<script>
+            		</script>
+            	</div>
+        	</div>
+        	<h4>&nbsp;</h4>
         </div>
         <div class="box-footer">
 			<div class="col-md-12">

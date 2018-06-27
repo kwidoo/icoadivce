@@ -3,24 +3,7 @@
     {% partial "@_field" label="ICO Short Name" name="tiker" type="text" value=ico.tiker %}
 </div>
 <div class="col-md-4 ml-auto mr-auto">
-    <h4 class="title" style="margin-top:0;">
-        Project's Logo<br>
-        <small>128px x 128px</small>
-    </h4>
-    <div class="fileinput fileinput-new" data-provides="fileinput">
-        <div class="fileinput-new thumbnail" style="min-width:128px;max-width:128px">
-            <img src="{{ link }}" alt="...">
-        </div>
-        <div class="fileinput-preview fileinput-exists thumbnail" style="display:none"></div>
-        <div>
-            <span class="btn btn-success btn-round btn-file">
-                <span class="fileinput-exists">Change</span>
-                <input id="file-upload1" type="file" name="file-upload1" />
-                <input id="file-upload" type="hidden" name="file-upload" />
-            </span>
-            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
-        </div>
-    </div>
+    {% component 'imageUploader2' %}
 </div>
 <div class="col-md-8 ml-auto mr-auto">
     {% partial '@_datetime' label="Start Date" name='start_date' type="text" value=ico.start_date %}

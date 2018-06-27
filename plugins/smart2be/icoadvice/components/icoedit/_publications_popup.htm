@@ -32,15 +32,14 @@
 					leghtn=1000 
 				%}
 			</div>
-			{% partial '@_fileupload' 
-				label='Website Logo'
-				width='256px'
-				height='128px'
-				value = publications.image.path 
-				dummy = 'upload-128x64.svg'
-				name = 'publications-upload' 
-			%}
-
+			<div class="row">
+            	<div class="col-md-8 ml-auto mr-auto">
+            		{% partial '@_fileupload2' name="publications" label=publications.image.file_name value=publications.image.path width="128px" height="64px" dummy="no-logo-128x64.svg"%}
+            		<script>
+            		</script>
+            	</div>
+        	</div>
+        	<h4>&nbsp;</h4>
         </div>
         <div class="box-footer ">
 			<div class="col-md-12">

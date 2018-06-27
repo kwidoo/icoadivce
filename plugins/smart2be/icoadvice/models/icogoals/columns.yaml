@@ -16,7 +16,7 @@ columns:
 
     reached:
         label: 'smart2be.icoadvice::lang.goal.reached'
-        type: boolean
+        type: text
 
     status:
         label: 'smart2be.icoadvice::lang.team.status'

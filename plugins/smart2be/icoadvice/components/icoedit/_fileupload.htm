@@ -16,10 +16,12 @@
                 <p></p>
             </div>
             <div>
+                {{ label |raw }}<br>
+                <small>{{ width }} x {{ height}}</small>
                 <span class="btn btn-success btn-round btn-file">
                     <span class="fileinput-new">Select image</span>
                     <span class="fileinput-exists">Change</span>
-                    <input id="file-publication-orig" type="file" name="file-publication-orig" />
+                    <input id="file-publication-orig" type="file" name="file-publication-orig" accept="image/gif, image/jpeg, image/png"/>
                     <input id="{{ name }}" type="hidden" name="{{ name }}" />
                 </span>
                 <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>

@@ -1,4 +1,7 @@
-<section class="trending-coin-offering-area">
+[listItems]
+==
+
+<section class="trending-coin-offering-area"> 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 text-center">
@@ -7,37 +10,37 @@
                     <p></p>
                 </div>
             </div>
-        </div>
+        </div>        
         <div class="row">
-            <div class="col-lg-12">
-                <div class="trending-coin-offering-table"> 
-                    <table class="table trending-table table-responsive"> 
-                        <thead><!--thead start-->
-                            <tr>
-                                <th scope="col" class="coin_name_th">Coin Names</th>
-                                <th scope="col" class="ratings_th" >Ratings</th>
-                                <th scope="col" class="start_price_th" >Start Price</th>
-                                <th scope="col" class="founding_target_th" >Founding Target</th>
-                                <th scope="col" class="ico_date_th" >ICO End Date</th>
-                                <th scope="col" class="action_th" ></th>
-                            </tr> 
-                            <tr>
-                                <td colspan="6" class="th-separator">
-                                    <span></span>
-                                </td>
-                            </tr>
-                        </thead><!--thead end-->
-                        <tbody>
-                            {% component 'listItems' %}
-                            
-                            
-                            
-                            
-                        </tbody>
-                    </table>
+            <div class="col-lg-12 remove-col-padding-mobile">
+                <div class="token-sale-top-bar"> 
+                   <div class="row">
+                       <div class="col-lg-6 col-sm-3 remove-col-padding-mobile">
+                            <div class="left-content">
+                               
+                            </div>
+                       </div>
+                       <div class="col-lg-6 col-sm-9 remove-col-padding-mobile">
+                            <div class="right-content">
+                                <div class="tab-navbar">
+                                    <ul class="nav nav-tabs">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#active_live_tab">Active</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#upcoming_live_tab">upcoming</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                       </div>
+                   </div>
                 </div>
             </div>
         </div>
+        <br>
+        {% component 'listItems' %}           
+
     </div>
 </section>
 

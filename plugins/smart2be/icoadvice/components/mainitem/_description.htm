@@ -2,7 +2,7 @@
 <div class="details-page-content-area">
     <h4>Project Description</h4>
     {% if ico.description %}
-        <p>{{ ico.description }}</p>
+        <p>{{ ico.description |raw }}</p>
     {% else %}
         <p>{{ ico.short }}</p>
     {% endif %}

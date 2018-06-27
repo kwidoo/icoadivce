@@ -3,11 +3,11 @@
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableCreateSmart2beIcoadviceLinks extends Migration
+class BuilderTableCreateSmart2beIcoadviceContacts extends Migration
 {
     public function up()
     {
-        Schema::create('smart2be_icoadvice_ico_links', function($table)
+        Schema::create('smart2be_icoadvice_ico_contacts', function($table)
         {
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
@@ -26,6 +26,6 @@ class BuilderTableCreateSmart2beIcoadviceLinks extends Migration
     
     public function down()
     {
-        Schema::dropIfExists('smart2be_icoadvice_ico_links');
+        Schema::dropIfExists('smart2be_icoadvice_ico_contacts');
     }
 }

@@ -1,21 +1,23 @@
 {% set links ={'0':'fas fa-link',
-               '1':'fas fa-file',
+               '1':'fas fa-file', 
                '2':'fas fa-file',
-               '3':'fab fa-bitcoin',
+               '3':'fab fa-bitcoin', 
                '4':'fab fa-bitcoin',
                '5':'fa-link',
                '6':'fab fa-ethereum',
                '7':'fab fa-blogger',
                '8':'fab fa-linkedin',
-               '9':'fab fa-facebook',
-               '10':'fab fa-twitter',
+               '9':'fab fa-facebook', 
+               '10':'fab fa-twitter', 
                '11':'fab fa-weixin',
                '12':'fab fa-qq',
                '13':'fab fa-telegram',
-               '14':'fab fa-git',
+               '14':'fab fa-git', 
                '15':'fab fa-slack',
                '16':'fab fa-reddit',
-               '99':'Other'}
+               '17':'fab fa-youtube',
+               '18':'fab fa-instagram',
+               '99':'fas fa-link'}
             %}
 
 {% set links_names = {'0':'Website',
@@ -35,6 +37,8 @@
                '14':'Git',
                '15':'Slack',
                '16':'Reddit',
+               '17':'Youtube',
+               '18':'Instagram',
                '99':'Other'}
             %}
 <div class="hr-breaak-line"></div>
@@ -42,15 +46,14 @@
     <h4>Project Links</h4>
     <ul class="status-area-lists">
         {% for link in ico.links %}
-            
-                <li>
-                    <div class="" style="text-align: center; padding-left:10px;padding-top:10px;display:inline-block">
-                        <a href="{{ link.url }}" target="_blank"> 
-                            <i class="{{ links[link.type] }} fa-2x" aria-hidden="true"></i><br>
-                            {{ links_names[link.type]}}
-                        </a>
-                    </div>
-                </li>
+            <li>
+                <div class="" style="text-align: center; padding-left:10px;padding-top:10px;display:inline-block">
+                    <a href="{{ link.url }}" target="_blank"> 
+                        <i class="{{ links[link.type] }} fa-2x" aria-hidden="true"></i><br>
+                        {{ links_names[link.type]}}
+                    </a>
+                </div>
+            </li>
         {% endfor %}
     </ul>
 </div>

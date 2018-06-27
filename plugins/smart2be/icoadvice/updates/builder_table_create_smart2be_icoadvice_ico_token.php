@@ -16,6 +16,9 @@ class BuilderTableCreateSmart2beIcoadviceIcoToken extends Migration
             $table->integer('decimal')->nullable();
             $table->integer('type')->default(0);
             $table->string('other')->nullable();
+            $table->string('price')->nullable();
+            $table->integer('nomination')->default(0);
+            $table->string('other_currency')->nullable();
             $table->text('tracker')->nullable();
             $table->integer('status')->default(0);
             $table->boolean('approved')->default(0);

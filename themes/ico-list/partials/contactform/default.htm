@@ -1,0 +1,34 @@
+<div class="confirm-container">
+</div>
+<form class="ContactUsForm" role="form"
+      data-request="{{ __SELF__ }}::onMailSent"
+      data-request-update="'{{ __SELF__ }}::confirm': '.confirm-container'">
+<div class="contact-from-wrapper">
+    <div class="form-element square">
+        <label>Your Name
+            <span>**</span>
+        </label>
+        <input name="name" type="text" placeholder="Type your name...." class="input-field-square">
+    </div>
+    <div class="form-element square">
+        <label>Your Email
+            <span>**</span>
+        </label>
+        <input name="email" type="email" placeholder="Type your email...." class="input-field-square">
+    </div>
+    
+        <input name="subject" type="hidden" placeholder="{{subject_input}}" class="input-field-square">
+    <div class="form-element square">
+        <label>Your Messages
+            <span>**</span>
+        </label>
+        <textarea name="body" rows="5" placeholder="Type your message...." class="input-field-square textarea"></textarea>
+    </div>
+    {% if __SELF__.enableCaptcha %}
+        <div class="form-element square">
+            <div class="g-recaptcha" data-sitekey="{{ __SELF__.siteKey }}"></div>
+        </div>
+    {% endif %}
+    <button type="submit" class="submit-form-btn">submit now</button>
+</div>
+</form>

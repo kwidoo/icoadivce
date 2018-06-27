@@ -1,0 +1,77 @@
+title = "ICO Advice Guru"
+url = "/contacts"
+layout = "default"
+is_hidden = 0
+
+[contactForm]
+injectBootstrapAssets = 1
+==
+{% partial 'header' %}
+<section class="contact-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 remove-col-padding">
+                <div class="contact-form-inner">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 text-center">
+                            <div class="section-title">
+                                <!-- section title start -->
+                                <h2>Get In Touch</h2>
+                                <p>We are always glad to help you
+                                </p>
+                            </div>
+                            <!-- section title end -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 remove-col-padding">
+                            <div class="contact-form-wrapper">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="singl-contact-info">
+                                            <div class="icon">
+                                                <i class="far fa-map"></i>
+                                            </div>
+                                            <div class="content">
+                                                <h5>Location</h5>
+                                                <span class="details">
+                                                	Shelford Investment Group S.A. LP,<br>
+                                                	a <a href="https://smart2be.com">smart2be</a> company
+                                                	<br>
+                                                	<br>
+                                                	27 Suite 4073 Mitchell House, 5 Mitchell Street, Edinburgh, Scotland, EH6 7BD
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="singl-contact-info">
+                                            <div class="icon">
+                                                <i class="far fa-envelope"></i>
+                                            </div>
+                                            <div class="content">
+                                                <h5>Email</h5>
+                                                <span class="details">guru@icoadvice.guru</span>
+                                            </div>
+                                        </div>
+                                        <div class="singl-contact-info">
+                                            <div class="icon">
+                                                <i class="fab fa-telegram"></i>
+                                            </div>
+                                            <div class="content">
+                                                <h5>Telegram</h5>
+                                                <span class="details"><a href="https://t.me/joinchat/Eyea-Qjs001MMNwRr8AgDw">guuruu@t.me</a></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                    	{% component 'contactForm' %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- contact area end -->

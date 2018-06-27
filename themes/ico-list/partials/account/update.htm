@@ -1,50 +1,50 @@
-
+==
+<?php
+function onInit()
+{
+    $this->fileUploader->bindModel('avatar',Auth::getUser());
+}
+?>
+==
 <div class="col-md-12">
- {{ form_ajax('onUpdate', { model: user }) }}
-       <div class="card">
-        <div class="card-header card-header-icon card-header-success">
-          <div class="card-icon">
-            <i class="material-icons">perm_identity</i>
-          </div>
-          <h4 class="card-title">Profile</small></h4>
-
-        </div>
-        <div class="card-body">
-                <span id="accountDeactivateFooter">
-
-                <div class="row">
-                    <div class="col-md-10 ml-auto mr-auto">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Email address</label>
-                            <input name="email" type="email" class="form-control" id="accountEmail" value="{{ form_value('email') }}">
+    {{ form_ajax('onUpdate', { model: user }) }}
+        <div class="box">
+            <div class="box-header">
+                <h4 class="card-title">Profile</small></h4>
+            </div>
+            <div class="box-body">
+                <span id="accountDeactivateFooter" class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-10 ml-auto mr-auto">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Email address</label>
+                                <input name="email_text" type="email" class="form-control" id="accountEmail_text" value="{{ form_value('email') }}" disabled="">
+                                <input name="email" type="hidden" class="form-control" id="accountEmail" value="{{ form_value('email') }}">
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-10 ml-auto mr-auto">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">First Name</label>
-                             <input name="name" type="text" class="form-control" id="accountName" value="{{ form_value('name') }}">
-                        </div>
-                    
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Last Name</label>
-                             <input name="surname" type="text" class="form-control" id="accountSurname" value="{{ form_value('surname') }}">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-10 ml-auto mr-auto">
-                        <div class="form-group">
-                            <label class="bmd-label-floating">Adress</label>
-                            <input type="text" class="form-control" >
+                    <div class="row">
+                        <div class="col-md-10 ml-auto mr-auto">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">First Name</label>
+                                 <input name="name" type="text" class="form-control" id="accountName" value="{{ form_value('name') }}">
+                            </div>
+                        
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Last Name</label>
+                                 <input name="surname" type="text" class="form-control" id="accountSurname" value="{{ form_value('surname') }}">
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
+                    <div class="row">
+                        <div class="col-md-10 ml-auto mr-auto">
+                            <div class="form-group">
+                                <label class="bmd-label-floating">Adress</label>
+                                <input type="text" class="form-control" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-md-4 ml-auto">
                             <div class="form-group">
                                 <label class="bmd-label-floating">City</label>
@@ -63,9 +63,8 @@
                                 <input type="text" class="form-control" >
                             </div>
                         </div>
-                </div>
-
-                <button type="submit" class="btn btn-success">Save</button>
+                    </div>
+                    <button type="submit" class="btn btn-success">Save</button>
                     <a class="btn btn-danger"
                         href="javascript:;"
                         onclick="$('#accountDeactivateForm').toggle();$('#accountDeactivateFooter').toggle();">
@@ -73,6 +72,16 @@
                     </a>
                 </span>
 
+
+                <span class="col-md-4 ml-auto mr-auto">
+                    <div class="row">
+                        <label class="bmd-label-floating">Avatar</label>
+                       
+                        {% component 'imageUploader' %}
+
+                        
+                    </div>                
+                </span>
                 <div id="accountDeactivateForm" style="display: none">
                     {{ form_ajax('onDeactivate') }}
                         <hr />
@@ -96,10 +105,9 @@
                     {{ form_close() }}
                 </div>
                 <div class="clearfix"></div>
+            </div>
         </div>
-    </div>
-{{ form_close() }}
-
+    {{ form_close() }}
 </div>
 
 
