@@ -1,8 +1,0 @@
-storage/*
-robot/*
-vendor/*
-bootstrap/*
-modules/*
-\.DS_Store
-.gitignore
-.htaccess
