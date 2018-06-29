@@ -32,8 +32,9 @@
                                 {% else %}
                                     <img src="/plugins/smart2be/icoadvice/assets/images/no-logo-64x64.svg" width="64px" alt="No Project's Logo">
                                 {% endif %}
-                            <td>{{i.name}}</td>
-                            <td>{{i.tiker}}</td>
+                            <td>{{i.name| length > 15 ? i.name|slice(0, 15) ~ '...' : i.name}}
+                            </td>
+                            <td>{{i.tiker| length > 5 ? i.tiker|slice(0, 5) ~ '...' : i.tiker}}</td>
                             <td>
                                 {% if i.status == 0 %}
                                 <span class="badge badge-info">Draft</span>

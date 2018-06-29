@@ -52,9 +52,15 @@ forceSecure = 0
            We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
     </style>        
     {% component 'gtmCode' %}
-    {% if this.page.id == 'home' %}
+    
+    {% if (this.page.id == 'home') %}
         {% component 'SeoCmsPage' %}
     {% endif %}
+    {% if (this.page.id == 'contacts') %}
+        {% component 'SeoCmsPage' %}
+    {% endif %}
+
+
     {% if this.page.id == 'ico' %}
         {% component 'seoItem' %}
     {% endif %}
@@ -123,8 +129,7 @@ forceSecure = 0
         var $mcj = jQuery.noConflict(true);
     </script>
 
-
-
+    {% framework %}
     {% framework extra %} 
     {% scripts %}
 

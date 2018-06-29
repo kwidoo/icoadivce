@@ -57,6 +57,4 @@
 1.0.20:
     - 'Created table smart2be_icoadvice_ico_contacts'
     - builder_table_create_smart2be_icoadvice_ico_contacts.php
-1.0.21:
-    - 'Created table ico_user'
     - builder_table_create_smart2be_user_ico.php
